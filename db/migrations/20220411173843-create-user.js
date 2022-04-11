@@ -30,6 +30,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING.BINARY
       },
+      confirmedPassword: {
+        allowNull: false,
+        type: Sequelize.STRING.BINARY
+      },
       image: {
         type: Sequelize.STRING(255)
       },
