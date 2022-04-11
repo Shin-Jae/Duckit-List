@@ -1,0 +1,7 @@
+extends layout.pug
+
+include utils.pug
+    +validationErrorSummary(errors)
+    form(action='/users/signup' method='post')
+        input(type='hidden' name="_csrf" value=csrfToken)
+        +field("First Name", "firstName", user.firstName)

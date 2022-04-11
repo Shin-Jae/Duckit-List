@@ -1,0 +1,14 @@
+mixin validationErrorSummary(errors)
+    if errors
+        p The following errors have occurred
+        ul
+            each error in errors
+                li= error
+
+
+mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = labelText)
+    label(for=fieldName)= labelText
+    if fieldType === "textarea"
+        textarea(id=fieldName name=fieldName)= fieldValue
+    else
+        input(type=fieldType id=fieldName name=fieldName value=fieldValue placeholder=placeholder)
