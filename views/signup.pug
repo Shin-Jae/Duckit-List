@@ -7,7 +7,7 @@ block content
     form(action='/users/signup' method='post')
         input(type='hidden' name="_csrf" value=csrfToken)
         +field("First Name", "firstName", user.firstName)
-        +field("Last Name", "LastName", user.lastName)
+        +field("Last Name", "lastName", user.lastName)
         +field("Username", "username", user.username)
         +field("Email", "email", user.email)
         +field("Password", "password", user.password)

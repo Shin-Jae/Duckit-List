@@ -59,7 +59,7 @@ const userValidators = [
     .isEmail()
     .withMessage('Please provide a valid email address')
     .custom((value) => {
-      return db.User.findOne({ where: { emailAddress: value } })
+      return db.User.findOne({ where: { email: value } })
         .then((user) => {
           if (user) {
             return Promise.reject('The provided Email Address is already in use by another account');
@@ -93,7 +93,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
     lastName,
     username,
     password,
-    confirmedPassword,
+    hashedPassword,
   } = req.body;
 
   const user = db.User.build({
@@ -110,7 +110,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
     user.hashedPassword = hashedPassword;
     await user.save();
     loginUser(req, res, user);
-    res.redirect('/');
+    res.redirect('/home');
   } else {
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('signup', {
@@ -119,7 +119,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
       errors,
       csrfToken: req.csrfToken(),
     });
-    req.session.auth = { userId: user.id, username: user.username }
+    req.session.auth = { userId: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email }
     res.redirect('/home')
   }
 }));
