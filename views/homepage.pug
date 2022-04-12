@@ -15,5 +15,5 @@ html
 
             button(id=index class="logout-btn") Log Out
 
-    //-  a(href="/users/profile)
-    //-     img(class="profile-picture" src="https://user-images.")
+            a(href=`/users/${user.id}` class="userImage")
+            img(id="image" src=user.image style="width:150px; height:150px; border-radius:50%")
