@@ -124,7 +124,7 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
 }));
 
 router.get('/login', csrfProtection, (req, res) => {
-  res.render('users-login', {
+  res.render('login', {
     title: 'Login',
     csrfToken: req.csrfToken(),
   });
