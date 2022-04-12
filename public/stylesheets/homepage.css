@@ -1,6 +1,19 @@
-/* h1 {
-    color: #555555;
-} */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    text-decoration: none;
+}
+
+a {
+    font-family: "Days One";
+    text-decoration: none;
+}
+
+.searchbar {
+    position: relative;
+    top: 10px;
+}
 
 .logo {
     vertical-align: left;
@@ -9,11 +22,6 @@
     border-radius: 100%;
     position: relative;
     bottom: 12px;
-}
-
-a {
-    font-family: "Days One";
-    text-decoration: none;
 }
 
 .logout-btn {
