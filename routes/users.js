@@ -7,9 +7,6 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
 const router = express.Router();
 
-// const userValidators = [
-//   check('')
-// ]
 
 
 /* GET users listing. */
@@ -182,5 +179,18 @@ router.post('/logout', (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
 });
+
+
+// router.get('/:userId(\\d+)', asyncHandler(async (req, res) => {
+//   const id = parseInt(req.params.id);
+//   const user = res.locals.user;
+//   const userProfile = await db.User.findByPk(id);
+
+//   res.render('homepage', {
+//     user,
+//     userProfile
+//   })
+// }))
+
 
 module.exports = router;

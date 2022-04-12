@@ -4,16 +4,24 @@ html
         block head
             title= title
             link(rel='stylesheet' href='/stylesheets/reset.css')
+            link(rel='stylesheet' href='/stylesheets/homepage.css')
+            link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Days+One&display=swap')
+            link(rel='icon' type='image/png' href='https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png')
+
         body
         nav.navbar
-            div(id="Welcome")
-            a(href="/")
+            div(id="homepage")
+            a(href="/home")
                 img(class="logo" src="https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png")
+            form(action="/search" method="get").searchbar
+                input(name="search" type="text" placeholder="Got any Grapes?")
 
-            button(id=index class="list-btn") List
-            a(href="/users/list")
+            p Welcome #{user.username} !
+
+            a(href=`/users/${user.id}` class="userImage")
+                img(id="image" src=user.image style="width:100px; height:100px; border-radius:50%")
+
+            //- button(id=index class="list-btn") List
+            a(href="/users/list") List
 
             button(id=index class="logout-btn") Log Out
-
-    //-  a(href="/users/profile)
-    //-     img(class="profile-picture" src="https://user-images.")
