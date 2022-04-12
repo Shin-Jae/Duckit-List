@@ -7,13 +7,13 @@ const { loginUser, logoutUser, requireAuth } = require('../auth');
 const router = express.Router();
 
 
-router.get('/', asyncHandler(async (req, res) => {
+router.get('/', csrfProtection, asyncHandler(async (req, res) => {
   const tasks = await db.Task.findAll();
-  res.render("view-tasks", {tasks});
+  res.render("viewlist", {tasks, csrfToken: req.csrfToken()});
 }));
 
-router.get('/new', (req, res) => {
-  res.render("create-task");
+router.get('/new', csrfProtection, (req, res) => {
+  res.render("addtolist", {csrfToken: req.csrfToken()});
 });
 
 const taskValidators = [
@@ -24,10 +24,13 @@ const taskValidators = [
 
 router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
   const { description, cost, timeframe, image, category } = req.body;
+  const userId = parseInt(req.session.auth.userId)
+  console.log("******************",userId)
   let errors = [];
   const validatorErrors = validationResult(req)
   if (validatorErrors.isEmpty()) {
     const task = await db.Task.create({
+      userId,
       description,
       cost,
       image,
@@ -35,17 +38,17 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
       category,
       completed: false
     })
-    return res.redirect('/')
+    return res.redirect('/lists')
   } else {
     const errors = validatorErrors.array().map(error => error.msg)
+    res.render("addtolist", {
+      title: "Add to list",
+      errors,
+      csrfToken: req.csrfToken(),
+      task
+    })
   }
 
-  res.render("view-tasks", {
-    title: "Duckit List",
-    errors,
-    csrfToken: req.csrfToken(),
-    task
-  })
 
 }));
 
