@@ -36,8 +36,10 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
+app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -47,6 +49,8 @@ app.use(function (req, res, next) {
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
+  console.log("FINAL ERROR ROUTER MESSAGE", err.message)
+  console.log("FINAL ERROR ROUTER PATH", req.path)
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

@@ -1,11 +1,11 @@
 const express = require('express');
-const router = express.Router();
-const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
+const bcrypt = require('bcryptjs');
 
 const db = require('../db/models');
 const { csrfProtection, asyncHandler } = require('./utils');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
+const router = express.Router();
 
 // const userValidators = [
 //   check('')
@@ -17,12 +17,12 @@ router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/users/signup', csrfProtection, (req, res) => {
+router.get('/signup', csrfProtection, (req, res) => {
   const user = db.User.build();
   res.render('signup', {
-    csrfToken: req.csrfToken(),
     title: 'Sign Up',
     user,
+    csrfToken: req.csrfToken(),
   });
 });
 
@@ -85,7 +85,7 @@ const userValidators = [
     }),
 ];
 
-router.post('/users/signup', csrfProtection, userValidators, asyncHandler(async (req, res) => {
+router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, res) => {
   const {
     email,
     firstName,
@@ -118,6 +118,8 @@ router.post('/users/signup', csrfProtection, userValidators, asyncHandler(async 
       errors,
       csrfToken: req.csrfToken(),
     });
+    req.session.auth = { userId: user.id, username: user.username }
+    res.redirect('/home')
   }
 }));
 
@@ -137,7 +139,7 @@ const loginValidators = [
     .withMessage('Please provide a value for Password'),
 ];
 
-router.post('/users/login', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
+router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, res) => {
   const {
     email,
     password,
@@ -154,7 +156,8 @@ router.post('/users/login', csrfProtection, loginValidators, asyncHandler(async 
 
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.redirect('/');
+        req.session.auth = { userId: user.id, username: user.username }
+        return res.redirect('/home')
       }
     }
     errors.push('Login failed for the provided email address and password');
@@ -171,7 +174,7 @@ router.post('/users/login', csrfProtection, loginValidators, asyncHandler(async 
 
 }));
 
-router.post('/users/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   logoutUser(req, res);
   res.redirect('/');
 });
