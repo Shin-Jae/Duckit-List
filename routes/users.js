@@ -118,6 +118,8 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
       errors,
       csrfToken: req.csrfToken(),
     });
+    req.session.auth = { userId: user.id, username: user.username }
+    res.redirect('/home')
   }
 }));
 
@@ -154,7 +156,8 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
 
       if (passwordMatch) {
         loginUser(req, res, user);
-        return res.redirect('/');
+        req.session.auth = { userId: user.id, username: user.username }
+        return res.redirect('/home')
       }
     }
     errors.push('Login failed for the provided email address and password');
