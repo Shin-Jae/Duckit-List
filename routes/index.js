@@ -8,11 +8,9 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'a/A Express Skeleton Home' });
 });
 
-router.get('/home/:userId(\\d+)', asyncHandler(async (req, res) => {
-  const user = await db.User.findByPk(req.params.userId)
+router.get('/home', asyncHandler(async (req, res) => {
   res.render('homepage', {
-    title: `Welcome ${user.username} !`,
-    user,
+    title: 'Welcome to Duckit List!',
   })
 }))
 
