@@ -5,6 +5,13 @@
     text-decoration: none;
 }
 
+/* .navbar2 {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    text-decoration: none;
+} */
+
 a {
     font-family: "Days One";
     text-decoration: none;

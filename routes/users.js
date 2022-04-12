@@ -174,6 +174,26 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
 
 }));
 
+router.get('/profile', csrfProtection, (req, res) => {
+  res.render('profile', {
+    title: 'Profile',
+  });
+});
+
+router.put('/profile/edit', asyncHandler(async (req, res) => {
+  let currUser;
+  if (req.session.auth) {
+    currUser = req.session.auth.userId;
+  }
+
+  const user = await db.User.findByPk(currUser);
+
+  user.username = req.body.username;
+  user.firstName = req.body.firstName;
+  user.lastName = req.body.lastName;
+  user.email = req.body.email;
+  user.password = req.body.password;
+}));
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
