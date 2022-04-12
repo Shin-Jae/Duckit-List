@@ -1,1 +1,19 @@
-extends layout.pug
+doctype html
+html
+    head
+        block head
+            title= title
+            link(rel='stylesheet' href='/stylesheets/reset.css')
+        body
+        nav.navbar
+            div(id="Welcome")
+            a(href="/")
+                img(class="logo" src="https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png")
+
+            button(id=index class="list-btn") List
+            a(href="/users/list")
+
+            button(id=index class="logout-btn") Log Out
+
+    //-  a(href="/users/profile)
+    //-     img(class="profile-picture" src="https://user-images.")
