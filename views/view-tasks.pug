@@ -3,7 +3,7 @@ extends layout.pug
 include utils.pug
 
 block content
-  a(href="/tasks/new" class="create-ntask-button") Create new task
+  a(href="/tasks/new" class="create-task-button") Create new task
     each task in tasks
       ul
         li= task.description

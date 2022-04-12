@@ -12,13 +12,17 @@ router.get('/', asyncHandler(async (req, res) => {
   res.render("view-tasks", {tasks});
 }));
 
-router.get('/new', function (req, res) {
+router.get('/new', (req, res) => {
   res.render("create-task");
 });
 
-router.post('/', function (req, res, next) {
-  res.send('respond with a resource');
-});
+router.post('/new', csrfProtection, asyncHandler(async (req, res) => {
+  const { description, cost, timeframe, image, category } = req.body;
+
+
+
+  res.redirect('/')
+}));
 
 
 
