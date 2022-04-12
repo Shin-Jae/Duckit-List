@@ -16,12 +16,37 @@ router.get('/new', (req, res) => {
   res.render("create-task");
 });
 
-router.post('/new', csrfProtection, asyncHandler(async (req, res) => {
+const taskValidators = [
+  check("description")
+  .exists({ checkFalsy: true})
+  .withMessage("Please provide a description of your goal")
+]
+
+router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
   const { description, cost, timeframe, image, category } = req.body;
+  let errors = [];
+  const validatorErrors = validationResult(req)
+  if (validatorErrors.isEmpty()) {
+    const task = await db.Task.create({
+      description,
+      cost,
+      image,
+      timeframe,
+      category,
+      completed: false
+    })
+    return res.redirect('/')
+  } else {
+    const errors = validatorErrors.array().map(error => error.msg)
+  }
 
+  res.render("view-tasks", {
+    title: "Duckit List",
+    errors,
+    csrfToken: req.csrfToken(),
+    task
+  })
 
-
-  res.redirect('/')
 }));
 
 
