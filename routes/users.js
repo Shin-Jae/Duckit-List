@@ -13,7 +13,7 @@ const router = express.Router();
 
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/', (req, res, next) => {
   res.send('respond with a resource');
 });
 
@@ -25,6 +25,7 @@ router.get('/signup', csrfProtection, (req, res) => {
     csrfToken: req.csrfToken(),
   });
 });
+
 
 const userValidators = [
   check('firstName')
@@ -172,7 +173,9 @@ router.post('/login', csrfProtection, loginValidators, asyncHandler(async (req, 
     csrfToken: req.csrfToken(),
   });
 
+
 }));
+
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
