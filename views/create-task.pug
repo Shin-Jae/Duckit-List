@@ -5,6 +5,7 @@ include utils.pug
 block content
   +validationErrorSummary(errors)
   form(action='/tasks/new' method='post')
+    input(type='hidden' name="_csrf" value=csrfToken)
     +field('Description', 'description', description)
     +field('Cost', 'cost', cost)
     +field('Timeframe', 'timeframe', timeframe)
@@ -13,5 +14,3 @@ block content
     div(class='form-submit')
     button(type='submit' class='submit-btn') Duck it!
     a(href='/tasks' class='cancel-btn') Cancel
-  div
-    p: a(href='/users/login') Already have an account?
