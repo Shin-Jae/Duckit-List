@@ -1,6 +1,15 @@
+/* body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    margin: 0px
+}
+
 .modal-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -39,4 +48,4 @@ button {
     padding: 10px 25px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     font-size: 14px;
-}
+} */
