@@ -3,7 +3,10 @@ extends homepage.pug
 include utils.pug
 
 block content
-  a(href="/lists/:id(\\d+)/new" class="add-to-list-button") Create new task
-  each task in tasks
+  a(href="/lists/new" class="add-to-list-button") Create new List
+  each list in lists
     ul
-      li= task.description
+      li= `List: ${list.name}`
+      each task in tasks
+        if task.listId === list.id
+          li= `--Task: ${task.description}`
