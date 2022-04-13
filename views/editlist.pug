@@ -7,17 +7,18 @@ block content
   each list in lists
     ul
       li= `List: ${list.name}`
-        a(href=`/lists/edit/${list.id}`) Edit
+        .container
+          button(class='edit-btn' id=`edit-btn-${list.id}`) Edit
+          button(class='delete-btn' id=`delete-btn-${list.id}`) Delete
       each task in list.dataValues.Tasks
         li= `--Tasks: ${task.description}`
           input(type='checkbox')
   .container
     p Woud you like to edit your #{list.name} list?
       +validationErrorSummary(errors)
-      form(action='/lists/edit' method='post')
+      form(action=`/lists/edit/${list.id}` method='post')
         input(type='hidden' name="_csrf" value=csrfToken)
         +field('List Name', 'name', list.name)
         div(class='form-submit')
         button(type='submit' class='submit-btn') Save
         a(href='/lists' class='cancel-btn') Cancel
-          a(href=`/lists/delete/${list.id}`) Delete this list?

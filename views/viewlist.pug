@@ -6,8 +6,11 @@ block content
   a(href="/lists/new" class="add-to-list-button") Create new List
   each list in lists
     ul
-      li= `List: ${list.name}`
-        a(href=`/lists/edit/${list.id}`) Edit
-      each task in list.dataValues.Tasks
-        li= `--Tasks: ${task.description}`
-          input(type='checkbox')
+      div(id=`container-${list.id}`).container
+        li= `List: ${list.name}`
+          button(class='edit-btn' id=`edit-btn-${list.id}`) Edit
+          button(class='delete-btn' id=`delete-btn-${list.id}`) Delete
+          a(href='/tasks/new') Hatch a new goal!
+            each task in list.dataValues.Tasks
+              li= `--Tasks: ${task.description}`
+                input(type='checkbox')
