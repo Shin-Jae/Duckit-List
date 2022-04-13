@@ -7,11 +7,10 @@ const { loginUser, logoutUser, requireAuth } = require('../auth');
 const router = express.Router();
 
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-    //const listId = parseInt(req.params.id, 10)
-    const user = await db.User.findByPk(1)
-    const usersId = user.id;
-    const lists = await db.List.findAll({ where: { userId: usersId } });
-    //const listsId = lists.id
+    const user = req.session.auth.userId
+
+    const lists = await db.List.findAll({ where: { userId: user } });
+
     let listsId = [];
     for (list of lists) {
 
