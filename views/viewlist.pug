@@ -4,6 +4,6 @@ include utils.pug
 
 block content
   a(href="/lists/new" class="add-to-list-button") Create new task
-    each task in tasks
-      ul
-        li= task.description
+  each task in tasks
+    ul
+      li= task.description
