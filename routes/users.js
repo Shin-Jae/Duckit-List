@@ -180,11 +180,12 @@ router.get('/profile', csrfProtection, (req, res) => {
   });
 });
 
-router.put('/profile/edit', asyncHandler(async (req, res) => {
-  let currUser;
-  if (req.session.auth) {
-    currUser = req.session.auth.userId;
-  }
+router.get('/profile/edit', asyncHandler(async (req, res) => {
+  res.render('profile-edit', { title: "Edit Profile" })
+}));
+
+router.post('/profile/edit', csrfProtection, userValidators, asyncHandler(async (req, res) => {
+  let currUser = req.session.auth.userId;
 
   const user = await db.User.findByPk(currUser);
 
@@ -193,6 +194,26 @@ router.put('/profile/edit', asyncHandler(async (req, res) => {
   user.lastName = req.body.lastName;
   user.email = req.body.email;
   user.password = req.body.password;
+  await user.save();
+
+  const validatorErrors = validationResult(req);
+
+  if (validatorErrors.isEmpty()) {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.hashedPassword = hashedPassword;
+    // loginUser(req, res, user);
+    res.redirect('/users/profile');
+  } else {
+    const errors = validatorErrors.array().map((error) => error.msg);
+    res.render('profile-edit', {
+      title: 'Edit Profile',
+      user,
+      errors,
+      csrfToken: req.csrfToken(),
+    });
+    req.session.auth = { userId: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email }
+    res.redirect('/users/profile/edit')
+  }
 }));
 
 router.post('/logout', (req, res) => {
