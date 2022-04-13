@@ -21,7 +21,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
     res.render("viewlist", { lists, user, csrfToken: req.csrfToken() });
 }));
 
-const taskValidators = [
+const listValidators = [
     check("name")
         .exists({ checkFalsy: true })
         .withMessage("Please provide a name for your list")
@@ -31,7 +31,7 @@ router.get('/new', csrfProtection, (req, res) => {
     res.render("add-list", { csrfToken: req.csrfToken() });
 });
 
-router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
+router.post('/new', csrfProtection, listValidators, asyncHandler(async (req, res) => {
     const { name } = req.body;
     const userId = req.session.auth.userId
 
@@ -53,6 +53,50 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
     }
 
 
+}));
+
+router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+    const user = req.session.auth.userId
+
+    const lists = await db.List.findAll({
+        include: db.Task,
+        where: {
+            userId: user,
+
+        },
+        order: [["createdAt", "DESC"]]
+    });
+
+    const listId = parseInt(req.params.id, 10);
+    const list = await db.List.findByPk(listId);
+    res.render('editlist', {
+        title: 'Edit List',
+        user,
+        lists,
+        list,
+        csrfToken: req.csrfToken()
+    })
+}));
+
+router.post('/edit/:id(\\d+)', csrfProtection, listValidators, asyncHandler(async (req, res) => {
+    const listId = parseInt(req.params.id, 10);
+    const listToUpdate = await db.List.findByPk(listId);
+    const { userId, name } = req.body;
+    const list = { userId, name };
+
+    const validatorErrors = validationResult(req)
+    if (validatorErrors.isEmpty()) {
+        await listToUpdate.update(list)
+        return res.redirect('/')
+    } else {
+        const errors = validatorErrors.array().map(error => error.msg)
+        res.render("editlist", {
+            title: "Edit List",
+            errors,
+            csrfToken: req.csrfToken(),
+            list
+        })
+    }
 }));
 
 module.exports = router;
