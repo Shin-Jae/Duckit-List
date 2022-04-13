@@ -7,6 +7,6 @@ block content
   each list in lists
     ul
       li= `List: ${list.name}`
-      each task in tasks
-        if task.listId === list.id
-          li= `--Task: ${task.description}`
+      each task in list.dataValues.Tasks
+        li= `--Tasks: ${task.description}`
+          input(type='checkbox')
