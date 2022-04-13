@@ -13,18 +13,16 @@ block content
         button(class='edit-btn' id=`edit-btn-${list.id}`) Edit
         button(class='delete-btn' id=`delete-btn-${list.id}`) Delete
         div(id=`container-${list.id}`).container
-          a(href='/tasks/new') Hatch a new goal!
+          a(href=`/tasks/new/${list.id}`) Hatch a new goal!
           each task in list.Tasks
             div(id=`task-container-${list.id}`).task
               li= `--Tasks: ${task.description}`
                 input(type='checkbox')
+                button(class='task-edit-btn2' id=`edit-btn-${list.id}`) Edit
+                button(class='task-delete-btn2' id=`delete-btn-${list.id}`) Delete
 
-                button(class='task-edit-btn' id=`edit-btn-${list.id}`) Edit
-                button(class='task-delete-btn' id=`delete-btn-${list.id}`) Delete
 
-
-                  div
-                    each task in tasks
-                    button(class='task-edit-btn' id=`edit-btn-${task.id}`) Edit
-                    button(class='task-delete-btn' id=`delete-btn-${task.id}`) Delete
-
+                  //- div
+                  //-   each task in tasks
+                  //-   button(class='task-edit-btn' id=`edit-btn-${task.id}`) Edit
+                  //-   button(class='task-delete-btn' id=`delete-btn-${task.id}`) Delete
