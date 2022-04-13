@@ -1,0 +1,16 @@
+extends homepage.pug
+
+include utils.pug
+
+block content
+    title= title
+    h1 #{user.username}'s Profile
+
+    div
+        ul
+            li= `First Name: ${user.firstName}`
+            li= `Last Name: ${user.lastName}`
+            li= `Username: ${user.username}`
+            li= `Email: ${user.email}`
+
+    button Edit
