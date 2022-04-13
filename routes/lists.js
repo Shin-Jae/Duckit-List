@@ -9,16 +9,16 @@ const router = express.Router();
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
     const user = req.session.auth.userId
 
-    const lists = await db.List.findAll({ where: { userId: user } });
+    const lists = await db.List.findAll({
+        include: db.Task,
+        where: {
+            userId: user,
 
-    let listsId = [];
-    for (list of lists) {
+        },
+        order: [["createdAt", "DESC"]]
+    });
 
-        listsId.push(list.id);
-    }
-    const tasks = await db.Task.findAll({ where: { listId: listsId } });
-
-    res.render("viewlist", { lists, tasks, user, csrfToken: req.csrfToken() });
+    res.render("viewlist", { lists, user, csrfToken: req.csrfToken() });
 }));
 
 const taskValidators = [
