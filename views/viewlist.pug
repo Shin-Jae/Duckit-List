@@ -18,5 +18,13 @@ block content
             div(id=`task-container-${list.id}`).task
               li= `--Tasks: ${task.description}`
                 input(type='checkbox')
+
                 button(class='task-edit-btn' id=`edit-btn-${list.id}`) Edit
                 button(class='task-delete-btn' id=`delete-btn-${list.id}`) Delete
+
+
+                  div
+                    each task in tasks
+                    button(class='task-edit-btn' id=`edit-btn-${task.id}`) Edit
+                    button(class='task-delete-btn' id=`delete-btn-${task.id}`) Delete
+
