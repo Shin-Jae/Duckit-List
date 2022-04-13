@@ -55,4 +55,27 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
 
 }));
 
+router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+    const user = req.session.auth.userId
+
+    const lists = await db.List.findAll({
+        include: db.Task,
+        where: {
+            userId: user,
+
+        },
+        order: [["createdAt", "DESC"]]
+    });
+
+    const listId = parseInt(req.params.id, 10);
+    const list = await db.List.findByPk(listId);
+    res.render('editlist', {
+        title: 'Edit List',
+        user,
+        lists,
+        list,
+        csrfToken: req.csrfToken()
+    })
+}));
+
 module.exports = router;

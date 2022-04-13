@@ -7,6 +7,7 @@ block content
   each list in lists
     ul
       li= `List: ${list.name}`
+        a(href=`/lists/edit/${list.id}`) Edit
       each task in list.dataValues.Tasks
         li= `--Tasks: ${task.description}`
           input(type='checkbox')
