@@ -4,7 +4,7 @@ include utils.pug
 
 block content
   +validationErrorSummary(errors)
-  form(action='/lists/:id(\\d+)/new' method='post')
+  form(action='/lists' method='post')
     input(type='hidden' name="_csrf" value=csrfToken)
     +field('Description', 'description', description)
     +field('Cost', 'cost', cost)
@@ -12,5 +12,5 @@ block content
     +field('Upload an image', 'image', image)
     +field('Category', 'category', category)
     div(class='form-submit')
-    button(type='submit' class='submit-btn') Duck it!
-    a(href='/lists' class='cancel-btn') Cancel
+      button(type='submit' class='submit-btn') Duck it!
+      a(href='/lists' class='cancel-btn') Cancel
