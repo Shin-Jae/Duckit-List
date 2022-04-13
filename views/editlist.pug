@@ -16,9 +16,9 @@ block content
   .container
     p Woud you like to edit your #{list.name} list?
       +validationErrorSummary(errors)
-      form(action=`/lists/edit/${list.id}` method='post')
+      form(action=`/lists/edit/${list.id}` method='post' id=`edit-list-${list.id}`)
         input(type='hidden' name="_csrf" value=csrfToken)
-        +field('List Name', 'name', list.name)
+        +field('List Name', 'name', list.name id=`list-name-${list.id}`)
         div(class='form-submit')
-        button(type='submit' class='submit-btn') Save
+        button(type='submit' class='submit-btn' id=`edit-submit-${list.id}`) Save
         a(href='/lists' class='cancel-btn') Cancel
