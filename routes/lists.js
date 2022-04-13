@@ -21,6 +21,20 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
     res.render("viewlist", { lists, user, csrfToken: req.csrfToken() });
 }));
 
+router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+    const user = req.session.auth.userId;
+    const listId = parseInt(req.params.id, 10);
+
+    const lists = await db.List.findAll({
+        where: {
+            userId: user,
+        },
+        include: [{model: db.Task, where: {listId: listId}}],
+    });
+    console.log(lists.Tasks)
+    res.render("viewlist", { lists, user, csrfToken: req.csrfToken() });
+}));
+
 const listValidators = [
     check("name")
         .exists({ checkFalsy: true })
