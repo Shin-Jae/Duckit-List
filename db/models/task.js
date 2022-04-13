@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     cost: DataTypes.INTEGER,
     completed: DataTypes.BOOLEAN,
     image: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    listId: DataTypes.INTEGER
   }, {});
   Task.associate = function(models) {
     // associations can be defined here
@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: "categoryId",
       foreignKey: "taskId"
     }
-    Task.belongsTo(models.User, {foreignKey: "userId"});
+    Task.belongsTo(models.List, {foreignKey: "listId"});
     Task.hasMany(models.Comment, {foreignKey: "taskId"});
     Task.hasMany(models.Like, {foreignKey: "taskId"});
     Task.belongsToMany(models.Category, columnMap);
