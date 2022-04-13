@@ -3,7 +3,7 @@ extends homepage.pug
 include utils.pug
 
 block content
-  a(href="/lists/new" class="add-to-list-button") Create new task
+  a(href="/lists/:id(\\d+)/new" class="add-to-list-button") Create new task
   each task in tasks
     ul
       li= task.description
