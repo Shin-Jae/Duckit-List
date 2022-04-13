@@ -14,3 +14,49 @@ block content
             each task in list.dataValues.Tasks
               li= `--Tasks: ${task.description}`
                 input(type='checkbox')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                  div
+                    each task in tasks
+                    button(class='task-edit-btn' id=`edit-btn-${task.id}`) Edit
+                    button(class='task-delete-btn' id=`delete-btn-${task.id}`) Delete
