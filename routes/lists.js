@@ -92,7 +92,7 @@ router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     })
 }));
 
-router.post('/edit/:id(\\d+)', csrfProtection, listValidators, asyncHandler(async (req, res) => {
+router.put('/edit/:id(\\d+)', csrfProtection, listValidators, asyncHandler(async (req, res) => {
     const listId = parseInt(req.params.id, 10);
     const listToUpdate = await db.List.findByPk(listId);
     const { userId, name } = req.body;
@@ -112,5 +112,12 @@ router.post('/edit/:id(\\d+)', csrfProtection, listValidators, asyncHandler(asyn
         })
     }
 }));
+
+router.delete('/:id(\\d+)', asyncHandler (async (req, res) => {
+    const listId = parseInt(req.params.id, 10);
+    const list = await db.List.findByPk(listId);
+    await list.destroy();
+    res.json({message: "Success"})
+}))
 
 module.exports = router;
