@@ -6,9 +6,10 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { loginUser, logoutUser, requireAuth } = require('../auth');
 const router = express.Router();
 
-
+// alternative GET route '/list/:id(\\d+)'
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-  const tasks = await db.Task.findAll();
+  const listId = parseInt(req.params.id, 10)
+  const tasks = await db.List.findByPk(listId);
   res.render("viewlist", {tasks, csrfToken: req.csrfToken()});
 }));
 
@@ -22,15 +23,16 @@ const taskValidators = [
   .withMessage("Please provide a description of your goal")
 ]
 
+// alternative GET route '/:id(\\d+)/new'
 router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
   const { description, cost, timeframe, image, category } = req.body;
-  const userId = parseInt(req.session.auth.userId)
-  console.log("******************",userId)
+  const listId = parseInt(req.params.id, 10)
+  console.log("******************",listId)
   let errors = [];
   const validatorErrors = validationResult(req)
   if (validatorErrors.isEmpty()) {
     const task = await db.Task.create({
-      userId,
+      listId,
       description,
       cost,
       image,
