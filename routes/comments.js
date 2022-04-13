@@ -1,16 +1,16 @@
-const express = require("express");
-const { validationResult } = require("express-validator");
+// const express = require("express");
+// const { validationResult } = require("express-validator");
 
-const db = require("../db/models");
-const { requireAuth } = require("../auth");
-const { asyncHandler, csrfProtection } = require("./utils");
+// const db = require("../db/models");
+// const { requireAuth } = require("../auth");
+// const { asyncHandler, csrfProtection } = require("./utils");
 
-const router = express.Router();
+// const router = express.Router();
 
 
-router.post('/home', csrfProtection, asyncHandler(async (req, res) => {
-    const { title, content, userId } = req.body;
-    const task =
-}))
+// router.post('/home', csrfProtection, asyncHandler(async (req, res) => {
+//     const { title, content, userId } = req.body;
+//     const task =
+// }))
 
-module.exports = router;
+// module.exports = router;
