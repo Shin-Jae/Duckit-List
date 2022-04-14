@@ -52,9 +52,47 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
     })
   }
 }));
+router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
+  const user = req.session.auth.userId
+
+  const lists = await db.List.findAll({
+      include: db.Task,
+      where: {
+          userId: user,
+
+      },
+      order: [["createdAt", "DESC"]]
+  });
+
+  const taskId = parseInt(req.params.id, 10);
+  const task = await db.Task.findByPk(taskId);
+  res.render('edittask', {
+      title: 'Edit Task',
+      user,
+      lists,
+      task,
+      csrfToken: req.csrfToken()
+  })
+}));
+
+router.put('/edit/:id(\\d+)', asyncHandler(async(req, res) => {
+  const task = await db.Task.findByPk(req.params.id)
+  task.description = req.body.description;
+  console.log("*************************************", task)
+  // task.cost = req.body.cost;
+  // task.timeframe = req.body.timeframe;
+  // task.image = req.body.image;
+  // task.category = req.body.category;
+  await task.save()
+
+  res.json({
+    message: 'Task successfully updated',
+    task
+  })
+}))
 
 
-router.delete('/test/:id(\\d+)', asyncHandler (async (req, res) => {
+router.delete('/:id(\\d+)', asyncHandler (async (req, res) => {
   const taskId = parseInt(req.params.id, 10);
   const task = await db.Task.findByPk(taskId);
   await task.destroy();
