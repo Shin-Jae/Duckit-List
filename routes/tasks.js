@@ -88,10 +88,16 @@ router.put('/edit/:id(\\d+)', csrfProtection, taskValidators, asyncHandler(async
   if (req.body.cost === '') {
     req.body.cost = null;
   };
+  if (req.body.completed === "No") {
+    req.body.completed = false
+  } else {
+    req.body.completed = true
+  }
   task.description = req.body.description;
   task.cost = req.body.cost;
   task.timeframe = req.body.timeframe;
   task.image = req.body.image;
+  task.completed = req.body.completed
   // task.category = req.body.category;
   const validatorErrors = validationResult(req)
   if (validatorErrors.isEmpty()) {

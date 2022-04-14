@@ -30,13 +30,18 @@ block content
       form(id=`edit-task-${task.id}`)
         input(type='hidden' name="_csrf" value=csrfToken id='csrf-token')
         label(for=description) Description
-        input(type="text" id=`task-description-${task.id}` decription=description placeholder=task.description)
+        input(type="text" id=`task-description-${task.id}` decription=description value=task.description)
         label(for=timeframe) Timeframe
-        input(type="date" id=`task-timeframe-${task.id}` timeframe=timeframe placeholder=task.timeframe)
+        input(type="date" id=`task-timeframe-${task.id}` timeframe=timeframe value=task.timeframe)
         label(for=cost) Cost
-        input(type="number" min="0" id=`task-cost-${task.id}` cost=cost placeholder=task.cost)
+        input(type="number" min="0" id=`task-cost-${task.id}` cost=cost value=task.cost)
         label(for=image) Image
-        input(type="text" id=`task-image-${task.id}` image=image placeholder=task.image)
+        input(type="text" id=`task-image-${task.id}` image=image value=task.image)
+        label(for=completed) Completed?
+        select(id=`task-completed-${task.id}` completed=completed)
+          option(id='no') No
+          option(id='yes') Yes
+
         //- label(for=category) Category
         //- input(type=text id=`task-category-${task.id}` category=category placeholder=task.category)
         div(class='form-submit')
