@@ -49,23 +49,3 @@ submitBtn.addEventListener('click', async(submitEvent) => {
     // create elements with error message
   }
 })
-
-// Checkbox (move to taskButtons.js when complete)
-const checkbox = document.querySelectorAll('.checkbox');
-
-checkbox.addEventListener('change', e => {
-  const taskId = e.target.id.split('-')[1];
-  const listId = e.target.id.split('-')[2];
-
-  const res = await fetch(`/lists/${listId}/${taskId}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      listId,
-      taskId
-    })
-  })
-
-
-
-})

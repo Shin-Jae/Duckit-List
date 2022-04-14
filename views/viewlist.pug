@@ -20,10 +20,6 @@ block content
           each task in list.Tasks
             div(id=`task-container-${task.id}`).task
               li= `--Tasks: ${task.description}`
-
                 input(type='checkbox')
                 a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-                input(type='checkbox' class=`checkbox` id=`checkbox-${task.id}-${list.id}`)
-            
-
                 button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
