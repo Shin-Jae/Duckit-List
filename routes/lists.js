@@ -92,26 +92,18 @@ router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     })
 }));
 
-router.put('/edit/:id(\\d+)', csrfProtection, listValidators, asyncHandler(async (req, res) => {
-    const listId = parseInt(req.params.id, 10);
-    const listToUpdate = await db.List.findByPk(listId);
-    const { userId, name } = req.body;
-    const list = { userId, name };
+router.put('/edit/:id(\\d+)', asyncHandler(async(req, res) => {
+    // console.log('from put route handler: ', req.body)
+    const list = await db.List.findByPk(req.params.id)
 
-    const validatorErrors = validationResult(req)
-    if (validatorErrors.isEmpty()) {
-        await listToUpdate.update(list)
-        return res.redirect('/')
-    } else {
-        const errors = validatorErrors.array().map(error => error.msg)
-        res.render("editlist", {
-            title: "Edit List",
-            errors,
-            csrfToken: req.csrfToken(),
-            list
-        })
-    }
-}));
+    list.name = req.body.name
+    await list.save()
+
+    res.json({
+        message: 'Success',
+        list
+    })
+}))
 
 router.delete('/:id(\\d+)', asyncHandler (async (req, res) => {
     const listId = parseInt(req.params.id, 10);
