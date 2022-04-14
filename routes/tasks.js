@@ -13,8 +13,9 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
   res.render("viewlist", {tasks, csrfToken: req.csrfToken()});
 }));
 
-router.get('/new', csrfProtection, (req, res) => {
-  res.render("addtolist", {csrfToken: req.csrfToken()});
+router.get('/new/:listId', csrfProtection, (req, res) => {
+  const listId = req.params.listId;
+  res.render("addtolist", {csrfToken: req.csrfToken(), listId});
 });
 
 const taskValidators = [
@@ -25,9 +26,9 @@ const taskValidators = [
 
 // alternative GET route '/:id(\\d+)/new'
 router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
-  const { description, cost, timeframe, image, category } = req.body;
-  const listId = parseInt(req.params.id, 10)
-  console.log("******************",listId)
+  const { listId, description, cost, timeframe, image, category } = req.body;
+  // const listId = parseInt(req.params.id, 10)
+  console.log("******************",req.params)
   let errors = [];
   const validatorErrors = validationResult(req)
   if (validatorErrors.isEmpty()) {
