@@ -25,8 +25,16 @@ block content
       +validationErrorSummary(errors)
       form(id=`edit-task-${task.id}`)
         input(type='hidden' name="_csrf" value=csrfToken)
-        label(for=description) Task Description
+        label(for=description) Description
         input(type=text id=`task-description-${task.id}` decription=description placeholder=task.description)
+        label(for=timeframe) Timeframe
+        input(type=text id=`task-timeframe-${task.id}` timeframe=timeframe placeholder=task.timeframe)
+        label(for=cost) Cost
+        input(type=number id=`task-cost-${task.id}` cost=cost placeholder=task.cost)
+        label(for=image) Image
+        input(type=text id=`task-image-${task.id}` image=image placeholder=task.image)
+        //- label(for=category) Category
+        //- input(type=text id=`task-category-${task.id}` category=category placeholder=task.category)
         div(class='form-submit')
         button(type='button' class='tasksubmit-btn' id=`edit-submit-${task.id}`) Save
         a(href='/lists' class='cancel-btn') Cancel

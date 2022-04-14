@@ -25,13 +25,21 @@ submitBtn.addEventListener('click', async(submitEvent) => {
     console.log(taskId)
     submitEvent.preventDefault()
     const description = document.getElementById(`task-description-${taskId}`).value;
+    const timeframe = document.getElementById(`task-timeframe-${taskId}`).value;
+    const cost = document.getElementById(`task-cost-${taskId}`).value;
+    const image = document.getElementById(`task-image-${taskId}`).value;
+    // const category = document.getElementById(`task-category-${taskId}`).value;
 
     const res = await fetch(`/tasks/edit/${taskId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({
             description,
-            taskId
+            taskId,
+            timeframe,
+            cost,
+            image,
+            // category
         })
     })
 
@@ -46,21 +54,21 @@ submitBtn.addEventListener('click', async(submitEvent) => {
 })
 
 // Checkbox (move to taskButtons.js when complete)
-const checkbox = document.querySelectorAll('.checkbox');
+// const checkbox = document.querySelectorAll('.checkbox');
 
-checkbox.addEventListener('change', e => {
-  const taskId = e.target.id.split('-')[1];
-  const listId = e.target.id.split('-')[2];
+// checkbox.addEventListener('change', e => {
+//   const taskId = e.target.id.split('-')[1];
+//   const listId = e.target.id.split('-')[2];
 
-  const res = await fetch(`/lists/${listId}/${taskId}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      listId,
-      taskId
-    })
-  })
+//   const res = await fetch(`/lists/${listId}/${taskId}`, {
+//     method: 'PUT',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify({
+//       listId,
+//       taskId
+//     })
+//   })
 
 
 
-})
+// })
