@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING(255)
       },
       listId: {
-        references: {model: "Lists"},
+        references: { model: "Lists" },
         allowNull: false,
         type: Sequelize.INTEGER
       },
