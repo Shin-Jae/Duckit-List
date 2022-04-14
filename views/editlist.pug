@@ -10,7 +10,7 @@ block content
       div(id=`container-${list.id}`).container
         a(href=`/lists/${list.id}`)
           li(id=`${list.id}-name`)= `List: ${list.name}`
-        a(class='edit-btn' id=`edit-btn-${list.id}`) Edit
+        a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit
         button(class='delete-btn' id=`delete-btn-${list.id}`) Delete
         div(id=`container-${list.id}`).container
           a(href='/tasks/new') Hatch a new goal!
@@ -18,6 +18,8 @@ block content
             div(id=`task-container-${task.id}`).task
               li= `--Tasks: ${task.description}`
                 input(type='checkbox')
+                button(class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
   .container
     p Woud you like to edit your #{list.name} list?
       +validationErrorSummary(errors)
