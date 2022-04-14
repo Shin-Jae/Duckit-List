@@ -37,6 +37,11 @@ block content
         input(type="number" min="0" id=`task-cost-${task.id}` cost=cost placeholder=task.cost)
         label(for=image) Image
         input(type="text" id=`task-image-${task.id}` image=image placeholder=task.image)
+        label(for=completed) Completed?
+        select(id=`task-completed-${task.id}` completed=completed)
+          option(id='no') No
+          option(id='yes') Yes
+
         //- label(for=category) Category
         //- input(type=text id=`task-category-${task.id}` category=category placeholder=task.category)
         div(class='form-submit')

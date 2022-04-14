@@ -30,6 +30,7 @@ submitBtn.addEventListener('click', async (submitEvent) => {
     const image = document.getElementById(`task-image-${taskId}`).value;
     // const category = document.getElementById(`task-category-${taskId}`).value;
     const _csrf = document.getElementById('csrf-token').value;
+    const completed = document.getElementById(`task-completed-${taskId}`).value;
     const res = await fetch(`/tasks/edit/${taskId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -39,6 +40,7 @@ submitBtn.addEventListener('click', async (submitEvent) => {
             timeframe,
             cost,
             image,
+            completed,
             _csrf,
             // category
         })
