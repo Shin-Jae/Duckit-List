@@ -10,7 +10,7 @@ block content
       div(id=`container-${list.id}`).container
         a(href=`/lists/${list.id}`)
           li(id=`${list.id}-name`)= `List: ${list.name}`
-        button(class='edit-btn' id=`edit-btn-${list.id}`) Edit
+        a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit
         button(class='delete-btn' id=`delete-btn-${list.id}`) Delete
         div(id=`container-${list.id}`).container
           a(href=`/tasks/new/${list.id}`) Hatch a new goal!
