@@ -10,25 +10,25 @@ const router = express.Router();
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
   const listId = parseInt(req.params.id, 10)
   const tasks = await db.List.findByPk(listId);
-  res.render("viewlist", {tasks, csrfToken: req.csrfToken()});
+  res.render("viewlist", { tasks, csrfToken: req.csrfToken() });
 }));
 
 router.get('/new/:listId', csrfProtection, (req, res) => {
   const listId = req.params.listId;
-  res.render("addtolist", {csrfToken: req.csrfToken(), listId});
+  res.render("addtolist", { csrfToken: req.csrfToken(), listId });
 });
 
 const taskValidators = [
   check("description")
-  .exists({ checkFalsy: true})
-  .withMessage("Please provide a description of your goal")
+    .exists({ checkFalsy: true })
+    .withMessage("Please provide a description of your goal")
 ]
 
 // alternative GET route '/:id(\\d+)/new'
 router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
   const { listId, description, cost, timeframe, image, category } = req.body;
   // const listId = parseInt(req.params.id, 10)
-  console.log("******************",req.params)
+  console.log("******************", req.params)
   let errors = [];
   const validatorErrors = validationResult(req)
   if (validatorErrors.isEmpty()) {
@@ -56,47 +56,63 @@ router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
   const user = req.session.auth.userId
 
   const lists = await db.List.findAll({
-      include: db.Task,
-      where: {
-          userId: user,
+    include: db.Task,
+    where: {
+      userId: user,
 
-      },
-      order: [["createdAt", "DESC"]]
+    },
+    order: [["createdAt", "DESC"]]
   });
 
   const taskId = parseInt(req.params.id, 10);
   const task = await db.Task.findByPk(taskId);
   res.render('edittask', {
-      title: 'Edit Task',
-      user,
-      lists,
-      task,
-      csrfToken: req.csrfToken()
+    title: 'Edit Task',
+    user,
+    lists,
+    task,
+    csrfToken: req.csrfToken()
   })
 }));
 
-router.put('/edit/:id(\\d+)', asyncHandler(async(req, res) => {
+router.put('/edit/:id(\\d+)', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
   const task = await db.Task.findByPk(req.params.id)
+  if (req.body.timeframe === '') {
+    req.body.timeframe = null;
+  };
+  if (req.body.cost === '') {
+    req.body.cost = null;
+  };
   task.description = req.body.description;
-  console.log("*************************************", task)
   task.cost = req.body.cost;
   task.timeframe = req.body.timeframe;
   task.image = req.body.image;
   // task.category = req.body.category;
-  await task.save()
+  const validatorErrors = validationResult(req)
+  if (validatorErrors.isEmpty()) {
+    console.log('______if validator is empty______')
+    await task.save()
+    res.json({
+      message: 'Task successfully updated',
+      task
+    })
+    // return res.redirect('/lists')
+  } else {
+    const errors = validatorErrors.array().map(error => error.msg)
+    res.json({
+      message: 'There was an error',
+      errors,
+    });
+  }
+}));
 
-  res.json({
-    message: 'Task successfully updated',
-    task
-  })
-}))
 
 
-router.delete('/:id(\\d+)', asyncHandler (async (req, res) => {
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   const taskId = parseInt(req.params.id, 10);
   const task = await db.Task.findByPk(taskId);
   await task.destroy();
-  res.json({ message: 'Task successfully deleted'})
+  res.json({ message: 'Task successfully deleted' })
 }))
 
 

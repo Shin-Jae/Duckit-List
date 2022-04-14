@@ -23,8 +23,9 @@ block content
   .container
     p Woud you like to edit your Task?
       +validationErrorSummary(errors)
+      div(id='task-errors')
       form(id=`edit-task-${task.id}`)
-        input(type='hidden' name="_csrf" value=csrfToken)
+        input(type='hidden' name="_csrf" value=csrfToken id='csrf-token')
         label(for=description) Description
         input(type=text id=`task-description-${task.id}` decription=description placeholder=task.description)
         label(for=timeframe) Timeframe
@@ -37,5 +38,5 @@ block content
         //- input(type=text id=`task-category-${task.id}` category=category placeholder=task.category)
         div(class='form-submit')
         button(type='button' class='tasksubmit-btn' id=`edit-submit-${task.id}`) Save
-        a(href='/lists' class='cancel-btn') Cancel
+      a(href='/lists' class='cancel-btn') Cancel
         //- button(type='button' id='test-button') TEST
