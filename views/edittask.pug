@@ -2,12 +2,15 @@ extends homepage.pug
 
 include utils.pug
 
-block content
+append head
   script(src="/javascripts/taskButtons.js" type="module")
-  a(href="/lists/new" class="add-to-list-button") Create new List
+
+block content
+  div(style="margin:30px").title
+    a(href="/lists/new" class="add-to-list-button") Create new List
   each list in lists
     ul
-      div(id=`container-${list.id}`).container
+      div(id=`container-${list.id}` style="margin:50px").container
         a(href=`/lists/${list.id}`)
           li(id=`${list.id}-name`)= `List: ${list.name}`
         a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit
@@ -27,13 +30,13 @@ block content
       form(id=`edit-task-${task.id}`)
         input(type='hidden' name="_csrf" value=csrfToken id='csrf-token')
         label(for=description) Description
-        input(type=text id=`task-description-${task.id}` decription=description placeholder=task.description)
+        input(type="text" id=`task-description-${task.id}` decription=description placeholder=task.description)
         label(for=timeframe) Timeframe
-        input(type=text id=`task-timeframe-${task.id}` timeframe=timeframe placeholder=task.timeframe)
+        input(type="date" id=`task-timeframe-${task.id}` timeframe=timeframe placeholder=task.timeframe)
         label(for=cost) Cost
-        input(type=number id=`task-cost-${task.id}` cost=cost placeholder=task.cost)
+        input(type="number" min="0" id=`task-cost-${task.id}` cost=cost placeholder=task.cost)
         label(for=image) Image
-        input(type=text id=`task-image-${task.id}` image=image placeholder=task.image)
+        input(type="text" id=`task-image-${task.id}` image=image placeholder=task.image)
         //- label(for=category) Category
         //- input(type=text id=`task-category-${task.id}` category=category placeholder=task.category)
         div(class='form-submit')

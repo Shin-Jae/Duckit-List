@@ -21,7 +21,7 @@ router.get('/new/:listId', csrfProtection, (req, res) => {
 const taskValidators = [
   check("description")
     .exists({ checkFalsy: true })
-    .withMessage("Please provide a description of your goal")
+    .withMessage("Please provide a description of your goal"),
 ]
 
 // alternative GET route '/:id(\\d+)/new'
@@ -31,7 +31,9 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
   console.log("******************", req.params)
   let errors = [];
   const validatorErrors = validationResult(req)
+
   if (validatorErrors.isEmpty()) {
+
     const task = await db.Task.create({
       listId,
       description,
@@ -51,6 +53,9 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
       task
     })
   }
+
+
+
 }));
 router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
   const user = req.session.auth.userId

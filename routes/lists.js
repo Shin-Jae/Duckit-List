@@ -29,7 +29,7 @@ router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
         where: {
             userId: user,
         },
-        include: [{model: db.Task, where: {listId: listId}}],
+        include: [{ model: db.Task, where: { listId: listId } }],
     });
     console.log(lists.Tasks)
     res.render("viewlist", { lists, user, csrfToken: req.csrfToken() });
@@ -92,7 +92,7 @@ router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     })
 }));
 
-router.put('/edit/:id(\\d+)', asyncHandler(async(req, res) => {
+router.put('/edit/:id(\\d+)', listValidators, asyncHandler(async (req, res) => {
     // console.log('from put route handler: ', req.body)
     const list = await db.List.findByPk(req.params.id)
 
@@ -105,11 +105,11 @@ router.put('/edit/:id(\\d+)', asyncHandler(async(req, res) => {
     })
 }))
 
-router.delete('/:id(\\d+)', asyncHandler (async (req, res) => {
+router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const listId = parseInt(req.params.id, 10);
     const list = await db.List.findByPk(listId);
     await list.destroy();
-    res.json({message: "Success"})
+    res.json({ message: "Success" })
 }))
 
 module.exports = router;
