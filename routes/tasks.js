@@ -51,9 +51,15 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
       task
     })
   }
-
-
 }));
+
+
+router.delete('/:id(\\d+)', asyncHandler (async (req, res) => {
+  const taskId = parseInt(req.params.id, 10);
+  const task = await db.Task.findByPk(taskId);
+  await task.destroy();
+  res.json({ message: 'Task successfully deleted'})
+}))
 
 
 
