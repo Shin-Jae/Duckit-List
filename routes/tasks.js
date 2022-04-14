@@ -54,7 +54,7 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
 }));
 
 
-router.delete('/:id(\\d+)', asyncHandler (async (req, res) => {
+router.delete('/test/:id(\\d+)', asyncHandler (async (req, res) => {
   const taskId = parseInt(req.params.id, 10);
   const task = await db.Task.findByPk(taskId);
   await task.destroy();
