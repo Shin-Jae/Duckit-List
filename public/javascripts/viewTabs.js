@@ -9,7 +9,7 @@ const commentsTable = document.querySelector(".commentsTable");
 likesBtn.addEventListener("click", (e) => {
     e.preventDefault();
     likesTable.style.display = "flex";
-    petsTable.style.display = "none";
+    completedTasksTable.style.display = "none";
     commentsTable.style.display = "none";
 });
 
