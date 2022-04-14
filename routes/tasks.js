@@ -79,9 +79,9 @@ router.put('/edit/:id(\\d+)', asyncHandler(async(req, res) => {
   const task = await db.Task.findByPk(req.params.id)
   task.description = req.body.description;
   console.log("*************************************", task)
-  // task.cost = req.body.cost;
-  // task.timeframe = req.body.timeframe;
-  // task.image = req.body.image;
+  task.cost = req.body.cost;
+  task.timeframe = req.body.timeframe;
+  task.image = req.body.image;
   // task.category = req.body.category;
   await task.save()
 
