@@ -38,3 +38,15 @@ block content
                   a(href=`/lists/${list.id}`)
                     div.inner
                       div(style="font-weight:bold; padding:10px;")= task.description
+            div(style="margin-top:20px; width:100%;").incompleteTable
+              each task in list.Tasks
+                div.currentIncompleteContainer
+                  a(href=`/lists/${list.id}`)
+                    div.inner
+                      div(style="font-weight:bold; padding:10px;")= task.description
+            div(style="margin-top:20px; width:100%;").completeTable
+              each task in list.Tasks
+                div.currentCompleteContainer
+                  a(href=`/lists/${list.id}`)
+                    div.inner
+                      div(style="font-weight:bold; padding:10px;")= task.description
