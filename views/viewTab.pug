@@ -1,0 +1,38 @@
+extends homepage.pug
+
+append head
+    script(src="/javascripts/viewTabs.js" type="module")
+
+block content
+
+    div.tables
+        a(href=`/lists/${list.id}`).lists #{list.name}
+        a(href=`/lists/${list.id}`).completeTask Completed
+        a(href=`/lists/${list.id}`).incompleteTask Incomplete
+
+    div.dataTables
+        div(style="margin-top:20px; width:100%;").lists
+        each list in lists
+            div.list-container
+            a(href=`/lists/${task.Task.id}`).task
+                img(src=task.Task.image style="width:100px; border-radius:50%;")
+            div.inner
+                div(style="font-weight:bold; padding:10px;")= task.Task.name
+                div().content=`Description: ${task.Task.description}`
+        div(style="margin-top:20px; width:100%;").completeTask
+        each pet in userPets
+            div.commentDiv
+            a(href=`/pets/${pet.id}`).pic
+                img(src=pet.image style="width:100px; border-radius:50%;")
+            div.inner
+                div(style="font-weight:bold; padding:10px;")= pet.name
+                div().content=`Description: ${pet.description}`
+        div.commentsTable
+        div.allComments
+            each comment in comments
+            div.commentDiv
+                a(href=`/pets/${comment.petId}`).pic
+                img(src=comment.Pet.image style="width:100px; border-radius:50%;")
+                div.inner
+                p(style="font-weight: bold;")=comment.Pet.name
+                p.content=`Comment: ${comment.content}`
