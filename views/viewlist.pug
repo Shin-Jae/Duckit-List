@@ -5,6 +5,7 @@ include utils.pug
 append head
   script(src="/javascripts/listButtons.js" type="module")
   script(src="/javascripts/taskButtons.js" type="module")
+  script(src="/javascripts/viewTabs.js" type="module")
 
 block content
   a(href="/lists/new" class="add-to-list-button") Create new List
@@ -23,3 +24,17 @@ block content
                 input(type='checkbox')
                 a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
                 button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+
+        each list in lists
+          div.tables
+              a(href=`/lists/${list.id}`).currentList= list.name
+              a(href=`/lists/${list.id}`).incomplete Incomplete
+              a(href=`/lists/${list.id}`).complete Complete
+
+          div.dataTables
+            div(style="margin-top:20px; width:100%;").listsTable
+              each task in list.Tasks
+                div.currentListContainer
+                  a(href=`/lists/${list.id}`)
+                    div.inner
+                      div(style="font-weight:bold; padding:10px;")= task.description
