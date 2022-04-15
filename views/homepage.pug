@@ -16,7 +16,7 @@ html
             form(action="/search" method="get").searchbar
                 input(name="search" type="text" placeholder="Got any Grapes?")
 
-            p= `Welcome ${user.username} !`
+            p Welcome #{user.username} !
 
             a(href=`/users/${user.id}` class="userImage")
                 img(id="image" src=user.image style="width:100px; height:100px; border-radius:50%")
