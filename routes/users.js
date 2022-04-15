@@ -233,5 +233,20 @@ router.post('/logout', (req, res) => {
 //   })
 // }))
 
+router.post('/login', csrfProtection, asyncHandler(async (req, res) => {
+  const user = await db.User.findOne({ where: { email: 'demo@user.com' } })
+  if (!user) {
+    const demoUser = await db.User.build({
+      username: 'DemoUser',
+      email: 'demo@user.com',
+      hashedPassword: bcrypt.hashSync('DemoU$er1', 10)
+    })
+    await demoUser.save()
+    loginUser(req, res, demoUser)
+  } else {
+    loginUser(req, res, user)
+  }
+  res.redirect('/home')
+}))
 
 module.exports = router;
