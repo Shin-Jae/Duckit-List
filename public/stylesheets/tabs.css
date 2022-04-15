@@ -1,0 +1,10 @@
+
+.hidden {
+  display: none;
+  flex-direction: column;
+}
+
+.show {
+  display: none;
+  flex-direction: column;
+}
