@@ -16,9 +16,8 @@ block content
     div(id="completeTasksId").complete Complete
   each list in lists
     ul
-      div(id=`container-${list.id}`).container
-        a(href=`/lists/${list.id}`)
-          li(id=`${list.id}-name` class="tabs")= `List: ${list.name}`
+      div(id=`label-container-${list.id}`).container
+        li(id=`${list.id}-name` class="list-names")= `List: ${list.name}`
         a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit
         button(class='delete-btn' id=`delete-btn-${list.id}`) Delete
         div(id=`container-${list.id}`).container
@@ -52,7 +51,7 @@ block content
                     a(href=`/lists/${list.id}`)
                       div.inner
                         div(style="font-weight:bold; padding:10px;")= task.description
-                        img(src=task.image)
+                          img(src=task.image)
 
 
           //- each task in list.Tasks
