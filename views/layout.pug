@@ -11,13 +11,15 @@ html
 
   body
     nav.navbar
-      div(id="Welcome")
-      a(href="/")
-        img(class="logo" src="https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png")
+      div(id="welcome")
+        div.logo-and-text
+          a(href="/home")
+            img(class="logo" src="https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png")
+        div#duckitList Duckit List
 
-      a(class="signup-btn" href="/users/signup") Sign Up
-
-      a(class="login-btn" href="/users/login") Log In
-
-    block modal
-    block content
+      div.layout-login-signup-buttons
+        a(class="login-btn" href="/users/login" id="layout-log-in-button") Log In
+        a(class="signup-btn" href="/users/signup" id="layout-sign-up-button") Sign Up
+    div.main-content
+      block modal
+      block content

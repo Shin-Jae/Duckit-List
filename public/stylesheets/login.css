@@ -1,1 +1,19 @@
-body {}
+
+.main-content {
+  margin-top: 80px;
+}
+
+.login-signup-buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#log-in-button {
+  margin: 20px;
+}
+
+a {
+  font-family: "Days One";
+  text-decoration: none;
+}

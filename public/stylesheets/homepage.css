@@ -13,13 +13,23 @@
     height: 60px;
 }
 
+.layout-login-signup-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 .nav-buttons {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-#homepage {
+.main-content, .homepage body {
+    margin-top: 80px;
+}
+
+#homepage, #welcome {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
@@ -28,10 +38,6 @@
 
 #duckitList {
     margin: 20px;
-}
-
-.main-content {
-    margin-top: 80px;
 }
 
 a {
@@ -56,6 +62,7 @@ a {
     margin: 20px;
 }
 
+#layout-sign-up-button,
 .logout-btn {
     all: unset;
     border: 2px solid #A4D7D9;
@@ -71,6 +78,7 @@ a {
     margin: 20px;
 }
 
+#layout-sign-up-button:hover,
 .logout-btn:hover {
     background-color: #A4D7D9;
     color: black;
