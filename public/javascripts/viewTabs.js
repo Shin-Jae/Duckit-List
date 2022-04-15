@@ -57,4 +57,5 @@ listNames.forEach(list => {
         console.log(`Currently viewing List: ${listId}`)
 
     });
+
 })
