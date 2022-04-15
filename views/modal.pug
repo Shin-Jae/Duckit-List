@@ -1,0 +1,11 @@
+extends layout.pug
+
+append head
+    link(rel="stylesheet" href="/stylesheets/modal.css")
+    script(src="/javascripts/modal.js" type="module")
+
+block modal
+    div(class="modal")
+        div(class="modal-content")
+            span(class="close-button") &times;
+            h1 Welcome to Duckit List!
