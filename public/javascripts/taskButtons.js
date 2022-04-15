@@ -13,6 +13,7 @@ for (let i = 0; i < deleteButtons.length; i++) {
         if (data.message === 'Task successfully deleted') {
             const container = document.getElementById(`task-container-${taskId}`);
             container.remove()
+            location.reload();
         }
     })
 }
