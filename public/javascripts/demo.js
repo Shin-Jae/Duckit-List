@@ -1,7 +1,7 @@
 const demoBtn = document.getElementById('demo-user-btn')
 
 demoBtn.addEventListener('click', () => {
-    const email = document.getElementById('emailInput');
+    const email = document.getElementById('email');
     const hashedPassword = document.getElementById('hashedPassword');
     const loginForm = document.getElementById('loginForm');
 
