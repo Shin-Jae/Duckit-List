@@ -16,7 +16,8 @@
 a {
   font-family: "Days One";
   text-decoration: none;
-=======
+}
+
 .main-login-container {
     display: flex;
     height: calc(100% - 64px);

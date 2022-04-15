@@ -11,57 +11,6 @@ append head
 
 block content
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   button(id="render-modal") MODAL
   //- div.tables
     //- div(id="incompleteTasksId").incomplete Incomplete
@@ -71,39 +20,52 @@ block content
       h1(class='list-title clicked') List
       div(class='list-sub-container')
       a(href="/lists/new" class="add-to-list-button") Create new List
-        each list in lists
-          ul
-            div(id=`label-container-${list.id}`).container
-              li(id=`${list.id}-name` class="list-names")= `List: ${list.name}`
-          div(id=`container-${list.id}`).container
-            div.list-buttons
-              a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit list name
-              a(class='delete-btn' id=`delete-btn-${list.id}`) Delete List
-              a(href=`/tasks/new/${list.id}`) Hatch a new goal!
-    div(class='incompleteTab')
+
+      each list in lists
+        ul
+          div(id=`label-container-${list.id}`).container
+            li(id=`${list.id}-name` class="list-names")= `List: ${list.name}`
+        div(id=`container-${list.id}`).container
+          div.list-buttons
+            a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit list name
+            a(class='delete-btn' id=`delete-btn-${list.id}`) Delete List
+            a(href=`/tasks/new/${list.id}`) Hatch a new goal!
+             each task in list.Tasks
+              if !task.completed
+                div.currentIncompleteContainer
+                  a(href=`/lists/${list.id}`)
+                    div.inner
+                      div(style="font-weight:bold; padding:10px;")= task.description
+                        a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                        a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+
+    div.incompleteTab
       h1(class='incomplete-title') Incomplete
       div(class='incomplete-sub-container hide')
-          each task in lists.Tasks
-            if !task.completed
-              div.currentIncompleteContainer
-                a(href=`/lists/${list.id}`)
-                  div.inner
-                    div(style="font-weight:bold; padding:10px;")= task.description
-                      a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-                      a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
-    //- div(class="completeTab")
-    //-   h1(class='completed-title') Complete
-    //-   div(class='completed-sub-container hide')
-    //-       each task in lists.Tasks
-    //-         if task.completed
-    //-           div.currentCompleteContainer
-    //-             a(href=`/lists/${list.id}`)
-    //-               div.inner
-    //-                 div(style="font-weight:bold; padding:10px;")= task.description
-    //-                   a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-    //-                   a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
-                        //- if task.image && task.image !== "null"
-                        //-  img(class="complete-task-list-image" src=task.image)
+      each list in lists
+        each task in list.Tasks
+          if !task.completed
+            div.currentIncompleteContainer
+              a(href=`/lists/${list.id}`)
+                div.inner
+                  div(style="font-weight:bold; padding:10px;")= task.description
+                    a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                    a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+    div.completeTab
+      h1(class='completed-title') Complete
+      div(class='completed-sub-container hide')
+      each list in lists
+        each task in list.Tasks
+          if task.completed
+            div.currentCompleteContainer
+              a(href=`/lists/${list.id}`)
+                div.inner
+                  div(style="font-weight:bold; padding:10px;")= task.description
+                    a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                    a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+                      //- if task.image && task.image !== "null"
+                      //-  img(class="complete-task-list-image" src=task.image)
+
 
 
   //- div.tables
