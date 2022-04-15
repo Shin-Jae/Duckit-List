@@ -12,11 +12,9 @@ append head
 block content
 
   button(id="render-modal") MODAL
-  //- div.tables
-    //- div(id="incompleteTasksId").incomplete Incomplete
-    //- div(id="completeTasksId").complete Complete
-  div(class='allTabs')
-    div(class='listTab')
+
+  div.allTabs
+    div.listTab
       h1(class='list-title clicked') List
       div(class='list-sub-container')
       a(href="/lists/new" class="add-to-list-button") Create new List
@@ -30,14 +28,14 @@ block content
             a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit list name
             a(class='delete-btn' id=`delete-btn-${list.id}`) Delete List
             a(href=`/tasks/new/${list.id}`) Hatch a new goal!
-             each task in list.Tasks
-              if !task.completed
-                div.currentIncompleteContainer
-                  a(href=`/lists/${list.id}`)
-                    div.inner
-                      div(style="font-weight:bold; padding:10px;")= task.description
-                        a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-                        a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+              //- each task in list.Tasks
+              //-   if !task.completed
+              //-     div.currentIncompleteContainer
+              //-       a(href=`/lists/${list.id}`)
+              //-         div.inner
+              //-           div(style="font-weight:bold; padding:10px;")= task.description
+              //-             a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+              //-             a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
 
     div.incompleteTab
       h1(class='incomplete-title') Incomplete

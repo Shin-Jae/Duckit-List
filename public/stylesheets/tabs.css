@@ -1,11 +1,11 @@
-.container {
+.allTabs {
   display: flex;
   width: 100vw;
   height: 10rem;
   justify-content: center;
 }
 
-.list-container {
+.listTab {
   border-left: 2px solid gray;
 }
 
@@ -13,9 +13,9 @@
   border-right: 2px solid gray;
 }
 
-.list-container,
-.incomplete-container,
-.completed-container {
+.listTab,
+.incompleteTab,
+.completeTab {
   padding: 0 2rem;
 }
 
