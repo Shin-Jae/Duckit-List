@@ -107,3 +107,34 @@ body {
     flex-direction: column;
     align-items: left;
 }
+
+.tables {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+.list-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 5px;
+}
+
+.list-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 5px;
+}
+
+.listsTable,
+.incompleteTable,
+.completeTable {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 5px;
+}
