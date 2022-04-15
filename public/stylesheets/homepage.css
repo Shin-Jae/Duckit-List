@@ -1,8 +1,37 @@
 .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
     text-decoration: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    top: left;
+    background-color: transparent;
+    background-color: #DEDEDC;
+    height: 60px;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#homepage {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+}
+
+#duckitList {
+    margin: 20px;
+}
+
+.main-content {
+    margin-top: 80px;
 }
 
 a {
@@ -10,36 +39,47 @@ a {
     text-decoration: none;
 }
 
-.searchbar {
-    position: relative;
-    top: 10px;
-}
-
 .logo {
-    vertical-align: left;
     width: 40px;
     height: 40px;
-    border-radius: 100%;
-    position: relative;
-    bottom: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+}
+
+.welcome-message {
+    margin: 20px;
 }
 
 .logout-btn {
-    border-color: #A4D7D9;
+    all: unset;
+    border: 2px solid #A4D7D9;
     border-radius: 5px;
-    padding: 4px;
     color: black;
-    background-color: white;
+    background-color: #DEDEDC;
     font-family: "Days One";
     font-weight: normal;
-    width: 100px;
-    height: 30px;
+    padding: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    margin: 20px;
 }
 
 .logout-btn:hover {
     background-color: #A4D7D9;
     color: black;
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.userImage, #user-image {
+    height: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 #splash-img-1,
@@ -53,6 +93,37 @@ a {
     border-right: 5px solid white;
     border-bottom: 50px solid white;
     margin: 5px;
+    box-shadow: 0px 0px 5px rgba(173, 173, 173, 0.5);
+
+}
+
+.splash-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#splash-img-1 {
+    margin: 20px;
+    transform: rotate(-8deg);
+}
+
+#splash-img-2 {
+    margin: 20px;
+    transform: rotate(2deg);
+}
+
+#splash-img-3 {
+    margin: 20px;
+    transform: rotate(10deg);
+}
+
+.splash-background-bubble {
+    background-color: #A4D7D9;
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
 }
 
 .home-task-image {

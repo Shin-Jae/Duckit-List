@@ -11,20 +11,28 @@ html
         body
         nav.navbar
             div(id="homepage")
-            a(href="/home")
-                img(class="logo" src="https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png")
-            form(action="/search" method="get").searchbar
-                input(name="search" type="text" placeholder="Got any Grapes?")
+                div.logo-and-text
+                    a(href="/home")
+                        img(class="logo" src="https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png")
+                div#duckitList Duckit List
+                form(action="/search" method="get").searchbar
+                    input(name="search" type="text" placeholder="Got any Grapes?")
 
-            p= `Welcome ${user.username} !`
-
-            a(href=`/users/${user.id}` class="userImage")
-                img(id="image" src=user.image style="width:100px; height:100px; border-radius:50%")
 
             //- button(id=index class="list-btn") List
-            a(href="/lists") List
-            form(action='/users/logout' method='post')
-                button(type="submit" class="logout-btn") Log Out
+            div.nav-buttons
+                p.welcome-message Welcome #{user.username} !
+                a(href="/lists") List
+                form(action='/users/logout' method='post' id="logout-btn")
+                    button(type="submit" class="logout-btn") Log Out
+
+
+                a(href=`/users/${user.id}` class="userImage")
+                    if user.image
+                        img(id="user-image" src=user.image)
+                    else
+                        img(id="user-image" src="https://user-images.githubusercontent.com/96894806/163630255-82584ebb-13a3-4d89-ba58-8113d9d88acf.jpeg")
+        div.main-content
 
 block content
             div.homepage
