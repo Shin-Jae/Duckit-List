@@ -8,4 +8,9 @@ demoBtn.addEventListener('click', () => {
     loginForm.style.visibility = 'hidden'
     email.value = 'demo@user.com'
     password.value = 'DemoU$er1'
+
+    const res = await fetch('/users/login', {
+        method: 'GET',
+
+    })
 })

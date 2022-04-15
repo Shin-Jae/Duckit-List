@@ -12,9 +12,11 @@ block content
         div(class='login')
         button(type='submit' class='login-btn') Login
         a(href='/home' class='cancel-btn') Cancel
-    div(class='demo-login')
-    form(action='/users/login' class='demo-btn', method='post')
-        input(type='hidden' name='_csrf' value=csrfToken)
+        div(class='demo-login')
         button(type='submit' class='demo-user-login' id='demo-user-btn') Demo
+
     div
         p: a(href='/users/signup') Don't have an account?
+
+    //- form(action='/users/login'id="demoLoginForm" class='demo-btn', method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
