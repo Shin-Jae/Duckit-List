@@ -26,13 +26,15 @@ html
 
             a(class="logout-btn" href="/") Log Out
 block content
-            div.homepage-all-tasks
-                each task in tasks
-                    ul.homepage-ul
-                        if task.completed
-                            div.homepage-task-container
-                                li= task.description
-                                if task.completed === "true"
-                                    img(class="home-task-image" src=task.image)
-                                else
-                                    img(class="home-task-image" src="https://user-images.githubusercontent.com/96894806/163591147-d237f313-8b27-476e-9394-3406dc02d1d4.png", alt="image")
+            div.homepage
+                h2 Memories
+                div.homepage-all-tasks
+                    each task in tasks
+                        ul.homepage-ul
+                            if task.completed
+                                div.homepage-task-container
+                                    li= task.description
+                                    if task.image && task.image !== "null"
+                                        img(class="home-task-image" src=task.image)
+                                    else
+                                        img(class="home-task-image" src="https://user-images.githubusercontent.com/96894806/163591147-d237f313-8b27-476e-9394-3406dc02d1d4.png", alt="image")
