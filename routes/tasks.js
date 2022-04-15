@@ -26,8 +26,17 @@ const taskValidators = [
 
 // alternative GET route '/:id(\\d+)/new'
 router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
-  const { listId, description, cost, timeframe, image, category } = req.body;
+  let { listId, description, cost, timeframe, image, category } = req.body;
   // const listId = parseInt(req.params.id, 10)
+  if (timeframe === '') {
+   timeframe = null;
+  };
+  if (cost === '') {
+    cost = null;
+  };
+  if (category === '') {
+   category = null;
+  }
   console.log("******************", req.params)
   let errors = [];
   const validatorErrors = validationResult(req)
@@ -50,7 +59,6 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
       title: "Add to list",
       errors,
       csrfToken: req.csrfToken(),
-      task
     })
   }
 
