@@ -17,6 +17,7 @@ for (let i = 0; i < deleteButtons.length; i++) {
     if (data.message === 'Success') {
       const container = document.getElementById(`container-${listId}`);
       container.remove()
+      location.reload();
     }
   })
 }
@@ -47,5 +48,7 @@ submitBtn.addEventListener('click', async (submitEvent) => {
     form.classList.add('hidden')
   } else {
     // create elements with error message
+    const errMes = document.getElementById('list-errors');
+    errMes.innerHTML = data.errors[0];
   }
 })

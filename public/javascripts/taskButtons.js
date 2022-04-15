@@ -19,10 +19,11 @@ for (let i = 0; i < deleteButtons.length; i++) {
 
 
 const editButtons = document.querySelectorAll('.task-edit-btn')
+
+
 const submitBtn = document.querySelector('.tasksubmit-btn')
 submitBtn.addEventListener('click', async (submitEvent) => {
     const taskId = submitEvent.target.id.split('-')[2];
-    console.log('+++++this is the taskId ++++', taskId)
     submitEvent.preventDefault()
     const description = document.getElementById(`task-description-${taskId}`).value;
     const timeframe = document.getElementById(`task-timeframe-${taskId}`).value;

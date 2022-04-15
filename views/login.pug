@@ -2,21 +2,25 @@ extends layout.pug
 
 include utils.pug
 
-block content
+append head
     //- script(src="/javascripts/demo.js" type="module")
+    link(rel='stylesheet' href='/stylesheets/login.css')
+
+block content
     +validationErrorSummary(errors)
-    form(action='/users/login' id="loginForm" method='post')
-        input(type='hidden' name='_csrf' value=csrfToken)
-        +field('Email Address', 'email', email)
-        +field('Password', 'password', null, 'hashedPassword')
-        div(class='login')
-        button(type='submit' class='login-btn') Login
-        a(href='/home' class='cancel-btn') Cancel
-        div(class='demo-login')
-    form(action='/users/login/demo' id="demoLoginForm" class='demo-btn', method='post')
-        input(type='hidden' name='_csrf' value=csrfToken)
-        button(type='submit' class='demo-user-login' id='demo-user-btn') Demo
-
-
-    div
-        p: a(href='/users/signup') Don't have an account?
+    div(class="main-login-container")
+        div(class="login-container-left-half")
+            p A journey of a thousand miles must begin with a single step.
+            p -Lao Tzu
+        div(class="login-container-right-half")
+            form(action='/users/login' id="loginForm" method='post')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                +field(null, 'email', email, null, 'Email Address')
+                +field(null, 'password', null, 'password', 'Password')
+                div(class='login')
+                button(type='submit' class='login-btn') Login
+                div(class='demo-login')
+            form(action='/users/login/demo' id="demoLoginForm" class='demo-btn', method='post')
+                input(type='hidden' name='_csrf' value=csrfToken)
+                button(type='submit' class='demo-user-login login-btn' id='demo-user-btn') Demo
+                p: a(href='/users/signup') Don't have an account?
