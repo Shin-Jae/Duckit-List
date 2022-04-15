@@ -45,8 +45,9 @@ block content
         each task in list.Tasks
           if !task.completed
             div.currentIncompleteContainer
+              div
               a(href=`/lists/${list.id}`)
-                div.inner
+                div(id=`task-container-${task.id}`)
                   div(style="font-weight:bold; padding:10px;")= task.description
                     a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
                     a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
@@ -57,6 +58,7 @@ block content
         each task in list.Tasks
           if task.completed
             div.currentCompleteContainer
+             div(id=`task-container-${task.id}`)
               a(href=`/lists/${list.id}`)
                 div.inner
                   div(style="font-weight:bold; padding:10px;")= task.description
