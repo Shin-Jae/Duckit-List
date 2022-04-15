@@ -217,6 +217,8 @@ router.post('/profile/edit', csrfProtection, userValidators, asyncHandler(async 
 
 router.post('/logout', (req, res) => {
   logoutUser(req, res);
+  // res.clearCookie('connect.sid');
+  // req.session.auth = undefined;
   res.redirect('/');
 });
 
@@ -232,19 +234,31 @@ router.post('/logout', (req, res) => {
 //   })
 // }))
 
-router.post('/login', csrfProtection, asyncHandler(async (req, res) => {
-  const user = await db.User.findOne({ where: { email: 'demo@user.com' } })
+router.post('/login/demo', csrfProtection, asyncHandler(async (req, res) => {
+  // const user = await db.User.findOne({ where: { email } });
+
+  // if (user !== null) {
+  //   const passwordMatch = await bcrypt.compare(password, user.hashedPassword.toString());
+
+  //   if (passwordMatch) {
+  //     loginUser(req, res, user);
+
+  //     return res.redirect('/home')
+  //   }
+  // }
+
+  let user = await db.User.findOne({ where: { email: 'demo@user.com' } })
   if (!user) {
-    const demoUser = await db.User.build({
+    user = await db.User.build({
       username: 'DemoUser',
       email: 'demo@user.com',
       hashedPassword: bcrypt.hashSync('DemoU$er1', 10)
+
     })
-    await demoUser.save()
-    loginUser(req, res, demoUser)
-  } else {
-    loginUser(req, res, user)
+    await user.save()
   }
+  loginUser(req, res, user)
+  req.session.auth = { userId: user.id, username: user.username }
   res.redirect('/home')
 }))
 

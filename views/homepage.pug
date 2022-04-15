@@ -23,8 +23,9 @@ html
 
             //- button(id=index class="list-btn") List
             a(href="/lists") List
+            form(action='/users/logout' method='post')
+                button(type="submit" class="logout-btn") Log Out
 
-            a(class="logout-btn" href="/") Log Out
 block content
             div.homepage
                 h2 Memories

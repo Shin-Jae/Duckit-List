@@ -3,7 +3,7 @@ extends layout.pug
 include utils.pug
 
 block content
-    script(src="/javascripts/demo.js" type="module")
+    //- script(src="/javascripts/demo.js" type="module")
     +validationErrorSummary(errors)
     form(action='/users/login' id="loginForm" method='post')
         input(type='hidden' name='_csrf' value=csrfToken)
@@ -13,10 +13,10 @@ block content
         button(type='submit' class='login-btn') Login
         a(href='/home' class='cancel-btn') Cancel
         div(class='demo-login')
+    form(action='/users/login/demo' id="demoLoginForm" class='demo-btn', method='post')
+        input(type='hidden' name='_csrf' value=csrfToken)
         button(type='submit' class='demo-user-login' id='demo-user-btn') Demo
+
 
     div
         p: a(href='/users/signup') Don't have an account?
-
-    //- form(action='/users/login'id="demoLoginForm" class='demo-btn', method='post')
-        input(type='hidden' name='_csrf' value=csrfToken)
