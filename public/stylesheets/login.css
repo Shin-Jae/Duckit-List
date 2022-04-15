@@ -1,12 +1,3 @@
-/* body {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background-color: red;
-} */
-/* .container {} */
 .main-login-container {
     display: flex;
     height: calc(100% - 64px);
@@ -45,6 +36,7 @@ button.login-btn {
     border-radius: 0.8rem;
     background-color: #FDCE2A;
     color: white;
+    flex-direction: row;
 }
 
 #demoLoginForm {
