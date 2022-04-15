@@ -63,10 +63,8 @@ router.post('/new', csrfProtection, listValidators, asyncHandler(async (req, res
             title: "Add to list",
             errors,
             csrfToken: req.csrfToken(),
-            list
         })
     }
-
 
 }));
 
@@ -100,10 +98,19 @@ router.put('/edit/:id(\\d+)', listValidators, asyncHandler(async (req, res) => {
     list.name = req.body.name
     await list.save()
 
-    res.json({
-        message: 'Success',
-        list
-    })
+    const validatorErrors = validationResult(req)
+    if (validatorErrors.isEmpty()) {
+        res.json({
+            message: 'Success',
+            list
+        })
+    } else {
+        const errors = validatorErrors.array().map(error => error.msg)
+        res.json({
+            message: 'There was an error',
+            errors,
+        });
+    }
 }))
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {

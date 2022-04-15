@@ -48,5 +48,7 @@ submitBtn.addEventListener('click', async (submitEvent) => {
     form.classList.add('hidden')
   } else {
     // create elements with error message
+    const errMes = document.getElementById('list-errors');
+    errMes.innerHTML = data.errors[0];
   }
 })
