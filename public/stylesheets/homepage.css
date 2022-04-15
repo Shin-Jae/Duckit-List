@@ -41,3 +41,20 @@ a {
     color: black;
     box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
+
+#splash-img-1,
+#splash-img-2,
+#splash-img-3 {
+    height: 250px;
+    width: 180px;
+    object-fit: cover;
+    border-top: 5px solid white;
+    border-left: 5px solid white;
+    border-right: 5px solid white;
+    border-bottom: 50px solid white;
+    margin: 5px;
+}
+
+body {
+    background-color: #DEDEDC;
+}
