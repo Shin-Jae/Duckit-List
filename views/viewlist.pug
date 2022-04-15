@@ -20,11 +20,12 @@ block content
       a(href="/lists/new" class="add-to-list-button") Create new List
 
       each list in lists
-        ul
-          div(id=`label-container-${list.id}`).container
-            li(id=`${list.id}-name` class="list-names")= `List: ${list.name}`
+        div(id=`label-container-${list.id}`).container
+            p(id=`${list.id}-name` class="list-names")= `${list.name}`
         div(id=`container-${list.id}`).container
           div.list-buttons
+            button(type='submit' class='list-edit-btn') Edit
+            button(type='submit' class='list-delete-btn') Delete
             a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit list name
             a(class='delete-btn' id=`delete-btn-${list.id}`) Delete List
             a(href=`/tasks/new/${list.id}`) Hatch a new goal!
