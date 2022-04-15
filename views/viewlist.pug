@@ -6,6 +6,7 @@ append head
   script(src="/javascripts/listButtons.js" type="module")
   script(src="/javascripts/taskButtons.js" type="module")
   script(src="/javascripts/viewTabs.js" type="module")
+  script(src="/routes/lists.js" type="module")
   link(rel='stylesheet' href='/stylesheets/tabs.css')
 
 block content
@@ -24,7 +25,7 @@ block content
     div(id=`container-${list.id}`).container
       div.list-buttons
         a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit list name
-        a(href="#" class='delete-btn' id=`delete-btn-${list.id}`) Delete List
+        a( class='delete-btn' id=`delete-btn-${list.id}`) Delete List
         a(href=`/tasks/new/${list.id}`) Hatch a new goal!
 
       div.dataTables

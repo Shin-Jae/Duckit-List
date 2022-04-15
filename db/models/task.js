@@ -8,16 +8,18 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING,
     listId: DataTypes.INTEGER
   }, {});
-  Task.associate = function(models) {
+  Task.associate = function (models) {
     // associations can be defined here
     const columnMap = {
       through: "TaskCategories",
       otherKey: "categoryId",
       foreignKey: "taskId"
     }
-    Task.belongsTo(models.List, {foreignKey: "listId"});
-    Task.hasMany(models.Comment, {foreignKey: "taskId"});
-    Task.hasMany(models.Like, {foreignKey: "taskId"});
+    Task.belongsTo(models.List, {
+      foreignKey: { name: "listId" }, onDelete: 'CASCADE',
+    });
+    Task.hasMany(models.Comment, { foreignKey: "taskId" });
+    Task.hasMany(models.Like, { foreignKey: "taskId" });
     Task.belongsToMany(models.Category, columnMap);
   };
   return Task;

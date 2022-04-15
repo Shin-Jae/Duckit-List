@@ -26,6 +26,7 @@ module.exports = {
       },
       listId: {
         references: { model: "Lists" },
+        onDelete: 'CASCADE',
         allowNull: false,
         type: Sequelize.INTEGER
       },
