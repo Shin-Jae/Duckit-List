@@ -9,8 +9,10 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/home', asyncHandler(async (req, res) => {
+  const tasks = await db.Task.findAll();
+
   res.render('homepage', {
-    title: 'Welcome to Duckit List!',
+    title: 'Welcome to Duckit List!', tasks
   })
 }))
 
