@@ -1,1 +1,35 @@
-body {}
+/* body {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: red;
+} */
+/* .container {} */
+.main-login-container {
+    display: flex;
+    height: calc(100% - 64px);
+    width: 100%;
+
+}
+
+.login-container-right-half {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    top: 12px;
+    border-radius: 25px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 100%;
+    width: 50%;
+}
+
+.login-container-left-half {
+    background-color: #A4D7D9;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+}
