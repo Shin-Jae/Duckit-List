@@ -9,81 +9,50 @@ append head
   link(rel='stylesheet' href='/stylesheets/tabs.css')
 
 block content
-  a(href="/lists/new" class="add-to-list-button") Create new List
   button(id="render-modal") MODAL
   div.tables
     div(id="allTasksId").currentList All Tasks
     div(id="incompleteTasksId").incomplete Incomplete
     div(id="completeTasksId").complete Complete
+  div.list-labels
+  a(href="/lists/new" class="add-to-list-button") Create new List
   each list in lists
     ul
       div(id=`label-container-${list.id}`).container
         li(id=`${list.id}-name` class="list-names")= `List: ${list.name}`
-        div(id=`container-${list.id}`).container
-          a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit
-          a(href="#" class='delete-btn' id=`delete-btn-${list.id}`) Delete
-          a(href=`/tasks/new/${list.id}`) Hatch a new goal!
+    div(id=`container-${list.id}`).container
+      div.list-buttons
+        a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit list name
+        a(href="#" class='delete-btn' id=`delete-btn-${list.id}`) Delete List
+        a(href=`/tasks/new/${list.id}`) Hatch a new goal!
 
-          div.dataTables
-            div(class="allLists" class="hidden" style="margin-top:20px; width:100%;").listsTable
-              each task in list.Tasks
-                div.currentListContainer
-                  a(href=`/lists/${list.id}`)
-                    div.inner
-                      div(style="font-weight:bold; padding:10px;")= task.description
-                          input(type='checkbox')
-                          a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-                          button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
-            div(class="incompleteTasks" class="hidden" style="margin-top:20px; width:100%;").incompleteTable
-              each task in list.Tasks
-                if !task.completed
-                  div.currentIncompleteContainer
-                    a(href=`/lists/${list.id}`)
-                      div.inner
-                        div(style="font-weight:bold; padding:10px;")= task.description
-                          a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-                          button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
-            div(class="completeTasks" class="hidden" style="margin-top:20px; width:100%;").completeTable
-              each task in list.Tasks
-                if task.completed
-                  div.currentCompleteContainer
-                    a(href=`/lists/${list.id}`)
-                      div.inner
-                        div(style="font-weight:bold; padding:10px;")= task.description
-                          a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-                          button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
-                          if task.image && task.image !== "null"
-                            img(class="complete-task-list-image" src=task.image)
-
-
-          //- each task in list.Tasks
-          //-   div(id=`task-container-${task.id}`).task
-          //-     li= `--Tasks: ${task.description}`
-          //-       input(type='checkbox')
-          //-       a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-          //-       button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
-
-        //- each list in lists
-
-
-        //-   div.dataTables
-        //-     div(style="margin-top:20px; width:100%;").listsTable
-        //-       each task in list.Tasks
-        //-         div.currentListContainer
-        //-           a(href=`/lists/${list.id}`)
-        //-             div.inner
-        //-               div(style="font-weight:bold; padding:10px;")= task.description
-        //-     div(style="margin-top:20px; width:100%;").incompleteTable
-        //-       each task in list.Tasks
-        //-         if !task.completed
-        //-           div.currentIncompleteContainer
-        //-             a(href=`/lists/${list.id}`)
-        //-               div.inner
-        //-                 div(style="font-weight:bold; padding:10px;")= task.description
-        //-     div(style="margin-top:20px; width:100%;").completeTable
-        //-       each task in list.Tasks
-        //-         if task.compeleted
-        //-           div.currentCompleteContainer
-        //-             a(href=`/lists/${list.id}`)
-        //-               div.inner
-        //-                 div(style="font-weight:bold; padding:10px;")= task.description
+      div.dataTables
+        div(class="allLists" class="hidden").listsTable
+          each task in list.Tasks
+            div.currentListContainer
+              a(href=`/lists/${list.id}`)
+                div.inner
+                  div(style="font-weight:bold; padding:10px;")= task.description
+                      input(type='checkbox')
+                      a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                      button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+        div(class="incompleteTasks" class="hidden").incompleteTable
+          each task in list.Tasks
+            if !task.completed
+              div.currentIncompleteContainer
+                a(href=`/lists/${list.id}`)
+                  div.inner
+                    div(style="font-weight:bold; padding:10px;")= task.description
+                      a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                      button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+        div(class="completeTasks" class="hidden").completeTable
+          each task in list.Tasks
+            if task.completed
+              div.currentCompleteContainer
+                a(href=`/lists/${list.id}`)
+                  div.inner
+                    div(style="font-weight:bold; padding:10px;")= task.description
+                      a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                      button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+                      //- if task.image && task.image !== "null"
+                      //-  img(class="complete-task-list-image" src=task.image)
