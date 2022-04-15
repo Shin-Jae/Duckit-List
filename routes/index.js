@@ -5,7 +5,7 @@ const db = require('../db/models');
 
 /* GET splash page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'a/A Express Skeleton Home' });
+  res.render('index', { title: 'Duck it!' });
 });
 
 router.get('/home', asyncHandler(async (req, res) => {
