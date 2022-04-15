@@ -1,10 +1,49 @@
-
-.hidden1 {
-  display: none;
-  flex-direction: column;
+.container {
+  display: flex;
+  width: 100vw;
+  height: 10rem;
+  justify-content: center;
 }
 
-.show1 {
-  display: flex;
-  flex-direction: column;
+.list-container {
+  border-left: 2px solid gray;
+}
+
+.completed-container {
+  border-right: 2px solid gray;
+}
+
+.list-container,
+.incomplete-container,
+.completed-container {
+  padding: 0 2rem;
+}
+
+.list-title,
+.incomplete-title,
+.completed-title {
+  border-bottom: 2px solid gray;
+  width: 12rem;
+  text-align: center;
+  margin-top: 0;
+  font-family: sans-serif;
+}
+
+:is(.list-title, .incomplete-title, .completed-title).clicked {
+  border: 2px solid black;
+}
+
+:is(.list-title, .incomplete-title, .completed-title):hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+:is(.list-sub-container, .incomplete-sub-container, .completed-sub-container).hide {
+  display: none;
+}
+
+.incomplete-sub-container,
+.completed-sub-container {
+  position: absolute;
+  left: 38.5rem;
 }
