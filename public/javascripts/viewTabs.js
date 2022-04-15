@@ -11,6 +11,12 @@ listsBtn.addEventListener("click", (e) => {
     listsTable.style.display = "flex";
     completeTable.style.display = "none";
     incompleteTable.style.display = "none";
+    //listsTable.classList.add("show");
+    //completeTable.classList.add("show");
+    //incompleteTable.classList.add("show");
+    //listsTable.classList.remove("hidden");
+    //completeTable.classList.remove("hidden");
+    //incompleteTable.classList.remove("hidden");
 });
 
 incompleteBtn.addEventListener("click", (e) => {
@@ -26,3 +32,23 @@ completeBtn.addEventListener("click", (e) => {
     completeTable.style.display = "flex";
     incompleteTable.style.display = "none";
 });
+
+const listNames = document.querySelectorAll(".list-names")
+
+listNames.forEach(list => {
+    const listId = list.id.split("-")[0];
+    // select div to hide all other lists,
+    const listDiv = document.getElementById(`container-${listId}`)
+    // event listener below will show current
+    listDiv.style.display = "none";
+
+    list.addEventListener("click", e => {
+        const listId = e.target.id.split("-")[0];
+        const listDiv = document.getElementById(`container-${listId}`)
+        listDiv.style.display = "flex";
+
+        //clickedList.classList.remove("hidden");
+        //clickedList.classList.add("show");
+        console.log(`Currently viewing List: ${listId}`)
+    })
+})
