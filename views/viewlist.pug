@@ -10,12 +10,17 @@ append head
   link(rel='stylesheet' href='/stylesheets/tabs.css')
 
 block content
+
   button(id="render-modal") MODAL
-  div.allTabs
-    div.listTab
+  //- div.tables
+    //- div(id="incompleteTasksId").incomplete Incomplete
+    //- div(id="completeTasksId").complete Complete
+  div(class='allTabs')
+    div(class='listTab')
       h1(class='list-title clicked') List
       div(class='list-sub-container')
       a(href="/lists/new" class="add-to-list-button") Create new List
+
       each list in lists
         ul
           div(id=`label-container-${list.id}`).container
@@ -60,6 +65,7 @@ block content
                     a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
                       //- if task.image && task.image !== "null"
                       //-  img(class="complete-task-list-image" src=task.image)
+
 
 
   //- div.tables
