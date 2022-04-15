@@ -45,10 +45,16 @@ listNames.forEach(list => {
     list.addEventListener("click", e => {
         const listId = e.target.id.split("-")[0];
         const listDiv = document.getElementById(`container-${listId}`)
-        listDiv.style.display = "flex";
-
+        if (listDiv.clicked) {
+            listDiv.style.display = 'none';
+            listDiv.clicked = false;
+        } else {
+            listDiv.style.display = "flex";
+            listDiv.clicked = true;
+        }
         //clickedList.classList.remove("hidden");
         //clickedList.classList.add("show");
         console.log(`Currently viewing List: ${listId}`)
-    })
+
+    });
 })

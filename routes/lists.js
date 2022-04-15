@@ -7,32 +7,33 @@ const { loginUser, logoutUser, requireAuth } = require('../auth');
 const router = express.Router();
 
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
-    const user = req.session.auth.userId
-
+    const userId = req.session.auth.userId
+    const user = req.session.auth
+    console.log(user);
     const lists = await db.List.findAll({
         include: db.Task,
         where: {
-            userId: user,
+            userId: userId,
 
         },
         order: [["createdAt", "DESC"]]
     });
 
-    res.render("viewlist", { lists, user, csrfToken: req.csrfToken() });
+    res.render("viewlist", { lists, userId, user, csrfToken: req.csrfToken() });
 }));
 
 router.get('/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
-    const user = req.session.auth.userId;
+    const userId = req.session.auth.userId;
     const listId = parseInt(req.params.id, 10);
 
     const lists = await db.List.findAll({
         where: {
-            userId: user,
+            userId: userId,
         },
         include: [{ model: db.Task, where: { listId: listId } }],
     });
     console.log(lists.Tasks)
-    res.render("viewlist", { lists, user, csrfToken: req.csrfToken() });
+    res.render("viewlist", { lists, userId, csrfToken: req.csrfToken() });
 }));
 
 const listValidators = [
@@ -70,12 +71,12 @@ router.post('/new', csrfProtection, listValidators, asyncHandler(async (req, res
 }));
 
 router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
-    const user = req.session.auth.userId
+    const userId = req.session.auth.userId
 
     const lists = await db.List.findAll({
         include: db.Task,
         where: {
-            userId: user,
+            userId: userId,
 
         },
         order: [["createdAt", "DESC"]]
@@ -85,7 +86,7 @@ router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
     const list = await db.List.findByPk(listId);
     res.render('editlist', {
         title: 'Edit List',
-        user,
+        userId,
         lists,
         list,
         csrfToken: req.csrfToken()
