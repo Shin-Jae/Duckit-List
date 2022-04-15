@@ -1,4 +1,4 @@
-extends homepage.pug
+extends modal.pug
 
 include utils.pug
 
@@ -10,6 +10,7 @@ append head
 
 block content
   a(href="/lists/new" class="add-to-list-button") Create new List
+  button(id="render-modal") MODAL
   div.tables
     div(id="allTasksId").currentList All Tasks
     div(id="incompleteTasksId").incomplete Incomplete

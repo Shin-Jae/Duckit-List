@@ -1,7 +1,7 @@
 // container for modal
 const modal = document.querySelector(".modal");
 
-// "SUMMON MODAL" button on viewlist.pug
+// "MODAL" button on viewlist.pug
 document.querySelector("#render-modal").addEventListener("click", e => {
     modal.classList.toggle("show-modal");
 });
