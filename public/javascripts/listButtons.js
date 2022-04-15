@@ -17,6 +17,7 @@ for (let i = 0; i < deleteButtons.length; i++) {
     if (data.message === 'Success') {
       const container = document.getElementById(`container-${listId}`);
       container.remove()
+      location.reload();
     }
   })
 }
