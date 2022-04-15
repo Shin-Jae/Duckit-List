@@ -25,10 +25,19 @@ block content
             a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit list name
             a(class='delete-btn' id=`delete-btn-${list.id}`) Delete List
             a(href=`/tasks/new/${list.id}`) Hatch a new goal!
+             each task in list.Tasks
+              if !task.completed
+                div.currentIncompleteContainer
+                  a(href=`/lists/${list.id}`)
+                    div.inner
+                      div(style="font-weight:bold; padding:10px;")= task.description
+                        a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                        a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
 
     div.incompleteTab
       h1(class='incomplete-title') Incomplete
       div(class='incomplete-sub-container hide')
+      each list in lists
         each task in list.Tasks
           if !task.completed
             div.currentIncompleteContainer
@@ -40,6 +49,7 @@ block content
     div.completeTab
       h1(class='completed-title') Complete
       div(class='completed-sub-container hide')
+      each list in lists
         each task in list.Tasks
           if task.completed
             div.currentCompleteContainer
