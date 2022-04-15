@@ -50,7 +50,6 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
       title: "Add to list",
       errors,
       csrfToken: req.csrfToken(),
-      task
     })
   }
 
