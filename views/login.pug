@@ -13,7 +13,7 @@ block content
             p A journey of a thousand miles must begin with a single step.
             p -Lao Tzu
         div(class="login-container-right-half")
-            form(action='/users/login' id="loginForm" method='post')
+            form(action='/users/login' method='post' id="loginForm" )
                 input(type='hidden' name='_csrf' value=csrfToken)
                 +field(null, 'email', email, null, 'Email Address')
                 +field(null, 'password', null, 'password', 'Password')

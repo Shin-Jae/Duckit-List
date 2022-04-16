@@ -1,9 +1,8 @@
-
 .main-content {
   margin-top: 80px;
 }
 
-.login-signup-buttons {
+.login-buttons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -18,56 +17,63 @@ a {
   text-decoration: none;
 }
 
+p {
+  font-family: "Days One";
+}
+
 .main-login-container {
-    display: flex;
-    height: calc(100% - 64px);
-    width: 100%;
+  display: flex;
+  height: calc(100% - 64px);
+  width: 100%;
 
 }
 
 .login-container-right-half {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
 }
 
 #loginForm {
-    height: 10rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #loginForm>input {
-    width: 25rem;
-    height: 2.5rem;
-    margin-bottom: 1rem;
-    border: 0.1rem solid hsl(188, 67%, 39%);
-    border-radius: 0.8rem;
-    padding-left: 1rem;
+  width: 25rem;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+  /* border: 0.1rem solid hsl(188, 67%, 39%); */
+  border: none;
+  border-radius: 0.8rem;
+  padding-left: 1rem;
 }
 
 button.login-btn {
-    width: 10rem;
-    height: 2rem;
-    border: 0.1rem solid hsl(188, 67%, 39%);
-    border-radius: 0.8rem;
-    background-color: #FDCE2A;
-    color: white;
-    flex-direction: row;
+  font-weight: bolder;
+  width: 10rem;
+  height: 2rem;
+  /* border: 0.1rem solid hsl(188, 67%, 39%); */
+  border: none;
+  border-radius: 0.8rem;
+  background-color: #FDCE2A;
+  color: white;
+  flex-direction: row;
 }
 
 #demoLoginForm {
-    align-self: center;
+  align-self: center;
 }
 
 .login-container-left-half {
-    color: white;
-    background-color: #A4D7D9;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 50%;
+  color: white;
+  background-color: #A4D7D9;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
 }

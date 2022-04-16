@@ -2,17 +2,24 @@ extends layout.pug
 
 include utils.pug
 
+append head
+    link(rel='stylesheet' href='/stylesheets/signup.css')
+
 block content
     +validationErrorSummary(errors)
-    form(action='/users/signup' method='post')
-        input(type='hidden' name="_csrf" value=csrfToken)
-        +field("First Name", "firstName", user.firstName)
-        +field("Last Name", "lastName", user.lastName)
-        +field("Username", "username", user.username)
-        +field("Email", "email", user.email)
-        +field("Password", "password", user.password)
-        +field("Confirm Password", "confirmPassword", user.confirmPassword)
-        button(type="submit") Submit
-        a(href="/home")
-    div
-        p: a(href='/users/login') Already have an account?
+    div(class='main-signup-container')
+        div(class='signup-container-left-half')
+            p Join fowllow goal diggers and take a quack at Life’s Adventures!
+        div(class='signup-container-right-half')
+            form(action='/users/signup' method='post' id="signupForm")
+                input(type='hidden' name="_csrf" value=csrfToken)
+                +field(null, "firstName", user.firstName, null,"First Name")
+                +field(null, "lastName", user.lastName,null, "Last Name")
+                +field(null, "username", user.username,null, "Username")
+                +field(null, "email", user.email,null, "Email")
+                +field(null, "password", user.password,null, "Password")
+                +field(null, "confirmPassword", user.confirmPassword,null, "Confirm Password")
+                div(class="signup")
+                button(type="submit" class='submit-btn') Submit
+                a(href="/home")
+                p: a(href='/users/login') Already have an account?
