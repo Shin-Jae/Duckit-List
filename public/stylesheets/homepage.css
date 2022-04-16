@@ -171,7 +171,7 @@ a {
 
 .home-task-image {
     height: 350px;
-    width: 400px;
+    width: 250px;
     object-fit: cover;
     border-top: 8px solid white;
     border-left: 8px solid white;
@@ -187,8 +187,12 @@ a {
 }
 
 .homepage-all-tasks {
+    padding-left: 100px;
+    padding-right: 100px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .homepage-task-container {
