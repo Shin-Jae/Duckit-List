@@ -186,6 +186,12 @@ a {
     align-items: center;
 }
 
+.homepage > h2 {
+    font-size: 2rem;
+    padding: 2rem;
+    font-family: "Days One", cursive;
+}
+
 .homepage-all-tasks {
     padding-left: 100px;
     padding-right: 100px;
