@@ -2,11 +2,6 @@
   margin-top: 80px;
 }
 
-.login-buttons {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
 
 #log-in-button {
   margin: 20px;

@@ -12,6 +12,7 @@ block content
             p Join fowllow goal diggers and take a quack at Life’s Adventures!
         div(class='signup-container-right-half')
             form(action='/users/signup' method='post' id="signupForm")
+                p Join the flock!
                 input(type='hidden' name="_csrf" value=csrfToken)
                 +field(null, "firstName", user.firstName, null,"First Name")
                 +field(null, "lastName", user.lastName,null, "Last Name")
