@@ -27,8 +27,12 @@ editButtons.forEach(editBtn => {
         const response = await fetch(`/tasks/edit/${taskId}`)
         const data = await response.json()
         console.log(data)
+        document.querySelector('#edit-task-form').setAttribute('action', `/tasks/edit/${taskId}`)
         document.querySelector('#edit-task-description').innerText = `taskId ${taskId}`
         document.querySelector('#edit-task-form > .csrf-token').value = data.csrfToken
+        document.querySelector('#edit-task-form > .task-description').value = data.task.description
+        document.querySelector('#edit-task-form > .tasksubmit-btn').value = data.task.description
+
     })
 })
 

@@ -12,24 +12,24 @@ block template
     p Woud you like to edit your Task?
       +validationErrorSummary(errors)
       div(id='task-errors' style='color: red')
-      form(id='edit-task-form')
+      form(id='edit-task-form' method="put")
         input(type='hidden' name="_csrf" class='csrf-token')
         label(for=description) Description
-        input(type="text" class='task-description' description=description value="task.description")
+        input(name='description' type="text" class='task-description')
         label(for=timeframe) Timeframe
-        input(type="date" id=`task-timeframe-${"task.id"}` timeframe=timeframe value="task.timeframe")
+        input(name='timeframe' type="date" class='task-timeframe')
         label(for=cost) Cost
-        input(type="number" min="0" id=`task-cost-${"task.id"}` cost=cost value="task.cost")
+        input(name='cost' type="number" min="0" class='task-cost')
         label(for=image) Image
-        input(type="text" id=`task-image-${"task.id"}` image=image value="task.image")
+        input(name='image' type="text" class='task-image')
         label(for=completed) Completed?
-        select(id=`task-completed-${"task.id"}` completed=completed)
+        select(name='completed' class='task-completed')
           option(id='no') No
           option(id='yes') Yes
 
         //- label(for=category) Category
         //- input(type=text id=`task-category-${"task.id"}` category=category placeholder=task.category)
         div(class='form-submit')
-        button(type='button' class='tasksubmit-btn' id=`edit-submit-${"task.id"}`) Save
+        button(type='submit' class='tasksubmit-btn') Save
         a(href='/lists' class='cancel-btn') Cancel
-        //- button(type='button' id='test-button') TEST
+        //- button(type='submit' id='test-button') TEST

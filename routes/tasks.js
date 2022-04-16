@@ -77,41 +77,48 @@ router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
   })
 }));
 
-router.put('/edit/:id(\\d+)', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
-  const task = await db.Task.findByPk(req.params.id)
-  if (req.body.timeframe === '') {
-    req.body.timeframe = null;
-  };
-  if (req.body.cost === '') {
-    req.body.cost = null;
-  };
-  if (req.body.completed === "No") {
-    req.body.completed = false
-  } else {
-    req.body.completed = true
-  }
-  task.description = req.body.description;
-  task.cost = req.body.cost;
-  task.timeframe = req.body.timeframe;
-  task.image = req.body.image;
-  task.completed = req.body.completed
-  // task.category = req.body.category;
-  const validatorErrors = validationResult(req)
-  if (validatorErrors.isEmpty()) {
-    console.log('______if validator is empty______')
-    await task.save()
-    res.json({
-      message: 'Task successfully updated',
-      task
-    })
-    // return res.redirect('/lists')
-  } else {
-    const errors = validatorErrors.array().map(error => error.msg)
-    res.json({
-      message: 'There was an error',
-      errors,
-    });
-  }
+router.put('/edit/:id(\\d+)', asyncHandler(async (req, res) => {
+  // const task = await db.Task.findByPk(req.params.id)
+  console.log()
+  console.log()
+  console.log(req.body)
+  console.log()
+  console.log()
+  return res.send(200)
+
+  // if (req.body.timeframe === '') {
+  //   req.body.timeframe = null;
+  // };
+  // if (req.body.cost === '') {
+  //   req.body.cost = null;
+  // };
+  // if (req.body.completed === "No") {
+  //   req.body.completed = false
+  // } else {
+  //   req.body.completed = true
+  // }
+  // task.description = req.body.description;
+  // task.cost = req.body.cost;
+  // task.timeframe = req.body.timeframe;
+  // task.image = req.body.image;
+  // task.completed = req.body.completed
+  // // task.category = req.body.category;
+  // const validatorErrors = validationResult(req)
+  // if (validatorErrors.isEmpty()) {
+  //   console.log('______if validator is empty______')
+  //   await task.save()
+  //   res.json({
+  //     message: 'Task successfully updated',
+  //     task
+  //   })
+  //   // return res.redirect('/lists')
+  // } else {
+  //   const errors = validatorErrors.array().map(error => error.msg)
+  //   res.json({
+  //     message: 'There was an error',
+  //     errors,
+  //   });
+  // }
 }));
 
 
