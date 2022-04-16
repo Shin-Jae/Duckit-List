@@ -23,9 +23,7 @@ block template
         label(for=image) Image
         input(name='image' type="text" class='task-image')
         label(for=completed) Completed?
-        select(name='completed' class='task-completed')
-          option(id='no') No
-          option(id='yes') Yes
+        input(type='checkbox' name='completed' class='task-completed')
 
         //- label(for=category) Category
         //- input(type=text id=`task-category-${"task.id"}` category=category placeholder=task.category)

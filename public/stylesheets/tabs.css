@@ -16,6 +16,7 @@
 .listTab,
 .incompleteTab,
 .completeTab {
+  width: 20rem;
   padding: 0 2rem;
 }
 
@@ -40,10 +41,4 @@
 
 :is(.list-sub-container, .incomplete-sub-container, .completed-sub-container).hide {
   display: none;
-}
-
-.incomplete-sub-container,
-.completed-sub-container {
-  position: absolute;
-  left: 38.5rem;
 }
