@@ -37,6 +37,8 @@
 
 #duckitList {
     margin: 20px;
+    font-family: 'Sacramento', cursive;
+    font-size: 1.6rem;
 }
 
 a {
@@ -95,20 +97,36 @@ a {
 }
 
 #splash-text {
-    font-family: 14px "Days One" "Lucida Grande", Helvetica, Arial, sans-serif;
-    text-decoration: none;
-    padding: 10px;
+    padding: 20px;
+    font-family: 'Days One', sans-serif;
+    position: absolute;
+    width: 800px;
+    top: 10%;
+    left: 40%;
+    transform: translate(-10%, -10%);
+}
+
+#splash-text > h1 {
+    font-size: 3rem;
+}
+
+#splash-text > h2 {
+    font-size: 2rem;
+}
+
+#splash-text > p {
+    font-size: 1.5rem;
 }
 
 #splash-img-1,
 #splash-img-2,
 #splash-img-3 {
-    height: 290px;
-    width: 190px;
+    height: 400px;
+    width: 250px;
     object-fit: cover;
-    border-top: 5px solid white;
-    border-left: 5px solid white;
-    border-right: 5px solid white;
+    border-top: 8px solid white;
+    border-left: 8px solid white;
+    border-right: 8px solid white;
     border-bottom: 50px solid white;
     margin: 5px;
     box-shadow: 0px 0px 5px rgba(173, 173, 173, 0.5);
@@ -119,23 +137,27 @@ a {
     flex-direction: row;
     justify-content: flex-start;
     padding: 10px;
+    position: absolute;
+    top: 25%;
+    left: 70%;
+    transform: translate(-10%, -10%);
 }
 
 #splash-img-1 {
     margin: 20px;
-    margin-top: 180px;
+    margin-top: 25%;
     transform: rotate(-8deg);
 }
 
 #splash-img-2 {
     margin: 20px;
-    margin-top: 120px;
+    margin-top: 20%;
     transform: rotate(2deg);
 }
 
 #splash-img-3 {
     margin: 20px;
-    margin-top: 190px;
+    margin-top: 25%;
     transform: rotate(10deg);
 }
 
@@ -144,15 +166,16 @@ a {
     height: 600px;
     width: 600px;
     border-radius: 50%;
+    position: relative;
 }
 
 .home-task-image {
-    height: 300px;
-    width: 250px;
+    height: 350px;
+    width: 400px;
     object-fit: cover;
-    border-top: 5px solid white;
-    border-left: 5px solid white;
-    border-right: 5px solid white;
+    border-top: 8px solid white;
+    border-left: 8px solid white;
+    border-right: 8px solid white;
     border-bottom: 50px solid white;
     margin: 5px;
 }
@@ -172,6 +195,18 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    text-align: center;
+
+}
+
+.homepage-task-container > li {
+    font-size: 16px;
+    font-family: "Amatic SC", cursive;
+    position: absolute;
+    top: 91%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .remove-bullet, li {
