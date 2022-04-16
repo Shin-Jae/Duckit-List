@@ -7,14 +7,10 @@ append head
 
 block content
   each list in lists
-    ul
-      div(id=`container-${list.id}` style="margin:50px").container
-        a(href=`/lists/${list.id}`)
-          h1(id=`${list.id}-name` style='font-size: 20px')= `${list.name}`
-          each task in list.Tasks
-            div(id=`task-container-${task.id}`).task
-              li(id=`${task.id}-desc` style='font-size: 12px')= `${task.description}`
+    each task in list.Tasks
+      ul
   .container
+    li(id=`${task.id}-desc` style='font-size: 12px')= `${task.description}`
     p Woud you like to edit your Task?
       +validationErrorSummary(errors)
       div(id='task-errors' style='color: red')
@@ -37,5 +33,5 @@ block content
         //- input(type=text id=`task-category-${task.id}` category=category placeholder=task.category)
         div(class='form-submit')
         button(type='button' class='tasksubmit-btn' id=`edit-submit-${task.id}`) Save
-      a(href='/lists' class='cancel-btn') Cancel
+        a(href='/lists' class='cancel-btn') Cancel
         //- button(type='button' id='test-button') TEST
