@@ -1,37 +1,34 @@
-extends homepage.pug
+extends modal.pug
 
 include utils.pug
 
 append head
   script(src="/javascripts/taskButtons.js" type="module")
 
-block content
-  each list in lists
-    each task in list.Tasks
-      ul
-  .container
-    li(id=`${task.id}-desc` style='font-size: 12px')= `${task.description}`
+block template
+  div.container
+    li(id=`${"task.id"}-desc` style='font-size: 12px')= `${"task.description"}`
     p Woud you like to edit your Task?
       +validationErrorSummary(errors)
       div(id='task-errors' style='color: red')
-      form(id=`edit-task-${task.id}`)
+      form(id=`edit-task-${"task.id"}`)
         input(type='hidden' name="_csrf" value=csrfToken id='csrf-token')
         label(for=description) Description
-        input(type="text" id=`task-description-${task.id}` decription=description value=task.description)
+        input(type="text" id=`task-description-${"task.id"}` decription=description value="task.description")
         label(for=timeframe) Timeframe
-        input(type="date" id=`task-timeframe-${task.id}` timeframe=timeframe value=task.timeframe)
+        input(type="date" id=`task-timeframe-${"task.id"}` timeframe=timeframe value="task.timeframe")
         label(for=cost) Cost
-        input(type="number" min="0" id=`task-cost-${task.id}` cost=cost value=task.cost)
+        input(type="number" min="0" id=`task-cost-${"task.id"}` cost=cost value="task.cost")
         label(for=image) Image
-        input(type="text" id=`task-image-${task.id}` image=image value=task.image)
+        input(type="text" id=`task-image-${"task.id"}` image=image value="task.image")
         label(for=completed) Completed?
-        select(id=`task-completed-${task.id}` completed=completed)
+        select(id=`task-completed-${"task.id"}` completed=completed)
           option(id='no') No
           option(id='yes') Yes
 
         //- label(for=category) Category
-        //- input(type=text id=`task-category-${task.id}` category=category placeholder=task.category)
+        //- input(type=text id=`task-category-${"task.id"}` category=category placeholder=task.category)
         div(class='form-submit')
-        button(type='button' class='tasksubmit-btn' id=`edit-submit-${task.id}`) Save
+        button(type='button' class='tasksubmit-btn' id=`edit-submit-${"task.id"}`) Save
         a(href='/lists' class='cancel-btn') Cancel
         //- button(type='button' id='test-button') TEST

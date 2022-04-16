@@ -1,4 +1,4 @@
-extends modal.pug
+extends edittask.pug
 
 include utils.pug
 
@@ -8,9 +8,6 @@ append head
   script(src="/javascripts/viewTabs.js" type="module")
   script(src="/routes/lists.js" type="module")
   link(rel='stylesheet' href='/stylesheets/tabs.css')
-
-block template
-  h1 overwritten
 
 block content
 
@@ -50,11 +47,11 @@ block content
               if !task.completed
                 div.currentIncompleteContainer
                   div(id=`task-container-${task.id}`)
-                    a(href=`/lists/${list.id}`)
-                      div.inner
-                        div(style="font-weight:bold; padding:10px;")= task.description
-                          a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-                          a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+                    div.inner
+                      div(style="font-weight:bold; padding:10px;")= task.description
+                        button(type='button' class='task-edit-btn') Edit
+                        //- a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                        a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
     div.completeTab
       h1(class='completed-title') Complete
       div(class='completed-sub-container hide')

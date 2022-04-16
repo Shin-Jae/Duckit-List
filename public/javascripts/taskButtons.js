@@ -1,4 +1,6 @@
 const deleteButtons = document.querySelectorAll('.task-delete-btn')
+const editButtons = document.querySelectorAll('.task-edit-btn')
+
 
 for (let i = 0; i < deleteButtons.length; i++) {
     const button = deleteButtons[i]
@@ -18,9 +20,11 @@ for (let i = 0; i < deleteButtons.length; i++) {
     })
 }
 
-
-const editButtons = document.querySelectorAll('.task-edit-btn')
-
+editButtons.forEach(editBtn => {
+    editBtn.addEventListener('click', async (e) => {
+        document.querySelector('.modal').classList.toggle('show-modal')
+    })
+})
 
 const submitBtn = document.querySelector('.tasksubmit-btn')
 submitBtn.addEventListener('click', async (submitEvent) => {
