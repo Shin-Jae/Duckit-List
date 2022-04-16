@@ -1,9 +1,10 @@
 mixin validationErrorSummary(errors)
-    if errors
-        p The following errors have occurred
-        ul
-            each error in errors
-                li=error
+    div(style="color: red; display: flex; justify-content: center" ).errors-container
+        if errors
+            p The following errors have occurred
+            ul
+                each error in errors
+                    li=error
 
 
 mixin field(labelText, fieldName, fieldValue, fieldType = 'text', placeholder = labelText)

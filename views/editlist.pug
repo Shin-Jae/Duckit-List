@@ -23,7 +23,7 @@ block content
   .container
     p Woud you like to edit your #{list.name} list?
       +validationErrorSummary(errors)
-      div(id='list-errors')
+      div(id='list-errors' style='color: red')
       form(id=`edit-list-${list.id}`)
         input(type='hidden' name="_csrf" value=csrfToken)
         label(for=name) List name
