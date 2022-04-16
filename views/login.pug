@@ -7,12 +7,13 @@ append head
     link(rel='stylesheet' href='/stylesheets/login.css')
 
 block content
-    +validationErrorSummary(errors)
+
     div(class="main-login-container")
         div(class="login-container-left-half")
             p A journey of a thousand miles must begin with a single step.
             p -Lao Tzu
         div(class="login-container-right-half")
+            +validationErrorSummary(errors)
             form(action='/users/login' id="loginForm" method='post')
                 input(type='hidden' name='_csrf' value=csrfToken)
                 +field(null, 'email', email, null, 'Email Address')
