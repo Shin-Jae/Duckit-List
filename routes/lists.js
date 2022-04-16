@@ -96,10 +96,11 @@ router.put('/edit/:id(\\d+)', listValidators, asyncHandler(async (req, res) => {
     const list = await db.List.findByPk(req.params.id)
 
     list.name = req.body.name
-    await list.save()
+
 
     const validatorErrors = validationResult(req)
     if (validatorErrors.isEmpty()) {
+        await list.save()
         res.json({
             message: 'Success',
             list
