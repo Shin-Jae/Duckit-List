@@ -8,6 +8,8 @@ form > input {
   margin: 1rem;
   border-radius: 0.8rem;
   padding-left: 1rem;
+  text-align: left;
+  align-items: center;
 }
 
 form > button,
