@@ -29,13 +29,13 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
   let { listId, description, cost, timeframe, image, category } = req.body;
   // const listId = parseInt(req.params.id, 10)
   if (timeframe === '') {
-   timeframe = null;
+    timeframe = null;
   };
   if (cost === '') {
     cost = null;
   };
   if (category === '') {
-   category = null;
+    category = null;
   }
   console.log("******************", req.params)
   let errors = [];
