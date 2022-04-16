@@ -44,7 +44,7 @@ submitBtn.addEventListener('click', async (submitEvent) => {
   const data = await res.json()
   if (data.message === 'Success') {
     const nameEle = document.getElementById(`${listId}-name`)
-    nameEle.innerHTML = data.list.name
+    nameEle.innerHTML = `List: ${data.list.name}`
     form.classList.add('hidden')
   } else {
     // create elements with error message

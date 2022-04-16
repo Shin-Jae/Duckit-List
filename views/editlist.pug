@@ -4,23 +4,10 @@ include utils.pug
 
 block content
   script(src="/javascripts/listButtons.js" type="module")
-  a(href="/lists/new" class="add-to-list-button") Create new List
   each list in lists
-    ul
-      div(id=`container-${list.id}`).container
-        a(href=`/lists/${list.id}`)
-          li(id=`${list.id}-name`)= `List: ${list.name}`
-        a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`) Edit
-        button(class='delete-btn' id=`delete-btn-${list.id}`) Delete
-        div(id=`container-${list.id}`).container
-          a(href='/tasks/new') Hatch a new goal!
-          each task in list.Tasks
-            div(id=`task-container-${task.id}`).task
-              li= `--Tasks: ${task.description}`
-                input(type='checkbox')
-                button(class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
-                button(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
+    ul#edit-bullet
   .container
+    li(id=`${list.id}-name`)= `List: ${list.name}`
     p Woud you like to edit your #{list.name} list?
       +validationErrorSummary(errors)
       div(id='list-errors')

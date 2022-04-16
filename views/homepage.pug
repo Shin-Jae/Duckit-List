@@ -5,6 +5,8 @@ html
             title= title
             link(rel='stylesheet' href='/stylesheets/reset.css')
             link(rel='stylesheet' href='/stylesheets/homepage.css')
+            link(rel='stylesheet' href='/stylesheets/form.css')
+            link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
             link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Days+One&display=swap')
             link(rel='icon' type='image/png' href='https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png')
             link(rel='icon' type='image/png' href='https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png')
@@ -17,7 +19,7 @@ html
                         img(class="logo" src="https://user-images.githubusercontent.com/92604480/162843033-8a1540b7-af5e-4ac2-8607-a9ab007cbcde.png")
                 div#duckitList Duckit List
                 form(action="/search" method="get").searchbar
-                    input(name="search" type="text" placeholder="Got any Grapes?")
+                    input(name="search" type="text" placeholder=`Got any Grapes?`)
 
 
             //- button(id=index class="list-btn") List
@@ -28,7 +30,7 @@ html
                     button(type="submit" class="logout-btn") Log Out
 
 
-                a(href=`/users/${user.id}` class="userImage")
+                a(href="#" class="userImage" class=`/users/${user.id}`)
                     if user.image
                         img(id="user-image" src=user.image)
                     else
