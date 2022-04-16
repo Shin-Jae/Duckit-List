@@ -8,7 +8,6 @@
     width: 100%;
     top: 0;
     top: left;
-    background-color: transparent;
     background-color: #DEDEDC;
     height: 60px;
 }
@@ -53,9 +52,14 @@ a {
     align-items: center;
 }
 
-.searchbar {
+.searchbar > input {
+    all: unset;
     display: flex;
     align-items: center;
+    border-radius: 5px;
+    background-color: #cfcfcd;
+    padding: 5px;
+    border: 2px solid #dededf;
 }
 
 .welcome-message {
@@ -170,7 +174,7 @@ a {
     align-items: center;
 }
 
-.homepage-ul {
+.remove-bullet, li {
     list-style: none;
 }
 
