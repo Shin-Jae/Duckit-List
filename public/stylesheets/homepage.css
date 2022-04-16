@@ -37,7 +37,7 @@
 
 #duckitList {
     margin: 20px;
-    font-family: 'Sacramento', cursive;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     font-size: 1.6rem;
 }
 
@@ -97,10 +97,10 @@ a {
 }
 
 #splash-text {
-    padding: 20px;
+    padding: 2rem;
     font-family: 'Days One', sans-serif;
     position: absolute;
-    width: 800px;
+    width: 60rem;
     top: 10%;
     left: 40%;
     transform: translate(-10%, -10%);
@@ -121,13 +121,13 @@ a {
 #splash-img-1,
 #splash-img-2,
 #splash-img-3 {
-    height: 400px;
-    width: 250px;
+    height: 30rem;
+    width: 20rem;
     object-fit: cover;
-    border-top: 8px solid white;
-    border-left: 8px solid white;
-    border-right: 8px solid white;
-    border-bottom: 50px solid white;
+    border-top: .5rem solid white;
+    border-left: .5rem solid white;
+    border-right: .5rem solid white;
+    border-bottom: 5rem solid white;
     margin: 5px;
     box-shadow: 0px 0px 5px rgba(173, 173, 173, 0.5);
 }
@@ -163,8 +163,8 @@ a {
 
 .splash-background-bubble {
     background-color: #A4D7D9;
-    height: 600px;
-    width: 600px;
+    height: 650px;
+    width: 650px;
     border-radius: 50%;
     position: relative;
 }
@@ -263,4 +263,31 @@ body {
     flex-direction: column;
     align-items: left;
     padding: 5px;
+}
+
+
+@media screen and (min-width: 1600px) {
+#splash-img-1,
+#splash-img-2,
+#splash-img-3 {
+    height: 45rem;
+    width: 30rem;
+    object-fit: cover;
+    border-top: .8rem solid white;
+    border-left: .8rem solid white;
+    border-right: .8rem solid white;
+    border-bottom: 8rem solid white;
+    margin: 5px;
+    box-shadow: 0px 0px 5px rgba(173, 173, 173, 0.5);
+}
+
+.splash-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    transform: translate(-10%, -10%);
 }
