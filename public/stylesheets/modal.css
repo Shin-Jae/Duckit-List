@@ -21,6 +21,8 @@
     padding: 1rem 1.5rem;
     width: 24rem;
     border-radius: 0.5rem;
+    z-index: 10;
+
 }
 
 .close-button {
@@ -31,10 +33,14 @@
     cursor: pointer;
     border-radius: 0.25rem;
     background-color: lightgray;
+    z-index: 10;
+
 }
 
 .close-button:hover {
     background-color: darkgray;
+    z-index: 10;
+
 }
 
 .show-modal {
@@ -42,4 +48,6 @@
     visibility: visible;
     transform: scale(1);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 10;
+
 }

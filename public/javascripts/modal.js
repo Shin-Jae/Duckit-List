@@ -9,6 +9,7 @@ document.querySelector("#render-modal").addEventListener("click", e => {
 // "x" button to close modal
 document.querySelector(".close-button").addEventListener("click", e => {
     modal.classList.toggle("show-modal");
+    console.log("=============")
 });
 
 // click anywhere "outside the modal"

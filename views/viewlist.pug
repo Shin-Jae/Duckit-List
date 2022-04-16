@@ -10,9 +10,6 @@ append head
   link(rel='stylesheet' href='/stylesheets/tabs.css')
 
 block content
-
-  button(id="render-modal") MODAL
-
   div.allTabs
     div.listTab
       h1(class='list-title clicked') List
@@ -49,7 +46,7 @@ block content
                   div(id=`task-container-${task.id}`)
                     div.inner
                       div(style="font-weight:bold; padding:10px;")= task.description
-                        button(type='button' class='task-edit-btn') Edit
+                        button(type='button' class='task-edit-btn' id=`task-edit-btn-id:${task.id}`) Edit
                         //- a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
                         a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
     div.completeTab

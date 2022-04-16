@@ -4,17 +4,18 @@ include utils.pug
 
 append head
   script(src="/javascripts/taskButtons.js" type="module")
+  link(rel="stylesheet" href="/stylesheets/editform.css")
 
 block template
   div.container
-    li(id=`${"task.id"}-desc` style='font-size: 12px')= `${"task.description"}`
+    h2(id='edit-task-description')
     p Woud you like to edit your Task?
       +validationErrorSummary(errors)
       div(id='task-errors' style='color: red')
-      form(id=`edit-task-${"task.id"}`)
-        input(type='hidden' name="_csrf" value=csrfToken id='csrf-token')
+      form(id='edit-task-form')
+        input(type='hidden' name="_csrf" class='csrf-token')
         label(for=description) Description
-        input(type="text" id=`task-description-${"task.id"}` decription=description value="task.description")
+        input(type="text" class='task-description' description=description value="task.description")
         label(for=timeframe) Timeframe
         input(type="date" id=`task-timeframe-${"task.id"}` timeframe=timeframe value="task.timeframe")
         label(for=cost) Cost

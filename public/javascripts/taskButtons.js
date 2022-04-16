@@ -23,6 +23,12 @@ for (let i = 0; i < deleteButtons.length; i++) {
 editButtons.forEach(editBtn => {
     editBtn.addEventListener('click', async (e) => {
         document.querySelector('.modal').classList.toggle('show-modal')
+        const taskId = e.target.id.split('id:')[1]
+        const response = await fetch(`/tasks/edit/${taskId}`)
+        const data = await response.json()
+        console.log(data)
+        document.querySelector('#edit-task-description').innerText = `taskId ${taskId}`
+        document.querySelector('#edit-task-form > .csrf-token').value = data.csrfToken
     })
 })
 
