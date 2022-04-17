@@ -6,12 +6,12 @@ append head
     link(rel='stylesheet' href='/stylesheets/signup.css')
 
 block content
-    +validationErrorSummary(errors)
     div(class='main-signup-container')
         div(class='signup-container-left-half')
             p Join fowllow goal diggers and take a quack at Life’s Adventures!
         div(class='signup-container-right-half')
             form(action='/users/signup' method='post' id="signupForm")
+                +validationErrorSummary(errors)
                 p Join the flock!
                 input(type='hidden' name="_csrf" value=csrfToken)
                 +field(null, "firstName", user.firstName, null,"First Name")
