@@ -49,3 +49,8 @@ block template
       div(class='form-submit')
       button(type='submit' class='submit-btn' id=`edit-submit`) Save
       a(href='/lists' class='cancel-btn') Cancel
+  div(class='task-delete-modal hide')
+    input(type='hidden' class='task-id-delete')
+    h1 Are you sure?
+    button(class='delete-task-yes') Yes
+    button(class='delete-task-no') No

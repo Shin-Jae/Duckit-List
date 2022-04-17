@@ -1,5 +1,4 @@
 // const { json } = require("sequelize/types");
-
 const editButtons = document.querySelectorAll('.task-edit-btn');
 const formDescriptionTag = document.querySelector('#edit-task-description');
 const formTag = document.querySelector('#edit-task-form');
@@ -9,7 +8,9 @@ const timeframeTag = formTag.querySelector('.task-timeframe');
 const costTag = formTag.querySelector('.task-cost');
 const imageTag = formTag.querySelector('.task-image');
 const prompt = document.querySelector('.user-prompt');
+const taskDel = document.querySelector('.task-delete-modal')
 const listDelete = document.querySelectorAll('.list-delete-btn');
+const taskDelete = document.querySelectorAll('.task-delete-btn');
 const completedTag = formTag.querySelector('.task-completed');
 const taskIdTag = formTag.querySelector('.task-id');
 const listEditBtns = document.querySelectorAll('button.list-edit-btn');
@@ -17,7 +18,6 @@ const editListForm = document.querySelector('.edit-listname');
 
 listEditBtns.forEach((listEditBtn) => {
     listEditBtn.addEventListener('click', (e) => {
-
         document.querySelector('.container-edit-form').classList.toggle('hide');
         editListForm.classList.toggle('hide');
         document.querySelector('.modal').classList.toggle('show-modal');
@@ -78,6 +78,30 @@ prompt.querySelector('.user-prompt-yes').addEventListener('click', async (e) => 
         document.querySelector('.container-edit-form').classList.toggle('hide');
         prompt.classList.toggle('hide');
         document.querySelector(`#label-container-${listId}`).remove();
+    }
+})
+
+taskDelete.forEach((delBtn) => {
+    delBtn.addEventListener('click', (e) => {
+        document.querySelector('.container-edit-form').classList.toggle('hide');
+        taskDel.classList.toggle('hide');
+        document.querySelector('.modal').classList.toggle('show-modal');
+        const taskId = e.target.id.split('-')[3];
+        taskDel.querySelector('.task-id-delete').value = taskId;
+    });
+});
+
+taskDel.querySelector('.delete-task-yes').addEventListener('click', async (e) => {
+    const taskId = taskDel.querySelector('.task-id-delete').value;
+
+    const response = await fetch(`/tasks/${taskId}`, {
+        method: 'DELETE',
+    });
+    if (response.ok) {
+        document.querySelector('.modal').classList.toggle('show-modal');
+        document.querySelector('.container-edit-form').classList.toggle('hide');
+        taskDel.classList.toggle('hide');
+        document.querySelector(`#task-container-${taskId}`).remove();
     }
 })
 
@@ -150,17 +174,12 @@ formTag.addEventListener('submit', async (e) => {
     if (!dataRes.errors) {
         formDescriptionTag.innerText = description;
         document.querySelector('.modal').classList.toggle('show-modal');
-
-
         taskContainer.querySelector(`.task-description-${taskId}`).innerText = description;
-
-
 
         const clone = taskContainer.parentElement.cloneNode(true);
 
         clone.querySelector('.task-edit-btn').addEventListener('click', showEdit);
         const listId = dataRes.task.listId;
-
 
         if (completedTag.checked && taskContainer.parentElement.classList.contains('currentIncompleteContainer')) {
             const completedSubContainer = document.querySelector(`.completed-sub-container > div.list-id-${listId}`);
@@ -171,8 +190,6 @@ formTag.addEventListener('submit', async (e) => {
             incompleteSubContainer.appendChild(clone);
             taskContainer.parentElement.remove();
         }
-
-
     } else {
         const errorDescription = document.createElement('p')
         const errorContainer = document.createElement('ul')

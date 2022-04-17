@@ -14,7 +14,6 @@ document.querySelector(".close-button").addEventListener("click", e => {
     prompt.classList.add('hide');
     editForm.classList.remove('hide');
     editListName.classList.add('hide');
-    console.log("=============")
 });
 
 // click anywhere "outside the modal"
