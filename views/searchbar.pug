@@ -6,36 +6,14 @@ append head
 block content
     div.results-container
         div.lists-results-container
-            p list name
-            p list description
-            p list name Travel
-            p list description Travel
-            p list name Food
-            p list description Food
+            each list in listResults
+                p= list.name
 
         div.tasks-results-container
-            div.list-container
-                h1 List: Travel
-                div.sub-task
-                    p task name Adventure
-                    p task description
-                    img(src="http://loremflickr.com/640/480/city")
-                div.sub-task
-                    p task name Swim with dolphins
-                    p task description
-                    img(src="http://loremflickr.com/640/480/city")
-                div.sub-task
-                    p task name Eat rainbow fruits
-                    p task description
-                    img(src="http://loremflickr.com/640/480/city")
-            div.list-container
-                h1 List: Travel
-                div.sub-task
-                    p task name Adventure
-                    img(src="http://loremflickr.com/640/480/city")
-                div.sub-task
-                    p task name Swim with dolphins
-                    img(src="http://loremflickr.com/640/480/city")
-                div.sub-task
-                    p task name Eat rainbow fruits
-                    img(src="http://loremflickr.com/640/480/city")
+            each list in listsWithTasks
+                div.list-container
+                    h1= `List: ${list.name}`
+                    each task in list.Tasks
+                        div.sub-task
+                            p= task.description
+                            img(src=`${task.image}`)
