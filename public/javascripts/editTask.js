@@ -25,7 +25,7 @@ listDelete.forEach((listDeleteBtn) => {
 })
 prompt.querySelector('.user-prompt-yes').addEventListener('click', async (e) => {
     const listId = prompt.querySelector('.list-id-delete').value
-    console.log('&&&&&&', listId)
+
     const response = await fetch(`/lists/${listId}`, {
         method: 'DELETE',
     });
@@ -83,7 +83,7 @@ formTag.addEventListener('submit', async (e) => {
     const cost = costTag.value;
     const image = imageTag.value;
     const completed = completedTag.checked;
-    console.log('---------', completedTag, completedTag.checked)
+
     const taskId = taskIdTag.value;
     const data = {
         _csrf,
@@ -103,7 +103,6 @@ formTag.addEventListener('submit', async (e) => {
     });
     const dataRes = await response.json()
     const taskContainer = document.querySelector(`#task-container-${taskId}`)
-    console.log(')()()()()()(', dataRes)
     if (!dataRes.errors) {
         formDescriptionTag.innerText = description;
         document.querySelector('.modal').classList.toggle('show-modal');
@@ -113,19 +112,20 @@ formTag.addEventListener('submit', async (e) => {
 
 
 
-        const clone = taskContainer.cloneNode(true);
-        await new Promise(res => setTimeout(res, 500))
-        console.log('*******', clone)
-        clone.querySelector('.task-edit-btn').addEventListener('click', showEdit);
-        if (completedTag.checked && taskContainer.parentElement.classList.contains('currentIncompleteContainer')) {
-            const listId = dataRes.task.listId;
-            const completedSubContainer = document.querySelector(`.completed-sub-container > h2.list-id-${listId}`).parentElement;
+        const clone = taskContainer.parentElement.cloneNode(true);
 
-            document.querySelector('div.currentCompleteContainer').appendChild(clone);
-            taskContainer.remove();
+        clone.querySelector('.task-edit-btn').addEventListener('click', showEdit);
+        const listId = dataRes.task.listId;
+
+
+        if (completedTag.checked && taskContainer.parentElement.classList.contains('currentIncompleteContainer')) {
+            const completedSubContainer = document.querySelector(`.completed-sub-container > div.list-id-${listId}`);
+            completedSubContainer.appendChild(clone);
+            taskContainer.parentElement.remove();
         } else if (!completedTag.checked && taskContainer.parentElement.classList.contains('currentCompleteContainer')) {
-            document.querySelector('div.currentIncompleteContainer').appendChild(clone);
-            taskContainer.remove();
+            const incompleteSubContainer = document.querySelector(`.incomplete-sub-container > div.list-id-${listId}`);
+            incompleteSubContainer.appendChild(clone);
+            taskContainer.parentElement.remove();
         }
 
 

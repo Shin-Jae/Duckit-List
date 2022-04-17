@@ -37,27 +37,29 @@ block content
           div(class='incomplete-sub-container hide').task-sub-container
               each list in lists
                 if list.Tasks.length && list.Tasks.some((task) => !task.completed)
-                  h2(class=`list-id-${list.id}`)= list.name
-                  each task in list.Tasks
-                    if !task.completed
-                      div.currentIncompleteContainer
-                        div(id=`task-container-${task.id}`)
-                          div.inner
-                            div(style="font-weight:bold; padding:10px;" class=`task-description-${task.id}`)= task.description
-                            button(type='button' class='task-edit-btn' id=`task-edit-btn-id:${task.id}`).button-style Edit
-                            a(class='task-delete-btn' id=`task-delete-btn-${task.id}`).button-style Delete
+                  div(class=`list-id-${list.id}`)
+                    h2= list.name
+                    each task in list.Tasks
+                      if !task.completed
+                        div.currentIncompleteContainer
+                          div(id=`task-container-${task.id}`)
+                            div.inner
+                              div(style="font-weight:bold; padding:10px;" class=`task-description-${task.id}`)= task.description
+                              button(type='button' class='task-edit-btn' id=`task-edit-btn-id:${task.id}`).button-style Edit
+                              a(class='task-delete-btn' id=`task-delete-btn-${task.id}`).button-style Delete
           div(class='completed-sub-container hide').task-sub-container
             each list in lists
               if list.Tasks.length && list.Tasks.some((task) => task.completed)
-                h2(class=`list-id-${list.id}`)= list.name
-                each task in list.Tasks
-                  if task.completed
-                    div.currentCompleteContainer
-                      div(id=`task-container-${task.id}`)
-                          div.inner
-                            div(style="font-weight:bold; padding:10px;" class=`task-description-${task.id}`)= task.description
-                            button(type='button' class='task-edit-btn' id=`task-edit-btn-id:${task.id}`).button-style Edit
-                            a(class='task-delete-btn' id=`task-delete-btn-${task.id}`).button-style Delete
+                div(class=`list-id-${list.id}`)
+                  h2= list.name
+                  each task in list.Tasks
+                    if task.completed
+                      div.currentCompleteContainer
+                        div(id=`task-container-${task.id}`)
+                            div.inner
+                              div(style="font-weight:bold; padding:10px;" class=`task-description-${task.id}`)= task.description
+                              button(type='button' class='task-edit-btn' id=`task-edit-btn-id:${task.id}`).button-style Edit
+                              a(class='task-delete-btn' id=`task-delete-btn-${task.id}`).button-style Delete
 
 
     div.incompleteTab
