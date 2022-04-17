@@ -24,16 +24,19 @@ editButtons.forEach((editBtn) => {
         let stringYear = String(taskTimeframe.getFullYear());
 
 
-        console.log(data);
+        console.log('__----__-', data);
 
         formDescriptionTag.innerText = data.task.description;
         csrfTag.value = data.csrfToken;
         taskIdTag.value = data.task.id;
+
         descriptionTag.value = data.task.description;
         timeframeTag.value = `${stringYear}-${stringMonth}-${stringDate}`;
         costTag.value = data.task.cost;
         imageTag.value = data.task.image;
+
         completedTag.checked = data.task.completed;
+        console.log('+++++++++', data.task.completed)
     });
 });
 
@@ -46,6 +49,7 @@ formTag.addEventListener('submit', async (e) => {
     const cost = costTag.value;
     const image = imageTag.value;
     const completed = completedTag.checked;
+    console.log('---------', completedTag, completedTag.checked)
     const taskId = taskIdTag.value;
     const data = {
         _csrf,
