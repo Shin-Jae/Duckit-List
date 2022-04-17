@@ -1,4 +1,3 @@
-// document.onload = function () {
 const editButtons = document.querySelectorAll('.task-edit-btn');
 const formDescriptionTag = document.querySelector('#edit-task-description');
 const formTag = document.querySelector('#edit-task-form');
@@ -24,8 +23,6 @@ const showEdit = async (e) => {
     let stringYear = String(taskTimeframe.getFullYear());
 
 
-    console.log('__----__-', data);
-
     formDescriptionTag.innerText = data.task.description;
     csrfTag.value = data.csrfToken;
     taskIdTag.value = data.task.id;
@@ -36,7 +33,7 @@ const showEdit = async (e) => {
     imageTag.value = data.task.image;
 
     completedTag.checked = data.task.completed;
-    console.log('+++++++++', data.task.completed)
+
 }
 
 editButtons.forEach((editBtn) => {
@@ -75,12 +72,12 @@ formTag.addEventListener('submit', async (e) => {
     if (!dataRes.errors) {
         formDescriptionTag.innerText = description;
         document.querySelector('.modal').classList.remove('show-modal');
-        console.log('123123123', taskContainer)
+
 
         taskContainer.querySelector(`.task-description-${taskId}`).innerText = description;
-        console.log('456545645', taskContainer)
+
         const clone = taskContainer.cloneNode(true);
-        console.log('000000000', completedTag.checked)
+
         clone.querySelector('.task-edit-btn').addEventListener('click', showEdit);
         if (completedTag.checked && taskContainer.parentElement.classList.contains('currentIncompleteContainer')) {
             document.querySelector('div.currentCompleteContainer').appendChild(clone);
@@ -104,5 +101,3 @@ formTag.addEventListener('submit', async (e) => {
         document.querySelector('.errors-container').appendChild(errorContainer);
     }
 });
-
-// };
