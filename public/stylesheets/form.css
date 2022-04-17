@@ -1,7 +1,7 @@
 form>input {
   /* all: unset; */
   background-color: #cfcfcd;
-  width: 25rem;
+  width: 20rem;
   height: 2.5rem;
   margin: 1rem;
   border-radius: 0.8rem;
@@ -10,7 +10,8 @@ form>input {
   align-items: center;
 }
 
-form>a {
+form > a,
+form > button {
   all: unset;
   border-radius: 0.8rem;
   color: white;
@@ -19,10 +20,10 @@ form>a {
   font-family: inherit;
   background-color: #FDCE2A;
   text-align: center;
-  line-height: 1.1;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
 }
 
-form>a:hover {
+form > a:hover,
+form > button:hover {
   background-color: #ffc209;
 }
