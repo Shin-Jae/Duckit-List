@@ -9,24 +9,24 @@ const completedSubContainer = document.querySelector(
     ".completed-sub-container"
 );
 
-document.querySelectorAll("h1").forEach((ele) => {
+document.querySelectorAll("h1.tab").forEach((ele) => {
     ele.addEventListener("click", (event) => {
-        event.target.classList.toggle("clicked");
-        if (event.target.classList.contains("list-title")) {
+        ele.classList.add("clicked");
+        if (ele.classList.contains("list-title")) {
             incompleteBtn.classList.remove("clicked");
             completedBtn.classList.remove("clicked");
             listSubContainer.classList.remove("hide");
             incompleteSubContainer.classList.add("hide");
             completedSubContainer.classList.add("hide");
         }
-        if (event.target.classList.contains("incomplete-title")) {
+        if (ele.classList.contains("incomplete-title")) {
             listBtn.classList.remove("clicked");
             completedBtn.classList.remove("clicked");
             listSubContainer.classList.add("hide");
             incompleteSubContainer.classList.remove("hide");
             completedSubContainer.classList.add("hide");
         }
-        if (event.target.classList.contains("completed-title")) {
+        if (ele.classList.contains("completed-title")) {
             incompleteBtn.classList.remove("clicked");
             listBtn.classList.remove("clicked");
             listSubContainer.classList.add("hide");

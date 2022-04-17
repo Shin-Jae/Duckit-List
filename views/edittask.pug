@@ -3,8 +3,8 @@ extends modal.pug
 include utils.pug
 
 append head
-  script(src="/javascripts/taskButtons.js" type="module")
   link(rel="stylesheet" href="/stylesheets/editform.css")
+  script(src="/javascripts/editTask.js" type="module")
 
 block template
   div.container
@@ -12,8 +12,9 @@ block template
     p Woud you like to edit your Task?
       +validationErrorSummary(errors)
       div(id='task-errors' style='color: red')
-      form(id='edit-task-form' method="put")
+      form(id='edit-task-form')
         input(type='hidden' name="_csrf" class='csrf-token')
+        input(type='hidden' class='task-id')
         label(for=description) Description
         input(name='description' type="text" class='task-description')
         label(for=timeframe) Timeframe

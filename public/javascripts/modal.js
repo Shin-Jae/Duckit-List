@@ -1,10 +1,10 @@
 // container for modal
 const modal = document.querySelector(".modal");
 
-// "MODAL" button on viewlist.pug
-document.querySelector("#render-modal").addEventListener("click", e => {
-    modal.classList.toggle("show-modal");
-});
+// // "MODAL" button on viewlist.pug
+// document.querySelector("#render-modal").addEventListener("click", e => {
+//     modal.classList.toggle("show-modal");
+// });
 
 // "x" button to close modal
 document.querySelector(".close-button").addEventListener("click", e => {

@@ -31,7 +31,10 @@
 }
 
 :is(.list-title, .incomplete-title, .completed-title).clicked {
-  border: 2px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: none;
 }
 
 :is(.list-title, .incomplete-title, .completed-title):hover {

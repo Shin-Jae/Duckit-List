@@ -77,13 +77,25 @@ router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
   })
 }));
 
-router.put('/edit/:id(\\d+)', asyncHandler(async (req, res) => {
-  // const task = await db.Task.findByPk(req.params.id)
-  console.log()
-  console.log()
-  console.log(req.body)
-  console.log()
-  console.log()
+router.put('/edit/:id(\\d+)', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
+  const task = await db.Task.findByPk(req.params.id)
+  const {
+    description,
+    timeframe,
+    cost,
+    image,
+    completed
+  } = req.body;
+
+  task.description = description;
+  task.timeframe = timeframe;
+  task.cost = parseInt(cost, 10);
+  task.image = image;
+  task.completed = completed;
+  task.updatedAt = new Date();
+
+  await task.save();
+
   return res.send(200)
 
   // if (req.body.timeframe === '') {
