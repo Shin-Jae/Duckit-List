@@ -10,11 +10,11 @@ block content
 
     div(class="main-login-container")
         div(class="login-container-left-half")
-            p A journey of a thousand miles must begin with a single step.
-            p -Lao Tzu
+            p "A journey of a thousand miles must begin with a single step."
+            div(class="proverbs")
+                p -Lao Tzu
         div(class="login-container-right-half")
             +validationErrorSummary(errors)
-
             form(action='/users/login' method='post' id="loginForm" )
                 input(type='hidden' name='_csrf' value=csrfToken)
                 +field(null, 'email', email, null, 'Email Address')

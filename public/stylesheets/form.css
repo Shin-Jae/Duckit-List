@@ -10,7 +10,6 @@ form>input {
   align-items: center;
 }
 
-form>button,
 form>a {
   all: unset;
   border-radius: 0.8rem;
@@ -24,7 +23,6 @@ form>a {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
 }
 
-form>a:hover,
-form>button:hover {
+form>a:hover {
   background-color: #ffc209;
 }
