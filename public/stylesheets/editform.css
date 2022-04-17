@@ -1,3 +1,7 @@
-#edit-task-form {
-    /* z-index: 500; */
+.user-prompt.hide {
+    display: none
+}
+
+.container-edit-form.hide {
+    display: none
 }
