@@ -2,7 +2,6 @@
   margin-top: 80px;
 }
 
-
 #log-in-button {
   margin: 20px;
 }
@@ -19,6 +18,22 @@ p {
   align-items: center;
 
 }
+
+ul {
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* li {
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
 
 .main-login-container {
   display: flex;
@@ -63,6 +78,7 @@ button.login-btn {
   color: white;
   flex-direction: row;
 }
+
 
 #demoLoginForm {
   align-self: center;
