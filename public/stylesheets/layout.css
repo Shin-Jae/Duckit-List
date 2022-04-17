@@ -5,3 +5,128 @@
     font-weight: 900;
     color: white;
 }
+
+/* Splash grid */
+.splash-grid {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;;
+    grid-template-areas:
+      "bubble ."
+      ". images";
+}
+
+#splash-text {
+    padding: 20px;
+    font-family: 'Days One', sans-serif;
+    position: absolute;
+    width: 800px;
+    top: 10%;
+    left: 40%;
+    transform: translate(-10%, -10%);
+}
+
+#splash-text>h1 {
+    font-size: 3rem;
+}
+
+#splash-text>h2 {
+    font-size: 2rem;
+}
+
+#splash-text>p {
+    font-size: 1.5rem;
+}
+
+#splash-img-1,
+#splash-img-2,
+#splash-img-3 {
+    height: 400px;
+    width: 250px;
+    object-fit: cover;
+    border-top: 8px solid white;
+    border-left: 8px solid white;
+    border-right: 8px solid white;
+    border-bottom: 50px solid white;
+    margin: 5px;
+    box-shadow: 0px 0px 5px rgba(173, 173, 173, 0.5);
+}
+
+.splash-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px;
+    position: absolute;
+    top: 25%;
+    left: 70%;
+    transform: translate(-10%, -10%);
+    grid-area: images;
+}
+
+#splash-img-1 {
+    margin: 20px;
+    margin-top: 25%;
+    transform: rotate(-8deg);
+}
+
+#splash-img-2 {
+    margin: 20px;
+    margin-top: 20%;
+    transform: rotate(2deg);
+}
+
+#splash-img-3 {
+    margin: 20px;
+    margin-top: 25%;
+    transform: rotate(10deg);
+}
+
+.splash-background-bubble {
+    background-color: #A4D7D9;
+    height: 600px;
+    width: 600px;
+    border-radius: 50%;
+    position: relative;
+    grid-area: bubble;
+}
+
+/* Footer */
+
+.footer-grid {
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    grid-template-columns: auto;
+    grid-template-areas:
+      "main"
+      "footer";
+}
+
+.team-container {
+    display: flex;
+    flex-direction: row;
+    grid-area: footer;
+    justify-content: center;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+}
+
+.team > h6 {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(157, 156, 156);
+    padding: 1px;
+}
+
+.team > a {
+    font-size: 10px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: grey;
+    padding: 1px;
+}
