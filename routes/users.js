@@ -257,9 +257,18 @@ router.post('/login/demo', csrfProtection, asyncHandler(async (req, res) => {
     })
     await user.save()
   }
+  const lists = await db.List.findAll({ where: { userId: user.id }, include: [db.Task] })
+  const tasks = []
+  lists.forEach((list) => {
+    if (list.Tasks) {
+      list.Tasks.forEach((task) => {
+        tasks.push(task)
+      })
+    }
+  })
   loginUser(req, res, user)
   req.session.auth = { userId: user.id, username: user.username }
-  res.redirect('/home')
+  res.render('homepage', { user, tasks })
 }))
 
 module.exports = router;

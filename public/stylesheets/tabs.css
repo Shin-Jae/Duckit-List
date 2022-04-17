@@ -5,10 +5,6 @@
   justify-content: center;
 }
 
-.listTab {
-  border-left: 2px solid gray;
-}
-
 .completed-container {
   border-right: 2px solid gray;
 }
