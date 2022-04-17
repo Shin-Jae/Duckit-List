@@ -6,12 +6,35 @@ const descriptionTag = formTag.querySelector('.task-description');
 const timeframeTag = formTag.querySelector('.task-timeframe');
 const costTag = formTag.querySelector('.task-cost');
 const imageTag = formTag.querySelector('.task-image');
+const listDelete = document.querySelectorAll('.list-delete-btn');
 const completedTag = formTag.querySelector('.task-completed');
 const taskIdTag = formTag.querySelector('.task-id');
 
+listDelete.forEach((listDeleteBtn) => {
+    listDeleteBtn.addEventListener('click', (e) => {
+        const prompt = document.querySelector('.user-prompt');
+        document.querySelector('.container-edit-form').classList.toggle('hide');
+        prompt.classList.toggle('hide');
+        document.querySelector('.modal').classList.toggle('show-modal');
+        const listId = e.target.id.split('-')[0];
+        prompt.querySelector('.list-id-delete').value = listId;
+        prompt.querySelector('.user-prompt-yes').addEventListener('click', async (e) => {
+            const response = await fetch(`/lists/${listId}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                document.querySelector('.modal').classList.toggle('show-modal');
+                document.querySelector('.container-edit-form').classList.toggle('hide');
+                prompt.classList.toggle('hide');
+                document.querySelector(`#label-container-${listId}`).remove();
+            }
+        })
+    })
+})
+
 const showEdit = async (e) => {
     document.querySelector('.errors-container').innerHTML = null;
-    document.querySelector('.modal').classList.add('show-modal');
+    document.querySelector('.modal').classList.toggle('show-modal');
     const taskId = e.target.id.split('id:')[1]
     const response = await fetch(`/tasks/edit/${taskId}`);
     const data = await response.json();
@@ -71,13 +94,15 @@ formTag.addEventListener('submit', async (e) => {
     const taskContainer = document.querySelector(`#task-container-${taskId}`)
     if (!dataRes.errors) {
         formDescriptionTag.innerText = description;
-        document.querySelector('.modal').classList.remove('show-modal');
+        document.querySelector('.modal').classList.toggle('show-modal');
 
 
         taskContainer.querySelector(`.task-description-${taskId}`).innerText = description;
 
-        const clone = taskContainer.cloneNode(true);
+        // await new Promise(res => setTimeout(res, 500))
 
+        const clone = taskContainer.cloneNode(true);
+        console.log('*******', clone)
         clone.querySelector('.task-edit-btn').addEventListener('click', showEdit);
         if (completedTag.checked && taskContainer.parentElement.classList.contains('currentIncompleteContainer')) {
             document.querySelector('div.currentCompleteContainer').appendChild(clone);

@@ -7,7 +7,7 @@ append head
   script(src="/javascripts/editTask.js" type="module")
 
 block template
-  div.container
+  div.container-edit-form
     h2(id='edit-task-description')
     p Woud you like to edit your Task?
       +validationErrorSummary(errors)
@@ -32,3 +32,8 @@ block template
         button(type='submit' class='tasksubmit-btn') Save
         a(href='/lists' class='cancel-btn') Cancel
         //- button(type='submit' id='test-button') TEST
+  div(class='user-prompt hide')
+    input(type='hidden' class='list-id-delete')
+    h1 Are you sure?
+    button(class='user-prompt-yes') Yes
+    button(class='user-prompt-no') No
