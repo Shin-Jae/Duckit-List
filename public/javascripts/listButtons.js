@@ -1,26 +1,26 @@
 // Delete buttons
 const deleteButtons = document.querySelectorAll('.delete-btn');
 
-for (let i = 0; i < deleteButtons.length; i++) {
-  const btn = deleteButtons[i];
-  btn.addEventListener('click', async (e) => {
-    console.log(e.target.id);
-    const listId = e.target.id.split('-')[2];
-    const res = await fetch(`/lists/${listId}`, {
-      method: 'DELETE',
-      // headers: { 'Content-Type': 'application/json' },
-    })
-    console.log(res)
+// for (let i = 0; i < deleteButtons.length; i++) {
+//   const btn = deleteButtons[i];
+//   btn.addEventListener('click', async (e) => {
+//     console.log(e.target.id);
+//     const listId = e.target.id.split('-')[2];
+//     const res = await fetch(`/lists/${listId}`, {
+//       method: 'DELETE',
+//       // headers: { 'Content-Type': 'application/json' },
+//     })
+//     console.log(res)
 
-    const data = await res.json();
-    console.log(data);
-    if (data.message === 'Success') {
-      const container = document.getElementById(`container-${listId}`);
-      container.remove()
-      location.reload();
-    }
-  })
-}
+//     const data = await res.json();
+//     console.log(data);
+//     if (data.message === 'Success') {
+//       const container = document.getElementById(`container-${listId}`);
+//       container.remove()
+//       location.reload();
+//     }
+//   })
+// }
 
 
 // Edit buttons
