@@ -95,7 +95,7 @@ router.get('/search/:query', asyncHandler(async (req, res) => {
     list.Tasks.sort((a, b) => a.id - b.id);
   });
 
-  return res.json({ listResults, taskResults: listWithMatchingTasks });
+  return res.render("searchbar", { listResults, taskResults: listWithMatchingTasks });
 }));
 
 module.exports = router;
