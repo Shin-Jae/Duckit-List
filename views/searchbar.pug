@@ -1,9 +1,23 @@
 extends homepage.pug
 
 append head
+    link(rel='stylesheet' href='/stylesheets/searchbar.css')
 
 block content
     div.results-container
         div.lists-results-container
+            p list name
+            p list description
+            p list name Travel
+            p list description Travel
+            p list name Food
+            p list description Food
+
 
         div.tasks-results-container
+            p task name Adventure
+            img(src="http://loremflickr.com/640/480/city")
+            p task name Swim with dolphins
+            img(src="http://loremflickr.com/640/480/city")
+            p task name Eat rainbow fruits
+            img(src="http://loremflickr.com/640/480/city")

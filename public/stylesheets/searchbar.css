@@ -1,0 +1,22 @@
+.results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lists-results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tasks-results-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    border-radius: 50%;
+    width: 5rem
+}
