@@ -27,6 +27,7 @@ for (let i = 0; i < deleteButtons.length; i++) {
 const editButtons = document.querySelectorAll('.edit-btn');
 
 const submitBtn = document.querySelector(`.submit-btn`)
+
 submitBtn.addEventListener('click', async (submitEvent) => {
   const listId = submitEvent.target.id.split('-')[2]
   submitEvent.preventDefault()

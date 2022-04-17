@@ -3,7 +3,7 @@ extends edittask.pug
 include utils.pug
 
 append head
-  script(src="/javascripts/listButtons.js" type="module")
+  //- script(src="/javascripts/listButtons.js" type="module")
   script(src="/javascripts/taskButtons.js" type="module")
   script(src="/javascripts/viewTabs.js" type="module")
   script(src="/routes/lists.js" type="module")
@@ -51,10 +51,10 @@ block content
             if task.completed
               div.currentCompleteContainer
                 div(id=`task-container-${task.id}`)
-                  a(href=`/lists/${list.id}`)
                     div.inner
                       div(style="font-weight:bold; padding:10px;")= task.description
-                        a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                        //- a(href=`/tasks/edit/${task.id}` class='task-edit-btn' id=`task-edit-btn-${task.id}`) Edit
+                        button(type='button' class='task-edit-btn' id=`task-edit-btn-id:${task.id}`) Edit
                         a(class='task-delete-btn' id=`task-delete-btn-${task.id}`) Delete
 
 
