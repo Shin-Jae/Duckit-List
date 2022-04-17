@@ -97,6 +97,7 @@ router.put('/edit/:id(\\d+)', csrfProtection, taskValidators, asyncHandler(async
     task.cost = req.body.cost;
     task.timeframe = req.body.timeframe;
     task.image = req.body.image;
+    task.completed = req.body.completed;
 
     console.log('______if validator is empty______')
     await task.save()
