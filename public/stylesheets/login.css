@@ -2,7 +2,6 @@
   margin-top: 80px;
 }
 
-
 #log-in-button {
   margin: 20px;
 }
@@ -14,7 +13,39 @@ a {
 
 p {
   font-family: "Days One";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 4rem;
+  margin-right: 5rem;
 }
+
+.proverbs {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  justify-content: flex-end;
+  font-size: 1.5rem;
+
+}
+
+ul {
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* li {
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
 
 .main-login-container {
   display: flex;
@@ -60,8 +91,12 @@ button.login-btn {
   flex-direction: row;
 }
 
+
 #demoLoginForm {
   align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .login-container-left-half {
@@ -69,6 +104,8 @@ button.login-btn {
   background-color: #A4D7D9;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   height: 100%;
   width: 50%;
+  font-size: 1.5rem;
 }

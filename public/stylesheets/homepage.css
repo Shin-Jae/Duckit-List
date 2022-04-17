@@ -24,11 +24,13 @@
     align-items: center;
 }
 
-.main-content, .homepage body {
+.main-content,
+.homepage body {
     margin-top: 80px;
 }
 
-#homepage, #welcome {
+#homepage,
+#welcome {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
@@ -37,8 +39,10 @@
 
 #duckitList {
     margin: 20px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    font-size: 1.6rem;
+    font-family: 'Elsie';
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
 }
 
 a {
@@ -47,14 +51,15 @@ a {
 }
 
 .logo {
-    width: 40px;
-    height: 40px;
+    width: 55px;
+    height: 55px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-left: 15px;
 }
 
-.searchbar > input {
+.searchbar>input {
     all: unset;
     display: flex;
     align-items: center;
@@ -62,6 +67,8 @@ a {
     background-color: #cfcfcd;
     padding: 5px;
     border: 2px solid #dededf;
+
+
 }
 
 .welcome-message {
@@ -90,7 +97,8 @@ a {
     color: black;
 }
 
-.userImage, #user-image {
+.userImage,
+#user-image {
     height: 40px;
     height: 40px;
     border-radius: 50%;
@@ -106,15 +114,15 @@ a {
     transform: translate(-10%, -10%);
 }
 
-#splash-text > h1 {
+#splash-text>h1 {
     font-size: 3rem;
 }
 
-#splash-text > h2 {
+#splash-text>h2 {
     font-size: 2rem;
 }
 
-#splash-text > p {
+#splash-text>p {
     font-size: 1.5rem;
 }
 
@@ -186,7 +194,7 @@ a {
     align-items: center;
 }
 
-.homepage > h2 {
+.homepage>h2 {
     font-size: 2rem;
     padding: 2rem;
     font-family: "Days One", cursive;
@@ -210,7 +218,7 @@ a {
 
 }
 
-.homepage-task-container > li {
+.homepage-task-container>li {
     font-size: 16px;
     font-family: "Amatic SC", cursive;
     position: absolute;
@@ -219,7 +227,8 @@ a {
     transform: translate(-50%, -50%);
 }
 
-.remove-bullet, li {
+.remove-bullet,
+li {
     list-style: none;
 }
 
@@ -259,7 +268,7 @@ body {
     padding: 5px;
 }
 
-.list-buttons{
+.list-buttons {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -278,6 +287,7 @@ body {
 
 
 @media screen and (min-width: 1800px) {
+
     #splash-img-1,
     #splash-img-2,
     #splash-img-3 {
@@ -321,15 +331,15 @@ body {
         transform: translate(-10%, -10%);
     }
 
-    #splash-text > h1 {
+    #splash-text>h1 {
         font-size: 6rem;
     }
 
-    #splash-text > h2 {
+    #splash-text>h2 {
         font-size: 4rem;
     }
 
-    #splash-text > p {
+    #splash-text>p {
         font-size: 2rem;
     }
 }
