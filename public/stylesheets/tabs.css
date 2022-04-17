@@ -1,12 +1,21 @@
 .allTabs {
   display: flex;
   width: 100vw;
-  height: 10rem;
+  height: 40px;
   justify-content: center;
 }
 
 .completed-container {
   border-right: 2px solid gray;
+}
+
+.listTab {
+  margin-bottom: 50px;
+}
+
+.list-sub-container,
+.task-sub-container {
+  margin-top: 40px;
 }
 
 .listTab,
@@ -20,11 +29,20 @@
 .list-title,
 .incomplete-title,
 .completed-title {
-  border-bottom: 2px solid gray;
+  text-decoration: solid #ffc209;
   width: 12rem;
   text-align: center;
   margin-top: 0;
-  font-family: sans-serif;
+  font-family: "Days One";
+  width: 300px;
+  border-radius: 0.8rem;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  background-color: #78cbce;
+  text-align: center;
+  line-height: 1.1;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
 }
 
 :is(.list-title, .incomplete-title, .completed-title).clicked {
@@ -41,4 +59,32 @@
 
 :is(.list-sub-container, .incomplete-sub-container, .completed-sub-container).hide {
   display: none;
+}
+
+.button-style {
+  all: unset;
+  border-radius: 0.8rem;
+  color: white;
+  padding: 10px;
+  margin: 5px;
+  font-family: inherit;
+  background-color: #FDCE2A;
+  text-align: center;
+  line-height: 1.1;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+}
+
+form>a:hover {
+  background-color: #ffc209;
+}
+
+.inner {
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  padding-top: 30px;
 }
