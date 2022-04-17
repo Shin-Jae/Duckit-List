@@ -4,7 +4,7 @@ include utils.pug
 
 append head
   //- script(src="/javascripts/listButtons.js" type="module")
-  script(src="/javascripts/taskButtons.js" type="module")
+  //-script(src="/javascripts/taskButtons.js" type="module")
   script(src="/javascripts/viewTabs.js" type="module")
   script(src="/routes/lists.js" type="module")
   link(rel='stylesheet' href='/stylesheets/tabs.css')
@@ -36,7 +36,7 @@ block content
           div(class='incomplete-sub-container hide').task-sub-container
               each list in lists
                 if list.Tasks.length && list.Tasks.some((task) => !task.completed)
-                  div(class=`list-id-${list.id}`)
+                  div(class=`list-id-${list.id}`).listContainer
                     h2= list.name
                     each task in list.Tasks
                       if !task.completed
@@ -49,7 +49,7 @@ block content
           div(class='completed-sub-container hide').task-sub-container
             each list in lists
               if list.Tasks.length && list.Tasks.some((task) => task.completed)
-                div(class=`list-id-${list.id}`)
+                div(class=`list-id-${list.id}`).listContainer
                   h2= list.name
                   each task in list.Tasks
                     if task.completed
