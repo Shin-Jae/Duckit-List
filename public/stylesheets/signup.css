@@ -27,6 +27,14 @@ ul {
     align-items: center;
 }
 
+li {
+    height: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .main-signup-container {
     display: flex;
     height: calc(100% - 64px);
