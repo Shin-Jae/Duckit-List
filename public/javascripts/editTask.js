@@ -6,30 +6,41 @@ const descriptionTag = formTag.querySelector('.task-description');
 const timeframeTag = formTag.querySelector('.task-timeframe');
 const costTag = formTag.querySelector('.task-cost');
 const imageTag = formTag.querySelector('.task-image');
+const prompt = document.querySelector('.user-prompt');
 const listDelete = document.querySelectorAll('.list-delete-btn');
 const completedTag = formTag.querySelector('.task-completed');
 const taskIdTag = formTag.querySelector('.task-id');
 
 listDelete.forEach((listDeleteBtn) => {
     listDeleteBtn.addEventListener('click', (e) => {
-        const prompt = document.querySelector('.user-prompt');
+
+
         document.querySelector('.container-edit-form').classList.toggle('hide');
         prompt.classList.toggle('hide');
         document.querySelector('.modal').classList.toggle('show-modal');
         const listId = e.target.id.split('-')[0];
         prompt.querySelector('.list-id-delete').value = listId;
-        prompt.querySelector('.user-prompt-yes').addEventListener('click', async (e) => {
-            const response = await fetch(`/lists/${listId}`, {
-                method: 'DELETE',
-            });
-            if (response.ok) {
-                document.querySelector('.modal').classList.toggle('show-modal');
-                document.querySelector('.container-edit-form').classList.toggle('hide');
-                prompt.classList.toggle('hide');
-                document.querySelector(`#label-container-${listId}`).remove();
-            }
-        })
+
     })
+})
+prompt.querySelector('.user-prompt-yes').addEventListener('click', async (e) => {
+    const listId = prompt.querySelector('.list-id-delete').value
+    console.log('&&&&&&', listId)
+    const response = await fetch(`/lists/${listId}`, {
+        method: 'DELETE',
+    });
+    if (response.ok) {
+        document.querySelector('.modal').classList.toggle('show-modal');
+        document.querySelector('.container-edit-form').classList.toggle('hide');
+        prompt.classList.toggle('hide');
+        document.querySelector(`#label-container-${listId}`).remove();
+    }
+})
+
+prompt.querySelector('.user-prompt-no').addEventListener('click', async (e) => {
+    document.querySelector('.container-edit-form').classList.remove('hide');
+    prompt.classList.add('hide');
+    document.querySelector('.modal').classList.toggle('show-modal');
 })
 
 const showEdit = async (e) => {
@@ -92,6 +103,7 @@ formTag.addEventListener('submit', async (e) => {
     });
     const dataRes = await response.json()
     const taskContainer = document.querySelector(`#task-container-${taskId}`)
+    console.log(')()()()()()(', dataRes)
     if (!dataRes.errors) {
         formDescriptionTag.innerText = description;
         document.querySelector('.modal').classList.toggle('show-modal');
@@ -99,12 +111,16 @@ formTag.addEventListener('submit', async (e) => {
 
         taskContainer.querySelector(`.task-description-${taskId}`).innerText = description;
 
-        // await new Promise(res => setTimeout(res, 500))
+
 
         const clone = taskContainer.cloneNode(true);
+        await new Promise(res => setTimeout(res, 500))
         console.log('*******', clone)
         clone.querySelector('.task-edit-btn').addEventListener('click', showEdit);
         if (completedTag.checked && taskContainer.parentElement.classList.contains('currentIncompleteContainer')) {
+            const listId = dataRes.task.listId;
+            const completedSubContainer = document.querySelector(`.completed-sub-container > h2.list-id-${listId}`).parentElement;
+
             document.querySelector('div.currentCompleteContainer').appendChild(clone);
             taskContainer.remove();
         } else if (!completedTag.checked && taskContainer.parentElement.classList.contains('currentCompleteContainer')) {

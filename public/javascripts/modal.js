@@ -1,6 +1,7 @@
 // container for modal
 const modal = document.querySelector(".modal");
-
+const prompt = document.querySelector('.user-prompt');
+const editForm = document.querySelector('.container-edit-form')
 // // "MODAL" button on viewlist.pug
 // document.querySelector("#render-modal").addEventListener("click", e => {
 //     modal.classList.toggle("show-modal");
@@ -9,6 +10,8 @@ const modal = document.querySelector(".modal");
 // "x" button to close modal
 document.querySelector(".close-button").addEventListener("click", e => {
     modal.classList.toggle("show-modal");
+    prompt.classList.add('hide');
+    editForm.classList.remove('hide');
     console.log("=============")
 });
 
@@ -16,5 +19,7 @@ document.querySelector(".close-button").addEventListener("click", e => {
 window.addEventListener("click", e => {
     if (e.target === modal) {
         modal.classList.toggle("show-modal");
+        prompt.classList.add('hide');
+        editForm.classList.remove('hide');
     }
 });
