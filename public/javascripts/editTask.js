@@ -1,3 +1,4 @@
+// document.onload = function () {
 const editButtons = document.querySelectorAll('.task-edit-btn');
 const formDescriptionTag = document.querySelector('#edit-task-description');
 const formTag = document.querySelector('#edit-task-form');
@@ -9,35 +10,37 @@ const imageTag = formTag.querySelector('.task-image');
 const completedTag = formTag.querySelector('.task-completed');
 const taskIdTag = formTag.querySelector('.task-id');
 
+const showEdit = async (e) => {
+    document.querySelector('.errors-container').innerHTML = null;
+    document.querySelector('.modal').classList.add('show-modal');
+    const taskId = e.target.id.split('id:')[1]
+    const response = await fetch(`/tasks/edit/${taskId}`);
+    const data = await response.json();
+    const taskTimeframe = new Date(data.task.timeframe);
+    let stringDate = String(taskTimeframe.getDate());
+    stringDate = stringDate.length === 1 ? '0' + stringDate : stringDate;
+    let stringMonth = String(taskTimeframe.getMonth() + 1);
+    stringMonth = stringMonth.length === 1 ? '0' + stringMonth : stringMonth;
+    let stringYear = String(taskTimeframe.getFullYear());
+
+
+    console.log('__----__-', data);
+
+    formDescriptionTag.innerText = data.task.description;
+    csrfTag.value = data.csrfToken;
+    taskIdTag.value = data.task.id;
+
+    descriptionTag.value = data.task.description;
+    timeframeTag.value = `${stringYear}-${stringMonth}-${stringDate}`;
+    costTag.value = data.task.cost;
+    imageTag.value = data.task.image;
+
+    completedTag.checked = data.task.completed;
+    console.log('+++++++++', data.task.completed)
+}
+
 editButtons.forEach((editBtn) => {
-    editBtn.addEventListener('click', async (e) => {
-        document.querySelector('.errors-container').innerHTML = null;
-        document.querySelector('.modal').classList.add('show-modal');
-        const taskId = e.target.id.split('id:')[1]
-        const response = await fetch(`/tasks/edit/${taskId}`);
-        const data = await response.json();
-        const taskTimeframe = new Date(data.task.timeframe);
-        let stringDate = String(taskTimeframe.getDate());
-        stringDate = stringDate.length === 1 ? '0' + stringDate : stringDate;
-        let stringMonth = String(taskTimeframe.getMonth() + 1);
-        stringMonth = stringMonth.length === 1 ? '0' + stringMonth : stringMonth;
-        let stringYear = String(taskTimeframe.getFullYear());
-
-
-        console.log('__----__-', data);
-
-        formDescriptionTag.innerText = data.task.description;
-        csrfTag.value = data.csrfToken;
-        taskIdTag.value = data.task.id;
-
-        descriptionTag.value = data.task.description;
-        timeframeTag.value = `${stringYear}-${stringMonth}-${stringDate}`;
-        costTag.value = data.task.cost;
-        imageTag.value = data.task.image;
-
-        completedTag.checked = data.task.completed;
-        console.log('+++++++++', data.task.completed)
-    });
+    editBtn.addEventListener('click', showEdit)
 });
 
 formTag.addEventListener('submit', async (e) => {
@@ -68,11 +71,26 @@ formTag.addEventListener('submit', async (e) => {
         body: JSON.stringify(data)
     });
     const dataRes = await response.json()
-
+    const taskContainer = document.querySelector(`#task-container-${taskId}`)
     if (!dataRes.errors) {
         formDescriptionTag.innerText = description;
         document.querySelector('.modal').classList.remove('show-modal');
-        document.querySelector(`.incomplete-sub-container .task-description-${taskId}`).innerText = description;
+        console.log('123123123', taskContainer)
+
+        taskContainer.querySelector(`.task-description-${taskId}`).innerText = description;
+        console.log('456545645', taskContainer)
+        const clone = taskContainer.cloneNode(true);
+        console.log('000000000', completedTag.checked)
+        clone.querySelector('.task-edit-btn').addEventListener('click', showEdit);
+        if (completedTag.checked && taskContainer.parentElement.classList.contains('currentIncompleteContainer')) {
+            document.querySelector('div.currentCompleteContainer').appendChild(clone);
+            taskContainer.remove();
+        } else if (!completedTag.checked && taskContainer.parentElement.classList.contains('currentCompleteContainer')) {
+            document.querySelector('div.currentIncompleteContainer').appendChild(clone);
+            taskContainer.remove();
+        }
+
+
     } else {
         const errorDescription = document.createElement('p')
         const errorContainer = document.createElement('ul')
@@ -86,3 +104,5 @@ formTag.addEventListener('submit', async (e) => {
         document.querySelector('.errors-container').appendChild(errorContainer);
     }
 });
+
+// };
