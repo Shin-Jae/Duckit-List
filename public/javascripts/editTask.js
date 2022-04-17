@@ -11,6 +11,7 @@ const taskIdTag = formTag.querySelector('.task-id');
 
 editButtons.forEach((editBtn) => {
     editBtn.addEventListener('click', async (e) => {
+        document.querySelector('.errors-container').innerHTML = null;
         document.querySelector('.modal').classList.add('show-modal');
         const taskId = e.target.id.split('id:')[1]
         const response = await fetch(`/tasks/edit/${taskId}`);
@@ -62,10 +63,22 @@ formTag.addEventListener('submit', async (e) => {
         },
         body: JSON.stringify(data)
     });
+    const dataRes = await response.json()
 
-    if (response.ok) {
+    if (!dataRes.errors) {
         formDescriptionTag.innerText = description;
         document.querySelector('.modal').classList.remove('show-modal');
         document.querySelector(`.incomplete-sub-container .task-description-${taskId}`).innerText = description;
+    } else {
+        const errorDescription = document.createElement('p')
+        const errorContainer = document.createElement('ul')
+        dataRes.errors.forEach((error) => {
+            const liError = document.createElement('li')
+            liError.innerText = error;
+            errorContainer.appendChild(liError);
+        })
+
+        document.querySelector('.errors-container').appendChild(errorDescription);
+        document.querySelector('.errors-container').appendChild(errorContainer);
     }
 });

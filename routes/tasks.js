@@ -14,6 +14,7 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 }));
 
 router.get('/new/:listId', csrfProtection, (req, res) => {
+  console.log('------', req.params)
   const listId = req.params.listId;
   res.render("addtolist", { csrfToken: req.csrfToken(), listId });
 });
@@ -27,6 +28,7 @@ const taskValidators = [
 // alternative GET route '/:id(\\d+)/new'
 router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
   let { listId, description, cost, timeframe, image, category } = req.body;
+
   // const listId = parseInt(req.params.id, 10)
   if (timeframe === '') {
     timeframe = null;
@@ -34,10 +36,11 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
   if (cost === '') {
     cost = null;
   };
+
   if (category === '') {
     category = null;
   }
-  console.log("******************", req.params)
+
   let errors = [];
   const validatorErrors = validationResult(req)
 
@@ -58,6 +61,7 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
     res.render("addtolist", {
       title: "Add to list",
       errors,
+      listId,
       csrfToken: req.csrfToken(),
     })
   }
@@ -79,58 +83,36 @@ router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
 
 router.put('/edit/:id(\\d+)', csrfProtection, taskValidators, asyncHandler(async (req, res) => {
   const task = await db.Task.findByPk(req.params.id)
-  const {
-    description,
-    timeframe,
-    cost,
-    image,
-    completed
-  } = req.body;
 
-  task.description = description;
-  task.timeframe = timeframe;
-  task.cost = parseInt(cost, 10);
-  task.image = image;
-  task.completed = completed;
-  task.updatedAt = new Date();
+  if (req.body.timeframe === '') {
+    req.body.timeframe = null;
+  };
+  if (req.body.cost === '') {
+    req.body.cost = null;
+  };
 
-  await task.save();
+  const validatorErrors = validationResult(req)
+  if (validatorErrors.isEmpty()) {
+    task.description = req.body.description;
+    task.cost = req.body.cost;
+    task.timeframe = req.body.timeframe;
+    task.image = req.body.image;
 
-  return res.send(200)
+    console.log('______if validator is empty______')
+    await task.save()
+    res.json({
+      message: 'Task successfully updated',
+      task
+    })
 
-  // if (req.body.timeframe === '') {
-  //   req.body.timeframe = null;
-  // };
-  // if (req.body.cost === '') {
-  //   req.body.cost = null;
-  // };
-  // if (req.body.completed === "No") {
-  //   req.body.completed = false
-  // } else {
-  //   req.body.completed = true
-  // }
-  // task.description = req.body.description;
-  // task.cost = req.body.cost;
-  // task.timeframe = req.body.timeframe;
-  // task.image = req.body.image;
-  // task.completed = req.body.completed
-  // // task.category = req.body.category;
-  // const validatorErrors = validationResult(req)
-  // if (validatorErrors.isEmpty()) {
-  //   console.log('______if validator is empty______')
-  //   await task.save()
-  //   res.json({
-  //     message: 'Task successfully updated',
-  //     task
-  //   })
-  //   // return res.redirect('/lists')
-  // } else {
-  //   const errors = validatorErrors.array().map(error => error.msg)
-  //   res.json({
-  //     message: 'There was an error',
-  //     errors,
-  //   });
-  // }
+  } else {
+    const errors = validatorErrors.array().map(error => error.msg)
+    res.json({
+      message: 'There was an error',
+      errors,
+    });
+  }
+
 }));
 
 
