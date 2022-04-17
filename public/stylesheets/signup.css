@@ -51,7 +51,7 @@ li {
 }
 
 #signupForm {
-    height: 10rem;
+    height: 35rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -69,7 +69,7 @@ li {
 
 button.submit-btn {
     width: 10rem;
-    height: 2rem;
+    height: 10rem;
     /* border: 0.1rem solid hsl(188, 67%, 39%); */
     border: none;
     border-radius: 0.8rem;
