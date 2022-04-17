@@ -93,16 +93,23 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
     hashedPassword,
   } = req.body;
 
-  const user = db.User.build({
+  const user = {
     email,
     firstName,
     lastName,
     username,
-  });
-
+    password,
+  };
   const validatorErrors = validationResult(req);
 
   if (validatorErrors.isEmpty()) {
+    const user = db.User.build({
+      email,
+      firstName,
+      lastName,
+      username,
+    });
+
     const hashedPassword = await bcrypt.hash(password, 10);
     user.hashedPassword = hashedPassword;
     await user.save();
@@ -112,12 +119,12 @@ router.post('/signup', csrfProtection, userValidators, asyncHandler(async (req, 
     const errors = validatorErrors.array().map((error) => error.msg);
     res.render('signup', {
       title: 'Sign Up',
-      user,
       errors,
+      user,
       csrfToken: req.csrfToken(),
     });
-    req.session.auth = { userId: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email }
-    res.redirect('/home')
+    // req.session.auth = { userId: user.id, username: user.username, firstName: user.firstName, lastName: user.lastName, email: user.email }
+    // res.redirect('/home')
   }
 }));
 

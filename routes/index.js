@@ -10,6 +10,11 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/home', asyncHandler(async (req, res) => {
+  const user = req.session.auth;
+  console.log('77777777', user)
+  if (!user) {
+    return res.redirect('/');
+  }
   const tasks = await db.Task.findAll();
 
   res.render('homepage', {
