@@ -5,3 +5,125 @@
     font-weight: 900;
     color: white;
 }
+
+/* Splash grid */
+.splash-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+      "bubble ."
+      ". images";
+}
+
+#splash-text {
+    padding: 140px;
+    font-family: 'Days One', sans-serif;
+    position: absolute;
+    width: 1200px;
+}
+
+#splash-text>h1 {
+    font-size: 3rem;
+}
+
+#splash-text>h2 {
+    font-size: 2rem;
+}
+
+#splash-text>p {
+    font-size: 1.5rem;
+}
+
+#splash-img-1,
+#splash-img-2,
+#splash-img-3 {
+    height: 400px;
+    width: 250px;
+    object-fit: cover;
+    border-top: 8px solid white;
+    border-left: 8px solid white;
+    border-right: 8px solid white;
+    border-bottom: 50px solid white;
+    margin: 5px;
+    box-shadow: 0px 0px 5px rgba(173, 173, 173, 0.5);
+}
+
+.splash-image-container {
+    display: flex;
+    flex-direction: row;
+    justify-items: end;
+    justify-content: flex-end;
+    padding: 80px;
+    padding-left: 80px;
+    grid-area: images;
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+}
+
+#splash-img-1 {
+    margin: 20px;
+    margin-top: 5%;
+    transform: rotate(-8deg);
+}
+
+#splash-img-2 {
+    margin: 20px;
+    transform: rotate(2deg);
+}
+
+#splash-img-3 {
+    margin: 20px;
+    margin-top: 5%;
+    transform: rotate(10deg);
+}
+
+.splash-background-bubble {
+    background-color: #A4D7D9;
+    height: 700px;
+    width: 700px;
+    border-radius: 50%;
+    position: relative;
+    grid-area: bubble;
+    object-fit: cover;
+    grid-row: 1 / 3;
+}
+
+/* Footer */
+
+.footer-grid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "footer";
+}
+
+.team-container {
+    display: flex;
+    flex-direction: row;
+    grid-area: footer;
+    justify-content: center;
+}
+
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+}
+
+.team > h6 {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(157, 156, 156);
+    padding: 1px;
+}
+
+.team > a {
+    font-size: 12px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: grey;
+    padding: 1px;
+}

@@ -3,17 +3,19 @@ extends layout
 append head
   //- add page specific styles by appending to the head
   link(rel="stylesheet" href="/stylesheets/homepage.css")
+  link(rel="stylesheet" href="/stylesheets/layout.css")
   //- link(rel="stylesheet" href="/stylesheets/modal.css")
 
   //- add page specific js
   script(src="/javascripts/index.js" type="module" defer)
 
 block content
-  div.splash-background-bubble
-    div#splash-text
-      h1= title
-      h2 YOLO
-      p ANYTHING is possible, especially when you write it down. Create your adventure, travel and life-long goals today!
+  div.splash-grid
+    div.splash-background-bubble
+      div#splash-text
+        h1= title
+        h2 YOLO
+        p ANYTHING is possible, especially when you write it down. Create your adventure, travel and life-long goals today!
     div.splash-image-container
       img(src="https://user-images.githubusercontent.com/96894806/163517044-fd14be1f-6f95-4944-8966-efd11dc9655e.jpeg", alt="Photo of duckit list goal" id="splash-img-1")
       img(src="https://user-images.githubusercontent.com/96894806/163516995-3c644f7a-6cce-4045-a2ac-2e9aa84c5fdc.jpeg", alt="Photo of duckit list goal" id="splash-img-2")
@@ -25,3 +27,22 @@ block content
     //-     div(class="modal")
     //-         h1 Welcome!
     //-         button(id="cancel-btn") Cancel
+  block footer
+    div.footer-grid
+      div.team-container
+        div.team
+          h6 Celeste
+          a(href="https://github.com/celestewinterton") Github
+          a(href="https://www.linkedin.com/in/celestewinterton/") LinkedIn
+        div.team
+          h6 Jae
+          a(href="https://github.com/Shin-Jae") Github
+          a(href="https://www.linkedin.com/in/jae-shin-5b3802128/") LinkedIn
+        div.team
+          h6 Joon
+          a(href="https://github.com/Joon-Bae") Github
+          a(href="")
+        div.team
+          h6 Vee
+          a(href="https://github.com/vee-alianza") Github
+          a(href="https://www.linkedin.com/in/vee-alianza/") LinkedIn
