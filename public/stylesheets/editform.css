@@ -5,3 +5,7 @@
 .container-edit-form.hide {
     display: none
 }
+
+.edit-listname.hide {
+    display: none;
+}
