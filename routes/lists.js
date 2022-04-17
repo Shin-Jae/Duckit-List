@@ -118,7 +118,6 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
     const listId = parseInt(req.params.id, 10);
 
     const list = await db.List.findByPk(listId);
-    console.log('++++++++++', list);
     await list.destroy();
     res.json({ message: "Success" })
 }))

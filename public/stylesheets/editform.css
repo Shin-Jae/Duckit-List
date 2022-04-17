@@ -1,7 +1,15 @@
 .user-prompt.hide {
-    display: none
+    display: none;
 }
 
 .container-edit-form.hide {
-    display: none
+    display: none;
+}
+
+.edit-listname.hide {
+    display: none;
+}
+
+.task-delete-modal.hide {
+    display: none;
 }

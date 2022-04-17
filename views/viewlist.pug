@@ -21,9 +21,8 @@ block content
               h2(id=`${list.id}-name` class="list-names")= `${list.name}`
               div(id=`container-${list.id}`).container
                 div.list-buttons
-                  button(type='submit' class='list-edit-btn').button-style Edit
+                  button(type='submit' class='list-edit-btn' id=`${list.id}-edit`).button-style Edit
                   button(type='button' class='list-delete-btn' id=`${list.id}-delete`).button-style Delete
-                  a(href=`/lists/edit/${list.id}` class='edit-btn' id=`edit-btn-${list.id}`).button-style Edit list name
                   a(href=`/tasks/new/${list.id}`).create-button-style Hatch a new goal!
                   //- each task in list.Tasks
                   //-   if !task.completed

@@ -6,6 +6,7 @@ append head
   link(rel="stylesheet" href="/stylesheets/editform.css")
   link(rel="stylesheet" href="/stylesheets/form.css")
   script(src="/javascripts/editTask.js" type="module")
+  script(src="/javascripts/listButtons.js" type="module")
 
 block template
   div.container-edit-form
@@ -38,3 +39,18 @@ block template
     h1 Are you sure?
     button(class='user-prompt-yes') Yes
     button(class='user-prompt-no') No
+  div(class='edit-listname hide')
+    form(id=`edit-list-420`)
+      +validationErrorSummary(errors)
+      input(type='hidden' class='list-id-edit')
+      input(type='hidden' name="_csrf" value=csrfToken)
+      label(for=name) List name
+      input(type=text class=`list-edit-name` name=name placeholder="New list name")
+      div(class='form-submit')
+      button(type='submit' class='submit-btn' id=`edit-submit`) Save
+      a(href='/lists' class='cancel-btn') Cancel
+  div(class='task-delete-modal hide')
+    input(type='hidden' class='task-id-delete')
+    h1 Are you sure?
+    button(class='delete-task-yes') Yes
+    button(class='delete-task-no') No
