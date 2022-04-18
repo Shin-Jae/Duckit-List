@@ -37,11 +37,11 @@
 }
 
 #duckitList {
-    /* margin: 2rem; */
-    font-family: 'Days One';
-    font-size: 2rem;
+    margin: 10px;
+    font-family: "Days One";
+    font-size: 18px;
     font-weight: 100;
-    color: #A4D7D9;
+    color: black;
 }
 
 a {
@@ -58,10 +58,6 @@ a {
     margin-left: 15px;
 }
 
-.searchbar {
-    margin-left: 20rem;
-}
-
 .searchbar>input {
     all: unset;
     display: flex;
@@ -70,6 +66,7 @@ a {
     background-color: #cfcfcd;
     padding: 5px;
     border: 2px solid #dededf;
+    font-size: .8rem;
 }
 
 .welcome-message {
@@ -103,7 +100,6 @@ a {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    margin-right: 8rem;
 }
 
 .home-task-image {

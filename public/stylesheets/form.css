@@ -19,7 +19,9 @@ form>input {
 }
 
 form > a,
-form > button {
+form > button,
+form > div > a,
+form > div > button {
   all: unset;
   border-radius: 0.8rem;
   color: white;
