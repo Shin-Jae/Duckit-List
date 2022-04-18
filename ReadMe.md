@@ -42,8 +42,7 @@ Utilizes API routes to render elements, such as, updating and removing a user's 
 #### Deployed on
 - Heroku
 ### Overview of application architecture
-
-
+![image](https://user-images.githubusercontent.com/92604480/163756036-6a075466-7410-4a22-aa6d-8325a83b058f.png)
 
 ### Front End Overview
 The front end was structured using PUGjs while utilizing HTML and CSS to style. It also showcases DOM manipulation elements that allow the page to be responsive to the user input. These features include viewing the user's Duckit lists, incompleted Duckit tasks and completed Duckit tasks, as well as editing and deleting Duckit lists and Duckit tasks.
