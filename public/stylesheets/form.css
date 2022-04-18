@@ -1,3 +1,9 @@
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 form>input {
   /* all: unset; */
   background-color: #cfcfcd;
@@ -6,8 +12,10 @@ form>input {
   margin: 1rem;
   border-radius: 0.8rem;
   padding-left: 1rem;
-  text-align: left;
+  text-align: center;
+  justify-content:center;
   align-items: center;
+
 }
 
 form > a,
