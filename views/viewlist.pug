@@ -10,7 +10,7 @@ append head
 block content
   div.allTabs
     div.listTab
-      h1(class='list-title tab clicked') List
+      h1(class='list-title tab clicked') Flocks
       div.viewlist-grid
         div(class='list-sub-container')
           a(href="/lists/new" class="add-to-list-button").create-button-style Create new List
@@ -20,7 +20,7 @@ block content
               div(id=`container-${list.id}`).container
                 div.list-buttons
                   button(type='submit' class='list-edit-btn' id=`${list.id}-edit`).button-style Edit
-                  button(type='button' class='list-delete-btn' id=`${list.id}-delete`).button-style Delete
+                  button(type='button' class='list-delete-btn' id=`${list.id}-delete`).button-style Fly south
                   a(href=`/tasks/new/${list.id}`).create-button-style Hatch a new goal!
 
         div.main
@@ -36,7 +36,7 @@ block content
                             div.inner
                               div(style="font-weight:bold; padding:10px;" class=`task-description-${task.id}`)= task.description
                               button(type='button' class='task-edit-btn' id=`task-edit-btn-id:${task.id}`).button-style Edit
-                              button(type='button' class='task-delete-btn' id=`task-delete-btn-${task.id}`).button-style Delete
+                              button(type='button' class='task-delete-btn' id=`task-delete-btn-${task.id}`).button-style Fly south
           div(class='completed-sub-container hide').task-sub-container
             each list in lists
               if list.Tasks.length && list.Tasks.some((task) => task.completed)
@@ -49,7 +49,7 @@ block content
                             div.inner
                               div(style="font-weight:bold; padding:10px;" class=`task-description-${task.id}`)= task.description
                               button(type='button' class='task-edit-btn' id=`task-edit-btn-id:${task.id}`).button-style Edit
-                              button(type='button' class='task-delete-btn' id=`task-delete-btn-${task.id}`).button-style Delete
+                              button(type='button' class='task-delete-btn' id=`task-delete-btn-${task.id}`).button-style Fly south
 
 
     div.incompleteTab
