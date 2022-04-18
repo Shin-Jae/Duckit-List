@@ -6,7 +6,6 @@ append head
   link(rel="stylesheet" href="/stylesheets/editform.css")
   link(rel="stylesheet" href="/stylesheets/form.css")
   script(src="/javascripts/taskBtns.js" type="module")
-  script(src="/javascripts/listBtns.js" type="module")
 
 block template
   div.container-edit-form
@@ -42,7 +41,7 @@ block template
       input(type='hidden' class='list-id-edit')
       input(type='hidden' name="_csrf" value=csrfToken)
       label(for=name) List name
-      input(type=text class=`list-edit-name` name=name placeholder="New list name")
+      input(type='text' class=`list-edit-name` name=name placeholder="New list name")
       div(class='form-submit')
       button(type='submit' class='submit-btn' id=`edit-submit`) Save
       a(href='/lists' class='cancel-btn') Cancel
