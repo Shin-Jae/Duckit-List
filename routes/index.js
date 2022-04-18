@@ -11,7 +11,6 @@ router.get('/', (req, res, next) => {
 
 router.get('/home', asyncHandler(async (req, res) => {
   const user = req.session.auth;
-  console.log('77777777', user)
   if (!user) {
     return res.redirect('/');
   }
@@ -22,8 +21,8 @@ router.get('/home', asyncHandler(async (req, res) => {
   })
 }));
 
-router.get('/search', asyncHandler(async (req, res) => {
-  const { query } = { query: "a" };
+router.get('/search/:query', asyncHandler(async (req, res) => {
+  const { query } = req.params;
   const user = req.session.auth;
   console.log()
   console.log()

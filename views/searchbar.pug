@@ -5,15 +5,17 @@ append head
 
 block content
     div.results-container
-        div.lists-results-container
-            each list in listResults
-                p= list.name
-
-        div.tasks-results-container
-            each list in listsWithTasks
-                div.list-container
-                    h1= `List: ${list.name}`
-                    each task in list.Tasks
-                        div.sub-task
-                            p= task.description
-                            img(src=`${task.image}`)
+        //- div.lists-results-container
+        //-     each list in listResults
+        //-         p= list.name
+        if (listsWithTasks.length > 0)
+            div.tasks-results-container
+                each list in listsWithTasks
+                    div.list-container
+                        h1= `List: ${list.name}`
+                        each task in list.Tasks
+                            div.sub-task
+                                p= task.description
+                                img(src=`${task.image}`)
+        else
+            p No results found

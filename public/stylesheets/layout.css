@@ -1,6 +1,6 @@
 #duckitList {
     margin: 20px;
-    font-family: 'Elsie';
+    font-family: 'Days One';
     font-size: 3rem;
     font-weight: 900;
     color: white;
@@ -12,8 +12,8 @@
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 2fr;
     grid-template-areas:
-      "bubble ."
-      ". images";
+        "bubble ."
+        ". images";
 }
 
 #splash-text {
@@ -96,7 +96,7 @@
     grid-template-rows: 1fr;
     grid-template-columns: 1fr;
     grid-template-areas:
-      "footer";
+        "footer";
 }
 
 .team-container {
@@ -113,7 +113,7 @@
     padding: 12px;
 }
 
-.team > h6 {
+.team>h6 {
     font-size: 16px;
     font-weight: bold;
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -121,7 +121,7 @@
     padding: 1px;
 }
 
-.team > a {
+.team>a {
     font-size: 12px;
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: grey;
