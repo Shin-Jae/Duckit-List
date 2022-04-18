@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/', csrfProtection, asyncHandler(async (req, res) => {
     const userId = req.session.auth.userId
     const user = req.session.auth
-    console.log(user);
+
     const lists = await db.List.findAll({
         include: db.Task,
         where: {
@@ -92,11 +92,8 @@ router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
 }));
 
 router.put('/edit/:id(\\d+)', listValidators, asyncHandler(async (req, res) => {
-    // console.log('from put route handler: ', req.body)
     const list = await db.List.findByPk(req.params.id)
-
     list.name = req.body.name
-
 
     const validatorErrors = validationResult(req)
     if (validatorErrors.isEmpty()) {

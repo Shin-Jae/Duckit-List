@@ -1,4 +1,3 @@
-// const { json } = require("sequelize/types");
 const editButtons = document.querySelectorAll('.task-edit-btn');
 const formDescriptionTag = document.querySelector('#edit-task-description');
 const formTag = document.querySelector('#edit-task-form');
@@ -16,6 +15,7 @@ const taskIdTag = formTag.querySelector('.task-id');
 const listEditBtns = document.querySelectorAll('button.list-edit-btn');
 const editListForm = document.querySelector('.edit-listname');
 
+//edit list name
 listEditBtns.forEach((listEditBtn) => {
     listEditBtn.addEventListener('click', (e) => {
         document.querySelector('.container-edit-form').classList.toggle('hide');
@@ -57,6 +57,7 @@ editListForm.addEventListener('submit', async (e) => {
     }
 })
 
+//delete a list
 listDelete.forEach((listDeleteBtn) => {
     listDeleteBtn.addEventListener('click', (e) => {
         document.querySelector('.container-edit-form').classList.toggle('hide');
@@ -90,6 +91,7 @@ prompt.querySelector('.user-prompt-no').addEventListener('click', async (e) => {
     document.querySelector('.modal').classList.toggle('show-modal');
 })
 
+//delete a task
 taskDelete.forEach((delBtn) => {
     delBtn.addEventListener('click', (e) => {
         document.querySelector('.container-edit-form').classList.toggle('hide');
@@ -120,6 +122,7 @@ taskDel.querySelector('.delete-task-no').addEventListener('click', async (e) => 
     document.querySelector('.modal').classList.toggle('show-modal');
 })
 
+//edit a task
 const showEdit = async (e) => {
     document.querySelector('.errors-container').innerHTML = null;
     document.querySelector('.modal').classList.toggle('show-modal');
