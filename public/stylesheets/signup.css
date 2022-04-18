@@ -20,11 +20,12 @@ p {
 }
 
 ul {
-    height: 7rem;
+    height: 15rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    text-align: center;
+    z-index: 5;
 }
 
 li {
