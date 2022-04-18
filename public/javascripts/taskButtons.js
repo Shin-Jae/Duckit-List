@@ -1,22 +1,22 @@
 const deleteButtons = document.querySelectorAll('.task-delete-btn')
 
-for (let i = 0; i < deleteButtons.length; i++) {
-    const button = deleteButtons[i]
-    button.addEventListener('click', async (e) => {
-        const taskId = e.target.id.split('-')[3];
-        console.log("********************************")
-        const res = await fetch(`/tasks/${taskId}`, {
-            method: 'DELETE',
-        })
+// for (let i = 0; i < deleteButtons.length; i++) {
+//     const button = deleteButtons[i]
+//     button.addEventListener('click', async (e) => {
+//         const taskId = e.target.id.split('-')[3];
+//         console.log("********************************")
+//         const res = await fetch(`/tasks/${taskId}`, {
+//             method: 'DELETE',
+//         })
 
-        const data = await res.json();
-        if (data.message === 'Task successfully deleted') {
-            const container = document.getElementById(`task-container-${taskId}`);
-            container.remove()
-            location.reload();
-        }
-    })
-}
+//         const data = await res.json();
+//         if (data.message === 'Task successfully deleted') {
+//             const container = document.getElementById(`task-container-${taskId}`);
+//             container.remove()
+//             location.reload();
+//         }
+//     })
+// }
 
 // const submitBtn = document.querySelector('.tasksubmit-btn')
 // submitBtn.addEventListener('click', async (submitEvent) => {
