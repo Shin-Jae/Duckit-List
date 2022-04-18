@@ -14,7 +14,6 @@ router.get('/', csrfProtection, asyncHandler(async (req, res) => {
 }));
 
 router.get('/new/:listId', csrfProtection, (req, res) => {
-  console.log('------', req.params)
   const listId = req.params.listId;
   res.render("addtolist", { csrfToken: req.csrfToken(), listId });
 });
@@ -66,8 +65,6 @@ router.post('/new', csrfProtection, taskValidators, asyncHandler(async (req, res
     })
   }
 
-
-
 }));
 router.get('/edit/:id(\\d+)', csrfProtection, asyncHandler(async (req, res) => {
   const user = req.session.auth.userId
@@ -99,7 +96,6 @@ router.put('/edit/:id(\\d+)', csrfProtection, taskValidators, asyncHandler(async
     task.image = req.body.image;
     task.completed = req.body.completed;
 
-    console.log('______if validator is empty______')
     await task.save()
     res.json({
       message: 'Task successfully updated',
@@ -115,8 +111,6 @@ router.put('/edit/:id(\\d+)', csrfProtection, taskValidators, asyncHandler(async
   }
 
 }));
-
-
 
 router.delete('/:id(\\d+)', asyncHandler(async (req, res) => {
   const taskId = parseInt(req.params.id, 10);

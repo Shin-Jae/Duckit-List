@@ -27,13 +27,10 @@ block template
         input(name='image' type="text" class='task-image')
         label(for=completed) Completed?
         input(type='checkbox' name='completed' class='task-completed')
-
-        //- label(for=category) Category
-        //- input(type=text id=`task-category-${"task.id"}` category=category placeholder=task.category)
         div(class='form-submit')
         button(type='submit' class='tasksubmit-btn') Save
         a(href='/lists' class='cancel-btn') Cancel
-        //- button(type='submit' id='test-button') TEST
+
   div(class='user-prompt hide')
     input(type='hidden' class='list-id-delete')
     h1 Are you sure?
