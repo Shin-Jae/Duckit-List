@@ -38,7 +38,7 @@
 
 #duckitList {
     margin: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Days One";
     font-size: 18px;
     font-weight: 100;
     color: black;
@@ -66,6 +66,7 @@ a {
     background-color: #cfcfcd;
     padding: 5px;
     border: 2px solid #dededf;
+    font-size: .8rem;
 }
 
 .welcome-message {
