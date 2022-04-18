@@ -24,6 +24,11 @@ router.get('/home', asyncHandler(async (req, res) => {
 router.get('/search/:query', asyncHandler(async (req, res) => {
   const { query } = req.params;
   const user = req.session.auth;
+  console.log()
+  console.log()
+  console.log(req.body)
+  console.log()
+  console.log()
 
   // find all lists associated with user that matches query
   const listResults = await db.List.findAll({
@@ -99,7 +104,7 @@ router.get('/search/:query', asyncHandler(async (req, res) => {
     list.Tasks.sort((a, b) => a.id - b.id);
   });
 
-  return res.render("searchbar", { listResults, taskResults: listWithMatchingTasks });
+  return res.render("searchbar", { listResults, listsWithTasks: listWithMatchingTasks });
 }));
 
 module.exports = router;
