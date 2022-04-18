@@ -5,7 +5,7 @@
     margin-top: 20rem;
     background-color: #DDCCBB66;
     margin-bottom: 2rem;
-    width: 80%;
+    width: 100%;
     border-radius: 5rem;
     box-shadow: 1rem 1rem 1rem black;
 }
@@ -30,10 +30,11 @@ h1 {
 .sub-task {
     display: flex;
     flex-direction: column;
-    background-color: aquamarine;
+    background-color: #A4D7D9;
     padding: 10px;
     margin-left: 10px;
-    width: 50rem
+    width: 50rem;
+    border-radius: 30px;
 }
 
 img {
