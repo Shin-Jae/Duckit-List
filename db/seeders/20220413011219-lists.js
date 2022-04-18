@@ -28,20 +28,20 @@ module.exports = {
         updatedAt: new Date()
       },
       {
-        name: "Adventure",
-        userId: "2",
+        name: "App Academy",
+        userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: "Travel",
-        userId: "2",
+        name: "Personal",
+        userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: "Phuket",
-        userId: "2",
+        userId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -66,12 +66,6 @@ module.exports = {
       {
         name: "doloribus",
         userId: 3,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: "eius",
-        userId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
