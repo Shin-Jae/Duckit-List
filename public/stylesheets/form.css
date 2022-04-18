@@ -30,7 +30,7 @@ form > div > button {
   font-family: inherit;
   background-color: #FDCE2A;
   text-align: center;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
 }
 
 form > a:hover,
