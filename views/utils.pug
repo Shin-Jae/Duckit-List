@@ -1,7 +1,7 @@
 mixin validationErrorSummary(errors)
     div(style="color: red; display: flex; margin-top:21rem; margin-bottom:5 rem; width: 31rem; text-align: center;" ).errors-container
         if errors
-            ul The following errors have occurred
+            ul The following errors have occurred:
                 each error in errors
                     li=error
 
