@@ -29,6 +29,27 @@ Anything is posisble, especially when you write it down. With Duckit List, you c
 
 ### Key Features
 Utilizes API routes to render elements, such as, updating and removing a user's Duckit lists and Duckit tasks
+
+- View completed task from all users
+
+<img width="1427" alt="Screen Shot 2022-08-03 at 11 53 44 AM" src="https://user-images.githubusercontent.com/95829246/182654319-ac9bcffc-768b-4293-b3eb-341ddf986695.png">
+
+- Create category and task
+
+<img width="448" alt="Screen Shot 2022-08-03 at 11 54 12 AM" src="https://user-images.githubusercontent.com/95829246/182654339-5777571f-d4e7-4e6e-8ee9-bc23d549481c.png">
+
+<img width="1400" alt="Screen Shot 2022-08-03 at 11 54 25 AM" src="https://user-images.githubusercontent.com/95829246/182654364-f6811e02-1b40-4bde-97a0-24da33f40fec.png">
+
+- View and Update incomplete and completed tasks
+
+<img width="496" alt="Screen Shot 2022-08-03 at 11 55 24 AM" src="https://user-images.githubusercontent.com/95829246/182654478-3a4959a9-f5b1-435c-8a96-8eb714174f74.png">
+
+<img width="698" alt="Screen Shot 2022-08-03 at 11 55 31 AM" src="https://user-images.githubusercontent.com/95829246/182654488-edb98699-fd09-4cde-9602-9420bebd64a1.png">
+
+<img width="438" alt="Screen Shot 2022-08-03 at 11 55 42 AM" src="https://user-images.githubusercontent.com/95829246/182654503-4b3094ac-528c-4bc4-a668-4ad909576088.png">
+
+
+
 ### Technologies
 #### Frontend
 - JavaScript
